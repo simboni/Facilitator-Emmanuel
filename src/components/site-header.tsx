@@ -20,16 +20,11 @@ export function SiteHeader() {
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
-    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close the mobile menu whenever the route changes.
-  useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
-
+  const closeMenu = () => setOpen(false);
   const primaryPhone = firm.contact.phones[0];
 
   return (
@@ -132,6 +127,7 @@ export function SiteHeader() {
                 <Link
                   key={item.href}
                   href={item.href}
+                  onClick={closeMenu}
                   className={`rounded-lg px-4 py-3 text-base font-medium ${
                     active
                       ? "bg-navy-50 text-navy-900"
@@ -145,12 +141,19 @@ export function SiteHeader() {
             <div className="mt-3 flex flex-col gap-3 border-t border-navy-100 pt-4">
               <a
                 href={`tel:${primaryPhone}`}
+                onClick={closeMenu}
                 className="flex items-center gap-3 px-4 py-2 text-navy-700"
               >
                 <PhoneIcon className="h-5 w-5 text-gold-500" />
                 {primaryPhone}
               </a>
-              <Button href="/contact" variant="gold" size="lg" className="w-full">
+              <Button
+                href="/contact"
+                variant="gold"
+                size="lg"
+                className="w-full"
+                onClick={closeMenu}
+              >
                 Request a Free Quote
               </Button>
             </div>

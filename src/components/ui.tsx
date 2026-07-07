@@ -33,7 +33,10 @@ type ButtonProps = {
   withArrow?: boolean;
   className?: string;
   children: ReactNode;
-} & Omit<ComponentPropsWithoutRef<"a">, "href">;
+  type?: "button" | "submit" | "reset";
+  disabled?: boolean;
+  onClick?: React.MouseEventHandler<HTMLElement>;
+} & Omit<ComponentPropsWithoutRef<"a">, "href" | "onClick">;
 
 export function Button({
   variant = "primary",
@@ -42,6 +45,7 @@ export function Button({
   withArrow = false,
   className = "",
   children,
+  onClick,
   ...rest
 }: ButtonProps) {
   const cls = `${buttonBase} ${buttonVariants[variant]} ${buttonSizes[size]} ${className}`;
@@ -57,19 +61,23 @@ export function Button({
     const external = href.startsWith("http") || href.startsWith("tel:") || href.startsWith("mailto:");
     if (external) {
       return (
-        <a href={href} className={`group/btn ${cls}`} {...rest}>
+        <a href={href} className={`group/btn ${cls}`} onClick={onClick} {...rest}>
           {content}
         </a>
       );
     }
     return (
-      <Link href={href} className={`group/btn ${cls}`}>
+      <Link href={href} className={`group/btn ${cls}`} onClick={onClick}>
         {content}
       </Link>
     );
   }
   return (
-    <button className={`group/btn ${cls}`} {...(rest as ComponentPropsWithoutRef<"button">)}>
+    <button
+      className={`group/btn ${cls}`}
+      onClick={onClick}
+      {...(rest as ComponentPropsWithoutRef<"button">)}
+    >
       {content}
     </button>
   );
