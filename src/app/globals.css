@@ -87,3 +87,157 @@ body {
     text-wrap: balance;
   }
 }
+
+/* --------------------------------------------------------------------------
+   Motion & interaction layer (2026: purposeful, restrained, compositor-safe)
+   All effects animate only opacity/transform and are fully disabled under
+   prefers-reduced-motion.
+--------------------------------------------------------------------------- */
+
+/* Scroll-reveal — the JS toggles `.reveal-in` when the element enters view */
+.reveal {
+  opacity: 0;
+  will-change: transform, opacity;
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-up {
+  transform: translateY(28px);
+}
+.reveal-left {
+  transform: translateX(28px);
+}
+.reveal-right {
+  transform: translateX(-28px);
+}
+.reveal-scale {
+  transform: scale(0.94);
+}
+.reveal-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Cursor-following spotlight for cards */
+.spotlight {
+  position: relative;
+  isolation: isolate;
+}
+.spotlight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  background: radial-gradient(
+    18rem 18rem at var(--mx, 50%) var(--my, 50%),
+    rgba(206, 162, 60, 0.14),
+    transparent 55%
+  );
+}
+.spotlight:hover::before {
+  opacity: 1;
+}
+.spotlight > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Hero: ambient floating orbs + staggered content load-in */
+@keyframes floatY {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+@keyframes riseIn {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.hero-orb {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(64px);
+  animation: floatY 10s ease-in-out infinite;
+  pointer-events: none;
+}
+.hero-stagger > * {
+  animation: riseIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.hero-stagger > *:nth-child(1) {
+  animation-delay: 0.05s;
+}
+.hero-stagger > *:nth-child(2) {
+  animation-delay: 0.13s;
+}
+.hero-stagger > *:nth-child(3) {
+  animation-delay: 0.21s;
+}
+.hero-stagger > *:nth-child(4) {
+  animation-delay: 0.29s;
+}
+.hero-stagger > *:nth-child(5) {
+  animation-delay: 0.37s;
+}
+.hero-fade-in {
+  animation: riseIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.32s both;
+}
+
+/* Sheen sweep on gold buttons */
+.btn-sheen {
+  position: relative;
+  overflow: hidden;
+}
+.btn-sheen::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -130%;
+  width: 55%;
+  height: 100%;
+  transform: skewX(-20deg);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  pointer-events: none;
+}
+.btn-sheen:hover::after {
+  animation: sheen 0.75s ease;
+}
+@keyframes sheen {
+  to {
+    left: 140%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .hero-orb,
+  .hero-stagger > *,
+  .hero-fade-in {
+    animation: none !important;
+  }
+  .btn-sheen::after {
+    display: none;
+  }
+}

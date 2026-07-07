@@ -3,6 +3,7 @@ import { services, industries, firm } from "@/lib/firm";
 import { Section, SectionHeading, Button } from "@/components/ui";
 import { PageHero } from "@/components/page-hero";
 import { CtaBand } from "@/components/cta-band";
+import { Reveal } from "@/components/reveal";
 import { ServiceIcon } from "@/components/icons";
 
 export const metadata: Metadata = {
@@ -53,29 +54,35 @@ export default function ServicesPage() {
           className="mb-12"
         />
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((s) => (
-            <div
+          {services.map((s, i) => (
+            <Reveal
               key={s.slug}
-              id={s.slug}
-              className="scroll-mt-28 flex flex-col gap-4 rounded-2xl border border-navy-100 bg-white p-6 transition-shadow hover:shadow-lg hover:shadow-navy-900/5"
+              variant="up"
+              delay={(i % 3) * 90}
+              className="h-full"
             >
-              <div className="flex items-center gap-4">
-                <span className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-navy-50 text-navy-700">
-                  <ServiceIcon name={s.icon} className="h-6 w-6" />
-                </span>
-                {s.featured && (
-                  <span className="rounded-full bg-gold-100 px-3 py-1 text-xs font-semibold text-gold-700">
-                    Most requested
+              <div
+                id={s.slug}
+                className="group flex h-full scroll-mt-28 flex-col gap-4 rounded-2xl border border-navy-100 bg-white p-6 transition-[transform,box-shadow,border-color] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-1.5 hover:border-gold-300 hover:shadow-xl hover:shadow-navy-900/10"
+              >
+                <div className="flex items-center gap-4">
+                  <span className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-navy-50 text-navy-700 transition-all duration-300 group-hover:scale-110 group-hover:bg-gold-100 group-hover:text-gold-700">
+                    <ServiceIcon name={s.icon} className="h-6 w-6" />
                   </span>
-                )}
+                  {s.featured && (
+                    <span className="rounded-full bg-gold-100 px-3 py-1 text-xs font-semibold text-gold-700">
+                      Most requested
+                    </span>
+                  )}
+                </div>
+                <h3 className="font-serif text-lg font-semibold leading-snug text-navy-900">
+                  {s.title}
+                </h3>
+                <p className="text-sm leading-relaxed text-navy-500">
+                  {s.summary}
+                </p>
               </div>
-              <h3 className="font-serif text-lg font-semibold leading-snug text-navy-900">
-                {s.title}
-              </h3>
-              <p className="text-sm leading-relaxed text-navy-500">
-                {s.summary}
-              </p>
-            </div>
+            </Reveal>
           ))}
         </div>
         <p className="mt-8 rounded-xl border border-navy-100 bg-sand-50 px-5 py-4 text-sm text-navy-600">
@@ -146,18 +153,20 @@ export default function ServicesPage() {
           className="mb-12"
         />
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {process.map((p) => (
-            <div key={p.step} className="relative rounded-2xl border border-navy-100 p-6">
-              <span className="font-serif text-4xl font-semibold text-gold-200">
-                {p.step}
-              </span>
-              <h3 className="mt-3 font-serif text-lg font-semibold text-navy-900">
-                {p.title}
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed text-navy-500">
-                {p.body}
-              </p>
-            </div>
+          {process.map((p, i) => (
+            <Reveal key={p.step} variant="up" delay={i * 100} className="h-full">
+              <div className="group relative h-full rounded-2xl border border-navy-100 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-gold-300 hover:shadow-lg hover:shadow-navy-900/5">
+                <span className="font-serif text-4xl font-semibold text-gold-200 transition-colors duration-300 group-hover:text-gold-400">
+                  {p.step}
+                </span>
+                <h3 className="mt-3 font-serif text-lg font-semibold text-navy-900">
+                  {p.title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-navy-500">
+                  {p.body}
+                </p>
+              </div>
+            </Reveal>
           ))}
         </div>
         <div className="mt-10 flex justify-center">

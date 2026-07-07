@@ -8,14 +8,17 @@ import {
 import { Button, Section, SectionHeading, Eyebrow } from "@/components/ui";
 import { ServiceCard } from "@/components/service-card";
 import { CtaBand } from "@/components/cta-band";
+import { Reveal } from "@/components/reveal";
+import { CountUp } from "@/components/count-up";
+import { SpotlightCard } from "@/components/spotlight-card";
 import { ServiceIcon, CheckIcon, QuoteIcon, PhoneIcon } from "@/components/icons";
 import { Monogram } from "@/components/logo";
 
 const stats = [
-  { value: `${firm.yearsExperience}+`, label: "Years of experience" },
-  { value: firm.clientsServed, label: "Clients served" },
-  { value: industries.length.toString(), label: "Industries served" },
-  { value: firm.offices.length.toString(), label: "Offices in Bungoma" },
+  { n: firm.yearsExperience, suffix: "+", label: "Years of experience" },
+  { n: 100, suffix: "+", label: "Clients served" },
+  { n: industries.length, suffix: "", label: "Industries served" },
+  { n: firm.offices.length, suffix: "", label: "Offices in Bungoma" },
 ];
 
 export default function HomePage() {
@@ -24,9 +27,34 @@ export default function HomePage() {
     <>
       {/* ============================== HERO ============================== */}
       <section className="bg-navy-gradient relative overflow-hidden">
-        <div className="container-page relative grid gap-12 py-16 sm:py-20 lg:grid-cols-2 lg:items-center lg:gap-10 lg:py-28">
+        {/* Ambient floating orbs */}
+        <div
+          className="hero-orb"
+          style={{
+            width: "22rem",
+            height: "22rem",
+            background: "rgba(206,162,60,0.22)",
+            top: "-5rem",
+            right: "-3rem",
+          }}
+          aria-hidden="true"
+        />
+        <div
+          className="hero-orb"
+          style={{
+            width: "26rem",
+            height: "26rem",
+            background: "rgba(47,85,140,0.45)",
+            bottom: "-8rem",
+            left: "-5rem",
+            animationDelay: "-4s",
+          }}
+          aria-hidden="true"
+        />
+
+        <div className="container-page relative z-10 grid gap-12 py-16 sm:py-20 lg:grid-cols-2 lg:items-center lg:gap-10 lg:py-28">
           {/* Copy */}
-          <div className="max-w-xl">
+          <div className="hero-stagger max-w-xl">
             <Eyebrow light>Certified Public Accountants · Bungoma</Eyebrow>
             <h1 className="mt-5 font-serif text-4xl font-semibold leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-[3.4rem] text-balance">
               Accounting you can{" "}
@@ -67,9 +95,9 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Founder / credential card (stands in for a portrait until photos arrive) */}
-          <div className="relative lg:justify-self-end">
-            <div className="relative mx-auto max-w-sm rounded-3xl border border-white/10 bg-white/[0.04] p-8 backdrop-blur">
+          {/* Founder / credential card */}
+          <div className="hero-fade-in relative lg:justify-self-end">
+            <div className="relative mx-auto max-w-sm rounded-3xl border border-white/10 bg-white/[0.04] p-8 backdrop-blur transition-transform duration-500 hover:-translate-y-1">
               <div className="flex items-center gap-4">
                 <Monogram className="h-16 w-16" variant="navy" />
                 <div>
@@ -113,7 +141,7 @@ export default function HomePage() {
           {stats.map((s) => (
             <div key={s.label} className="px-4 py-3 text-center">
               <p className="font-serif text-3xl font-semibold text-navy-900 sm:text-4xl">
-                {s.value}
+                <CountUp end={s.n} suffix={s.suffix} />
               </p>
               <p className="mt-1 text-sm text-navy-500">{s.label}</p>
             </div>
@@ -124,7 +152,7 @@ export default function HomePage() {
       {/* ============================== ABOUT ============================= */}
       <Section>
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-          <div>
+          <Reveal variant="right">
             <SectionHeading
               eyebrow="Who we are"
               title="A licensed CPA firm built on 25 years of experience"
@@ -133,23 +161,22 @@ export default function HomePage() {
             <Button href="/about" variant="outline" className="mt-8" withArrow>
               More about the firm
             </Button>
-          </div>
+          </Reveal>
           <div className="grid gap-4 sm:grid-cols-2">
-            {firm.differentiators.map((d) => (
-              <div
-                key={d.title}
-                className="rounded-2xl border border-navy-100 bg-sand-50 p-6"
-              >
-                <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-gold-100 text-gold-700">
-                  <CheckIcon className="h-5 w-5" />
-                </span>
-                <h3 className="mt-4 font-serif text-lg font-semibold text-navy-900">
-                  {d.title}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-navy-500">
-                  {d.body}
-                </p>
-              </div>
+            {firm.differentiators.map((d, i) => (
+              <Reveal key={d.title} variant="up" delay={i * 90} className="h-full">
+                <div className="h-full rounded-2xl border border-navy-100 bg-sand-50 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-gold-200 hover:shadow-lg hover:shadow-navy-900/5">
+                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-gold-100 text-gold-700">
+                    <CheckIcon className="h-5 w-5" />
+                  </span>
+                  <h3 className="mt-4 font-serif text-lg font-semibold text-navy-900">
+                    {d.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-navy-500">
+                    {d.body}
+                  </p>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -174,12 +201,10 @@ export default function HomePage() {
             </Button>
           </div>
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {featured.map((s) => (
-              <ServiceCard
-                key={s.slug}
-                service={s}
-                href={`/services#${s.slug}`}
-              />
+            {featured.map((s, i) => (
+              <Reveal key={s.slug} variant="up" delay={i * 90} className="h-full">
+                <ServiceCard service={s} href={`/services#${s.slug}`} />
+              </Reveal>
             ))}
           </div>
         </Section>
@@ -187,34 +212,35 @@ export default function HomePage() {
 
       {/* ============================ INDUSTRIES ========================= */}
       <Section>
-        <SectionHeading
-          align="center"
-          eyebrow="Industries we serve"
-          title="Specialist knowledge across the sectors that power our region"
-          intro="Decades of hands-on work with the organisations that build Western Kenya."
-          className="mb-12"
-        />
+        <Reveal>
+          <SectionHeading
+            align="center"
+            eyebrow="Industries we serve"
+            title="Specialist knowledge across the sectors that power our region"
+            intro="Decades of hands-on work with the organisations that build Western Kenya."
+            className="mb-12"
+          />
+        </Reveal>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {industries.map((ind) => (
-            <div
-              key={ind.slug}
-              className="group flex gap-5 rounded-2xl border border-navy-100 p-6 transition-colors hover:border-gold-300 hover:bg-sand-50"
-            >
-              <span className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-navy-800 text-gold-300">
-                <ServiceIcon name={ind.icon} className="h-6 w-6" />
-              </span>
-              <div>
-                <h3 className="font-serif text-lg font-semibold text-navy-900">
-                  {ind.title}
-                </h3>
-                <p className="text-sm font-medium text-gold-600">
-                  {ind.clients}
-                </p>
-                <p className="mt-2 text-sm leading-relaxed text-navy-500">
-                  {ind.services}
-                </p>
-              </div>
-            </div>
+          {industries.map((ind, i) => (
+            <Reveal key={ind.slug} variant="up" delay={i * 80} className="h-full">
+              <SpotlightCard className="group flex h-full gap-5 rounded-2xl border border-navy-100 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-gold-300 hover:shadow-lg hover:shadow-navy-900/5">
+                <span className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-navy-800 text-gold-300 transition-transform duration-300 group-hover:scale-110">
+                  <ServiceIcon name={ind.icon} className="h-6 w-6" />
+                </span>
+                <div>
+                  <h3 className="font-serif text-lg font-semibold text-navy-900">
+                    {ind.title}
+                  </h3>
+                  <p className="text-sm font-medium text-gold-600">
+                    {ind.clients}
+                  </p>
+                  <p className="mt-2 text-sm leading-relaxed text-navy-500">
+                    {ind.services}
+                  </p>
+                </div>
+              </SpotlightCard>
+            </Reveal>
           ))}
         </div>
       </Section>
@@ -222,49 +248,52 @@ export default function HomePage() {
       {/* =========================== TESTIMONIALS ======================== */}
       <div className="bg-navy-gradient">
         <Section>
-          <SectionHeading
-            light
-            align="center"
-            eyebrow="Trusted by our clients"
-            title="What the people we work with say"
-            className="mb-12"
-          />
+          <Reveal>
+            <SectionHeading
+              light
+              align="center"
+              eyebrow="Trusted by our clients"
+              title="What the people we work with say"
+              className="mb-12"
+            />
+          </Reveal>
           <div className="grid gap-6 lg:grid-cols-2">
-            {testimonials.map((t) => (
-              <figure
-                key={t.author}
-                className="flex flex-col rounded-2xl border border-white/10 bg-white/[0.04] p-8"
-              >
-                <QuoteIcon className="h-8 w-8 text-gold-400" />
-                <blockquote className="mt-4 flex-1 text-lg leading-relaxed text-navy-50">
-                  {t.quote}
-                </blockquote>
-                <figcaption className="mt-6 border-t border-white/10 pt-4">
-                  <p className="font-serif text-base font-semibold text-white">
-                    {t.author}
-                  </p>
-                  <p className="text-sm text-gold-300">{t.role}</p>
-                </figcaption>
-              </figure>
+            {testimonials.map((t, i) => (
+              <Reveal key={t.author} variant="up" delay={i * 120} className="h-full">
+                <figure className="flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.04] p-8 transition-colors duration-300 hover:border-gold-400/40 hover:bg-white/[0.07]">
+                  <QuoteIcon className="h-8 w-8 text-gold-400" />
+                  <blockquote className="mt-4 flex-1 text-lg leading-relaxed text-navy-50">
+                    {t.quote}
+                  </blockquote>
+                  <figcaption className="mt-6 border-t border-white/10 pt-4">
+                    <p className="font-serif text-base font-semibold text-white">
+                      {t.author}
+                    </p>
+                    <p className="text-sm text-gold-300">{t.role}</p>
+                  </figcaption>
+                </figure>
+              </Reveal>
             ))}
           </div>
 
           {/* Notable clients */}
-          <div className="mt-12 text-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-navy-300">
-              Organisations we have proudly worked with
-            </p>
-            <div className="mt-5 flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
-              {notableClients.map((c) => (
-                <span
-                  key={c}
-                  className="font-serif text-base font-medium text-navy-100"
-                >
-                  {c}
-                </span>
-              ))}
+          <Reveal delay={120}>
+            <div className="mt-12 text-center">
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-navy-300">
+                Organisations we have proudly worked with
+              </p>
+              <div className="mt-5 flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
+                {notableClients.map((c) => (
+                  <span
+                    key={c}
+                    className="font-serif text-base font-medium text-navy-100 transition-colors duration-300 hover:text-gold-300"
+                  >
+                    {c}
+                  </span>
+                ))}
+              </div>
             </div>
-          </div>
+          </Reveal>
         </Section>
       </div>
 

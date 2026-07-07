@@ -13,7 +13,7 @@ const buttonBase =
 const buttonVariants: Record<ButtonVariant, string> = {
   primary:
     "bg-navy-800 text-white hover:bg-navy-700 shadow-sm hover:shadow-md ring-offset-white",
-  gold: "bg-gold-400 text-navy-900 hover:bg-gold-300 shadow-sm hover:shadow-md ring-offset-white font-semibold",
+  gold: "btn-sheen bg-gold-400 text-navy-900 hover:bg-gold-300 shadow-sm hover:shadow-md ring-offset-white font-semibold",
   outline:
     "border border-navy-200 text-navy-800 hover:border-navy-400 hover:bg-navy-50 ring-offset-white",
   ghost: "text-navy-700 hover:bg-navy-50 ring-offset-white",

@@ -1,5 +1,6 @@
 import { firm } from "@/lib/firm";
 import { Button, Eyebrow } from "@/components/ui";
+import { Reveal } from "@/components/reveal";
 import { PhoneIcon, WhatsAppIcon } from "@/components/icons";
 
 export function CtaBand({
@@ -13,7 +14,21 @@ export function CtaBand({
     <section className="py-16 sm:py-20">
       <div className="container-page">
         <div className="bg-navy-gradient relative overflow-hidden rounded-3xl px-6 py-14 sm:px-12 sm:py-16">
-          <div className="relative mx-auto flex max-w-2xl flex-col items-center text-center">
+          <div
+            className="hero-orb"
+            style={{
+              width: "20rem",
+              height: "20rem",
+              background: "rgba(206,162,60,0.18)",
+              top: "-6rem",
+              right: "-2rem",
+            }}
+            aria-hidden="true"
+          />
+          <Reveal
+            variant="scale"
+            className="relative mx-auto flex max-w-2xl flex-col items-center text-center"
+          >
             <Eyebrow light>Let&rsquo;s talk</Eyebrow>
             <h2 className="mt-4 font-serif text-3xl font-semibold leading-tight text-white sm:text-4xl text-balance">
               {title}
@@ -43,7 +58,7 @@ export function CtaBand({
               <WhatsAppIcon className="h-4 w-4 text-[#25D366]" />
               Prefer WhatsApp? Message us directly
             </a>
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>

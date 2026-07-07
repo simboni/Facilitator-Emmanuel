@@ -3,6 +3,7 @@ import { firm, team } from "@/lib/firm";
 import { Section, SectionHeading, Eyebrow } from "@/components/ui";
 import { PageHero } from "@/components/page-hero";
 import { CtaBand } from "@/components/cta-band";
+import { Reveal } from "@/components/reveal";
 import { Monogram } from "@/components/logo";
 import { CheckIcon } from "@/components/icons";
 
@@ -145,19 +146,18 @@ export default function AboutPage() {
           className="mb-12"
         />
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {team.map((m) => (
-            <div
-              key={m.name}
-              className="flex flex-col items-center rounded-2xl border border-navy-100 bg-sand-50 p-6 text-center"
-            >
-              <span className="flex h-20 w-20 items-center justify-center rounded-full bg-navy-800 font-serif text-2xl font-semibold text-gold-300">
-                {m.initials}
-              </span>
-              <h3 className="mt-4 font-serif text-lg font-semibold text-navy-900">
-                {m.name}
-              </h3>
-              <p className="mt-1 text-sm text-navy-500">{m.role}</p>
-            </div>
+          {team.map((m, i) => (
+            <Reveal key={m.name} variant="up" delay={i * 90} className="h-full">
+              <div className="group flex h-full flex-col items-center rounded-2xl border border-navy-100 bg-sand-50 p-6 text-center transition-all duration-300 hover:-translate-y-1.5 hover:border-gold-300 hover:bg-white hover:shadow-lg hover:shadow-navy-900/5">
+                <span className="flex h-20 w-20 items-center justify-center rounded-full bg-navy-800 font-serif text-2xl font-semibold text-gold-300 transition-transform duration-300 group-hover:scale-105">
+                  {m.initials}
+                </span>
+                <h3 className="mt-4 font-serif text-lg font-semibold text-navy-900">
+                  {m.name}
+                </h3>
+                <p className="mt-1 text-sm text-navy-500">{m.role}</p>
+              </div>
+            </Reveal>
           ))}
         </div>
         <p className="mx-auto mt-8 max-w-2xl text-center text-sm text-navy-400">

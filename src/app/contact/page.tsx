@@ -3,6 +3,7 @@ import { firm } from "@/lib/firm";
 import { Section } from "@/components/ui";
 import { PageHero } from "@/components/page-hero";
 import { ContactForm } from "@/components/contact-form";
+import { Reveal } from "@/components/reveal";
 import {
   PhoneIcon,
   MailIcon,
@@ -115,10 +116,10 @@ export default function ContactPage() {
             Visit us at either of our two Bungoma locations.
           </p>
           <div className="mt-8 grid gap-8 lg:grid-cols-2">
-            {firm.offices.map((office) => (
+            {firm.offices.map((office, i) => (
+              <Reveal key={office.name} variant="up" delay={i * 120} className="h-full">
               <div
-                key={office.name}
-                className="overflow-hidden rounded-2xl border border-navy-100 bg-white"
+                className="h-full overflow-hidden rounded-2xl border border-navy-100 bg-white transition-all duration-300 hover:border-gold-300 hover:shadow-lg hover:shadow-navy-900/5"
               >
                 <iframe
                   title={`Map of ${office.name}`}
@@ -155,6 +156,7 @@ export default function ContactPage() {
                   </a>
                 </div>
               </div>
+              </Reveal>
             ))}
           </div>
         </Section>
