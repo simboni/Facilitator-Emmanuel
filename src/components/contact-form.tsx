@@ -103,6 +103,7 @@ export function ContactForm() {
           message: form.message,
           _honey: form._honey,
           _subject: `Website enquiry from ${form.name}`,
+          _replyto: form.email || undefined,
           _template: "table",
           _captcha: "false",
         }),
