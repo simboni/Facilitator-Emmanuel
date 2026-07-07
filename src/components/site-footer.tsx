@@ -150,6 +150,14 @@ export function SiteFooter() {
           </p>
         </div>
       </div>
+
+      {/* Developer credit — full width across the page */}
+      <div className="border-t border-white/10 bg-navy-950/60">
+        <div className="container-page py-4 text-center text-xs tracking-wide text-navy-300">
+          Designed &amp; developed by{" "}
+          <span className="font-semibold text-gold-300">SMP Developers Ltd</span>
+        </div>
+      </div>
     </footer>
   );
 }
