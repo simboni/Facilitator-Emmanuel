@@ -35,31 +35,40 @@ and swap them into the hero (`src/app/page.tsx`), the About profile
 
 ## Contact form email delivery
 
-The form at `/contact` posts to `src/app/api/contact/route.ts`. Out of the box it
-validates submissions and offers the visitor a WhatsApp / email fallback so nothing
-is lost. To receive enquiries as **real email**, create a free account at
-[resend.com](https://resend.com) and set these environment variables in hosting:
+The form at `/contact` (`src/components/contact-form.tsx`) submits to a free,
+no-backend form service ([FormSubmit](https://formsubmit.co)) which emails each
+enquiry to the address in `firm.contact.email`. It works on a fully static host
+with no server or API keys.
 
-```
-RESEND_API_KEY=re_xxxxxxxx
-CONTACT_TO=jsmisiati@gmail.com          # where enquiries are sent
-CONTACT_FROM=info@misiatiassociates.co.ke   # a verified sender
-```
+**One-time activation:** the first time the live form is submitted, FormSubmit
+sends an activation email to that inbox — click the link once and delivery is on
+for good. To change the destination or provider, edit `FORM_ENDPOINT` in
+`contact-form.tsx`. The form always offers a WhatsApp / email fallback too, so a
+visitor can reach the firm instantly regardless.
 
 ## Local development
 
 ```bash
 npm install
 npm run dev      # http://localhost:3000
-npm run build    # production build
-npm run start    # serve the production build
+npm run build    # static export → ./out
 ```
 
-## Deployment
+## Deployment — Cloudflare Pages
 
-The site is a standard Next.js app and deploys to any Node host. Recommended:
-[Vercel](https://vercel.com) — connect the repo, add the env vars above, and point the
-`www.misiatiassociates.co.ke` domain at it.
+The site is a **static export** (`output: 'export'` in `next.config.ts`), so it
+deploys to any static host. On **Cloudflare Pages**, connect this GitHub repo and use:
+
+| Setting | Value |
+| --- | --- |
+| Framework preset | Next.js (Static HTML Export) |
+| Build command | `npm run build` |
+| Build output directory | `out` |
+| Node version | 20 or newer |
+
+After the first deploy, add the custom domain `misiatiassociates.co.ke` (and
+`www`) in the Pages project — since the domain's DNS is on Cloudflare, the records
+are created automatically.
 
 ---
 
