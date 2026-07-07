@@ -10,8 +10,12 @@ type Status = "idle" | "submitting" | "done" | "error";
 // Free, no-backend form delivery (works on a static site). Submissions are
 // emailed to the address below. First submission triggers a one-time
 // activation email to that inbox — click the link once and it's live.
-// To switch providers later, change this endpoint only.
-const FORM_ENDPOINT = `https://formsubmit.co/ajax/${firm.contact.email}`;
+//
+// NOTE: temporarily set to a test inbox. Before final handover, change
+// FORM_DELIVERY_EMAIL to firm.contact.email ("jsmisiati@gmail.com") and
+// re-activate (a fresh activation email is sent to the new address).
+const FORM_DELIVERY_EMAIL = "misiatipeter@gmail.com";
+const FORM_ENDPOINT = `https://formsubmit.co/ajax/${FORM_DELIVERY_EMAIL}`;
 
 const inputCls =
   "w-full rounded-xl border border-navy-200 bg-white px-4 py-3 text-sm text-navy-900 placeholder:text-navy-400 focus:border-gold-400 focus:outline-none focus:ring-2 focus:ring-gold-200 transition";
