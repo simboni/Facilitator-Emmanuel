@@ -100,14 +100,17 @@ export function Logo({
         tone={tone}
         className="h-11 w-11 shrink-0 transition-transform duration-300 group-hover:scale-105"
       />
-      <span className="flex flex-col leading-none">
+      {/* Wordmark: the name sets the width; the tagline is justified to fill
+          that exact same width, so the two lines stay balanced. */}
+      <span className="flex w-fit flex-col leading-none">
         <span
-          className={`font-serif text-lg font-semibold tracking-tight ${primary}`}
+          className={`whitespace-nowrap font-serif text-[1.3rem] font-semibold tracking-tight ${primary}`}
         >
           Misiati <span className="text-gold-500">&amp;</span> Associates
         </span>
         <span
-          className={`mt-1 text-[0.62rem] font-medium uppercase tracking-[0.18em] ${secondary}`}
+          className={`mt-1.5 block w-full text-[0.57rem] font-semibold uppercase ${secondary}`}
+          style={{ textAlign: "justify", textAlignLast: "justify", letterSpacing: "0.02em" }}
         >
           Certified Public Accountants of Kenya
         </span>
