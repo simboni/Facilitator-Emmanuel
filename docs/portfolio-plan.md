@@ -8,23 +8,22 @@
 
 ---
 
-## 0. First, a scope flag (needs your call)
+## 0. Locked decisions
 
 This repository is currently the **live website for _Misiati & Associates, Certified Public
-Accountants of Kenya_** (an accounting firm). Your new request is a **software‑engineer portfolio** —
-a different product with a different audience.
+Accountants of Kenya_** (an accounting firm). The new portfolio is a **software‑engineer portfolio** —
+a separate product. Decisions made:
 
-We need to decide **where the portfolio lives**:
+- ✅ **Location: fresh repo + own domain** (e.g. `peter-portfolio` → `petermisiati.dev`). The
+  accounting site stays untouched and becomes a **flagship case study** (real client, real launch,
+  measurable outcome — exactly what tier‑1 portfolios lead with).
+- ✅ **Positioning: full‑stack engineer** — broad web/app engineering (front‑end + back‑end),
+  targeting both employers and freelance clients. Copy, project selection, and skills section all
+  align to this.
 
-| Option | What it means | Recommended when |
-| --- | --- | --- |
-| **A. Fresh repo** | New repo `peter-portfolio`, own domain (e.g. `petermisiati.dev`). The accounting site stays untouched. | You want a clean personal brand separate from the firm. **(Recommended)** |
-| **B. Sub‑path here** | Portfolio at `/portfolio` inside this project. | You want one deploy, one domain. |
-| **C. Replace** | This repo becomes the portfolio; accounting site retires. | The firm site is no longer needed. |
-
-The plan below is **stack‑ and location‑agnostic** — it holds regardless of A/B/C. My recommendation
-is **Option A**. The accounting‑firm site itself becomes a **flagship case study** in the portfolio
-(real client, real launch, measurable outcome — exactly what tier‑1 portfolios lead with).
+> **Operational note:** the current session is scoped to the `simboni/peter-misiati` repo. When we
+> reach the build (Phase 2), we create the new portfolio repo and move development there. Until then,
+> planning + the old‑site audit continue on this branch.
 
 ---
 
@@ -193,13 +192,12 @@ We can compress or expand any phase. Nothing gets built before Phase 0's positio
 
 1. **Your old website link** (you mentioned this) — I'll audit it and salvage copy, projects,
    photos, and anything worth keeping.
-2. **Positioning:** what roles/work are you targeting? (e.g. full‑stack, front‑end, mobile,
-   freelance/agency, specific industries.) This sets the whole tone.
+2. ~~Positioning~~ — ✅ decided: **full‑stack engineer** (see §0).
 3. **Project raw material:** GitHub username, any repos/live sites you want featured, client work you
    can show.
 4. **Assets:** a good photo (or a decision to go monogram‑only, as the firm site does), CV/résumé,
    any existing brand colors.
-5. **The scope call:** Option **A / B / C** from §0.
+5. ~~Scope call~~ — ✅ decided: **fresh repo + own domain** (see §0).
 
 ---
 
