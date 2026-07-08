@@ -1,72 +1,84 @@
 import type { Metadata } from "next";
-import { Lora, Inter } from "next/font/google";
+import { Inter, JetBrains_Mono, Sora } from "next/font/google";
 import "./globals.css";
-import { firm } from "@/lib/firm";
+import { profile, site } from "@/lib/portfolio";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { WhatsAppFab } from "@/components/whatsapp-fab";
 
-const lora = Lora({
-  variable: "--font-lora",
+const inter = Inter({ variable: "--font-inter", subsets: ["latin"], display: "swap" });
+const sora = Sora({ variable: "--font-sora", subsets: ["latin"], display: "swap" });
+const jetbrains = JetBrains_Mono({
+  variable: "--font-jetbrains",
   subsets: ["latin"],
   display: "swap",
 });
 
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const siteUrl = `https://www.${firm.domain}`;
+const siteUrl = `https://${site.domain}`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: `${firm.name} | Certified Public Accountants of Kenya`,
-    template: `%s | ${firm.name}`,
+    default: site.title,
+    template: `%s | ${profile.name}`,
   },
-  description: firm.shortPitch,
+  description: site.description,
   keywords: [
-    "accountants Kenya",
-    "CPA firm Kenya",
-    "audit firm Kenya",
-    "auditors Kenya",
-    "tax consultants Kenya",
-    "tax returns Kenya",
-    "eTIMS Kenya",
-    "KRA PIN registration",
-    "SACCO audit Kenya",
-    "accountants Bungoma",
-    "Misiati & Associates",
+    "Peter Misiati",
+    "full-stack engineer",
+    "software engineer portfolio",
+    "React developer",
+    "Next.js developer",
+    "TypeScript developer",
+    "web developer Kenya",
+    "SMP Developers",
   ],
-  authors: [{ name: firm.legalName }],
+  authors: [{ name: profile.name }],
+  creator: profile.name,
   openGraph: {
     type: "website",
-    locale: "en_KE",
+    locale: "en_US",
     url: siteUrl,
-    siteName: firm.name,
-    title: `${firm.name} | Certified Public Accountants of Kenya`,
-    description: firm.shortPitch,
+    siteName: profile.name,
+    title: site.title,
+    description: site.description,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: site.title,
+    description: site.description,
   },
   robots: { index: true, follow: true },
 };
 
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: profile.name,
+  jobTitle: profile.role,
+  email: `mailto:${profile.email}`,
+  url: siteUrl,
+  description: profile.valueProp,
+  sameAs: [profile.socials.github, profile.socials.linkedin, profile.socials.x].filter(
+    Boolean,
+  ),
+};
+
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html
       lang="en"
-      className={`${lora.variable} ${inter.variable} h-full antialiased`}
+      className={`${inter.variable} ${sora.variable} ${jetbrains.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-white">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+        />
         <SiteHeader />
         <main className="flex-1">{children}</main>
         <SiteFooter />
-        <WhatsAppFab />
       </body>
     </html>
   );

@@ -1,50 +1,48 @@
-# Misiati & Associates — Website
+# Peter Misiati — Portfolio
 
-Official website for **Misiati & Associates, Certified Public Accountants of Kenya** (Bungoma).
-Built with **Next.js 16 (App Router)**, **React 19**, **TypeScript** and **Tailwind CSS v4**.
+A tier-1 software-engineer portfolio and **directory of work** for Peter Misiati,
+Full-Stack Software Engineer. Built with **Next.js 16 (App Router)**, **React 19**,
+**TypeScript** and **Tailwind CSS v4**, and exported as a fast static site.
 
 ## Pages
 
-| Route       | Purpose                                                             |
-| ----------- | ------------------------------------------------------------------ |
-| `/`         | Home — hero, credentials, services, industries, testimonials, CTA  |
-| `/about`    | Firm story, mission, managing partner profile, team                |
-| `/services` | Full services, industries served, how-we-work, contact-for-quote   |
-| `/contact`  | Contact form, phone/WhatsApp/email, opening hours, office maps      |
+| Route            | Purpose                                                                   |
+| ---------------- | ------------------------------------------------------------------------- |
+| `/`              | Home — hero, stats, featured work, skills, experience, about, testimonial |
+| `/work`          | The directory — filterable grid of every project                          |
+| `/work/[slug]`   | Case study — problem, approach, architecture, highlights, impact          |
+| `/about`         | Long-form bio, principles, full skills, experience                        |
+| `/contact`       | Contact form + direct email / GitHub / LinkedIn                           |
 
-Plus `sitemap.xml`, `robots.txt` and an `/api/contact` form handler.
+Plus `sitemap.xml`, `robots.txt`, JSON-LD `Person` schema and per-project OG metadata.
 
-## Editing content
+## Editing content — one file
 
-**All firm information lives in one file:** [`src/lib/firm.ts`](src/lib/firm.ts).
-Change a phone number, add a service, add a testimonial or team member there and it
-updates everywhere on the site — no need to touch the page code.
+**All content lives in [`src/lib/portfolio.ts`](src/lib/portfolio.ts).** Change your
+bio, add a skill, add a job — or add a whole project (which auto-creates its card on
+the home grid, an entry in the `/work` directory, its own `/work/<slug>` case-study
+page, and a sitemap entry) — by editing that one typed file. You never touch the page
+components.
 
-- `firm` — name, contacts, phones, hours, offices, credentials, mission, history
-- `services` — the service cards (set `featured: true` to show on the home page)
-- `industries` — sectors served
-- `team` — team members
-- `testimonials` / `notableClients` — social proof
+Items marked `// SAMPLE — replace` are realistic placeholders. Swap them for your real
+work. To feature a project on the home page, set `featured: true`.
 
-### Adding photos later
+### Adding screenshots
 
-The design currently uses a branded monogram in place of photographs. When the
-firm provides photos (managing partner, offices, team), drop them into `public/`
-and swap them into the hero (`src/app/page.tsx`), the About profile
-(`src/app/about/page.tsx`) and the team cards using `next/image`.
+Each project has a `media: []` array. Drop images into `public/` and add
+`{ src: "/my-shot.png", alt: "…" }` entries — they replace the branded gradient cover
+on the case-study page.
 
-## Contact form email delivery
+### Your résumé / CV
 
-The form at `/contact` (`src/components/contact-form.tsx`) submits to a free,
-no-backend form service ([FormSubmit](https://formsubmit.co)) which emails each
-enquiry to the address in `firm.contact.email`. It works on a fully static host
-with no server or API keys.
+Put a PDF in `public/` and set `profile.resumeUrl` (e.g. `"/peter-misiati-cv.pdf"`) —
+a Résumé button then appears in the hero.
 
-**One-time activation:** the first time the live form is submitted, FormSubmit
-sends an activation email to that inbox — click the link once and delivery is on
-for good. To change the destination or provider, edit `FORM_ENDPOINT` in
-`contact-form.tsx`. The form always offers a WhatsApp / email fallback too, so a
-visitor can reach the firm instantly regardless.
+## Contact form delivery
+
+The form at `/contact` posts to a no-backend service ([FormSubmit](https://formsubmit.co))
+that emails each enquiry to `profile.email`. The first submission triggers a one-time
+activation email — click the link once and delivery is on for good.
 
 ## Local development
 
@@ -54,22 +52,13 @@ npm run dev      # http://localhost:3000
 npm run build    # static export → ./out
 ```
 
-## Deployment — Cloudflare Pages
+## Deployment
 
-The site is a **static export** (`output: 'export'` in `next.config.ts`), so it
-deploys to any static host. On **Cloudflare Pages**, connect this GitHub repo and use:
-
-| Setting | Value |
-| --- | --- |
-| Framework preset | Next.js (Static HTML Export) |
-| Build command | `npm run build` |
-| Build output directory | `out` |
-| Node version | 20 or newer |
-
-After the first deploy, add the custom domain `misiatiassociates.co.ke` (and
-`www`) in the Pages project — since the domain's DNS is on Cloudflare, the records
-are created automatically.
+Static export (`output: 'export'`), so it deploys to any static host — Vercel,
+Cloudflare Pages, Netlify, GitHub Pages. Set the build command to `npm run build` and
+the output directory to `out`. Update `site.domain` in `src/lib/portfolio.ts` to your
+real domain before launch (it drives canonical URLs, the sitemap and JSON-LD).
 
 ---
 
-© 2026 Misiati & Associates, Certified Public Accountants of Kenya.
+© 2026 Peter Misiati.

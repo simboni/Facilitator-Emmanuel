@@ -10,8 +10,9 @@ export function PageHero({
   eyebrow: string;
   title: string;
   intro?: string;
-  breadcrumb: string;
+  breadcrumb?: string;
 }) {
+  const crumb = breadcrumb ?? title;
   return (
     <section className="bg-navy-gradient">
       <div className="container-page py-14 sm:py-18 lg:py-20">
@@ -20,7 +21,7 @@ export function PageHero({
             Home
           </Link>
           <span className="mx-2 text-navy-400">/</span>
-          <span className="text-white">{breadcrumb}</span>
+          <span className="text-white">{crumb}</span>
         </nav>
         <Eyebrow light>{eyebrow}</Eyebrow>
         <h1 className="mt-4 max-w-3xl font-serif text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl text-balance">

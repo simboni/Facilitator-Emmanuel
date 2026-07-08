@@ -1,10 +1,10 @@
 import type { MetadataRoute } from "next";
-import { firm } from "@/lib/firm";
+import { site } from "@/lib/portfolio";
 
 export const dynamic = "force-static";
 
 export default function robots(): MetadataRoute.Robots {
-  const base = `https://www.${firm.domain}`;
+  const base = `https://${site.domain}`;
   return {
     rules: { userAgent: "*", allow: "/" },
     sitemap: `${base}/sitemap.xml`,

@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 /* --------------------------------------------------------------------------
-   Misiati & Associates — brand design tokens
-   Navy = trust & authority · Gold = prosperity & premium service
-   Fonts: Lora (serif display) + Inter (sans body), loaded via next/font
+   Peter Misiati — portfolio design tokens
+   Navy = depth & focus · Gold = signature accent
+   Fonts: Sora (display) + Inter (body) + JetBrains Mono (code), via next/font
 --------------------------------------------------------------------------- */
 @theme {
   /* Navy scale */
@@ -35,8 +35,11 @@
   --color-sand-50: #faf9f6;
   --color-sand-100: #f4f2ec;
 
-  --font-serif: var(--font-lora), Georgia, "Times New Roman", serif;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-sora), var(--font-inter), ui-sans-serif, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, "SFMono-Regular", monospace;
+  /* Back-compat: any lingering `font-serif` renders the display face */
+  --font-serif: var(--font-sora), var(--font-inter), sans-serif;
 }
 
 /* Smooth anchor scrolling with room for the sticky header */

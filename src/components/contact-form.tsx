@@ -1,24 +1,28 @@
 "use client";
 
 import { useState } from "react";
-import { firm, services } from "@/lib/firm";
+import { profile } from "@/lib/portfolio";
 import { Button } from "@/components/ui";
-import { CheckIcon, WhatsAppIcon, MailIcon } from "@/components/icons";
+import { CheckIcon, MailIcon } from "@/components/icons";
 
 type Status = "idle" | "submitting" | "done" | "error";
 
-// Free, no-backend form delivery (works on a static site). Submissions are
-// emailed to the address below. First submission triggers a one-time
-// activation email to that inbox — click the link once and it's live.
-//
-// NOTE: temporarily set to a test inbox. Before final handover, change
-// FORM_DELIVERY_EMAIL to firm.contact.email ("jsmisiati@gmail.com") and
-// re-activate (a fresh activation email is sent to the new address).
-const FORM_DELIVERY_EMAIL = "misiatipeter@gmail.com";
+// No-backend form delivery (works on a static site). Submissions are emailed
+// to the address below. The first submission triggers a one-time activation
+// email — click the link once and delivery is on for good.
+const FORM_DELIVERY_EMAIL = profile.email;
 const FORM_ENDPOINT = `https://formsubmit.co/ajax/${FORM_DELIVERY_EMAIL}`;
 
 const inputCls =
   "w-full rounded-xl border border-navy-200 bg-white px-4 py-3 text-sm text-navy-900 placeholder:text-navy-400 focus:border-gold-400 focus:outline-none focus:ring-2 focus:ring-gold-200 transition";
+
+const PROJECT_TYPES = [
+  "New website or web app",
+  "Existing project / rescue",
+  "API / backend work",
+  "Full-time role",
+  "Something else",
+];
 
 function isEmail(v: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
@@ -30,51 +34,42 @@ export function ContactForm() {
   const [form, setForm] = useState({
     name: "",
     email: "",
-    phone: "",
-    service: "",
+    projectType: "",
     message: "",
-    _honey: "", // honeypot — must stay empty
+    _honey: "",
   });
 
-  const update = (k: keyof typeof form) => (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
-  ) => setForm((f) => ({ ...f, [k]: e.target.value }));
+  const update =
+    (k: keyof typeof form) =>
+    (
+      e: React.ChangeEvent<
+        HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+      >,
+    ) =>
+      setForm((f) => ({ ...f, [k]: e.target.value }));
 
-  const waHref = () => {
-    const msg = [
-      `Hello ${firm.name},`,
-      form.name && `My name is ${form.name}.`,
-      form.service && `I'm interested in: ${form.service}.`,
+  const mailHref = () => {
+    const subject = `Project enquiry from ${form.name || "your site"}`;
+    const body = [
+      `Name: ${form.name}`,
+      form.projectType && `About: ${form.projectType}`,
+      "",
       form.message,
     ]
       .filter(Boolean)
-      .join(" ");
-    return `https://wa.me/${firm.contact.whatsappIntl}?text=${encodeURIComponent(msg)}`;
-  };
-
-  const mailHref = () => {
-    const subject = `Website enquiry from ${form.name || "a client"}`;
-    const bodyLines = [
-      `Name: ${form.name}`,
-      form.phone && `Phone: ${form.phone}`,
-      form.service && `Service: ${form.service}`,
-      "",
-      form.message,
-    ].filter(Boolean);
-    return `mailto:${firm.contact.email}?subject=${encodeURIComponent(
+      .join("\n");
+    return `mailto:${profile.email}?subject=${encodeURIComponent(
       subject,
-    )}&body=${encodeURIComponent(bodyLines.join("\n"))}`;
+    )}&body=${encodeURIComponent(body)}`;
   };
 
   function validate() {
     const e: Record<string, string> = {};
-    if (form.name.trim().length < 2) e.name = "Please tell us your name.";
-    if (!form.email && !form.phone)
-      e.email = "Please give us an email or phone number.";
-    if (form.email && !isEmail(form.email))
-      e.email = "Please enter a valid email address.";
+    if (form.name.trim().length < 2) e.name = "Please tell me your name.";
+    if (!form.email) e.email = "I'll need an email to reply.";
+    else if (!isEmail(form.email)) e.email = "That email doesn't look right.";
     if (form.message.trim().length < 5)
-      e.message = "Please tell us how we can help.";
+      e.message = "Tell me a little about your project.";
     return e;
   }
 
@@ -91,19 +86,15 @@ export function ContactForm() {
     try {
       const res = await fetch(FORM_ENDPOINT, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
           name: form.name,
-          email: form.email || "not provided",
-          phone: form.phone || "not provided",
-          service: form.service || "General enquiry",
+          email: form.email,
+          projectType: form.projectType || "Not specified",
           message: form.message,
           _honey: form._honey,
-          _subject: `Website enquiry from ${form.name}`,
-          _replyto: form.email || undefined,
+          _subject: `Portfolio enquiry from ${form.name}`,
+          _replyto: form.email,
           _template: "table",
           _captcha: "false",
         }),
@@ -111,7 +102,6 @@ export function ContactForm() {
       if (!res.ok) throw new Error(`Form endpoint responded ${res.status}`);
       setStatus("done");
     } catch {
-      // Network/endpoint issue — still let them reach us instantly.
       setStatus("done");
     }
   }
@@ -122,24 +112,16 @@ export function ContactForm() {
         <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-gold-100 text-gold-700">
           <CheckIcon className="h-7 w-7" />
         </span>
-        <h3 className="mt-5 font-serif text-2xl font-semibold text-navy-900">
-          Thank you, {form.name.split(" ")[0] || "friend"}!
+        <h3 className="mt-5 font-display text-2xl font-semibold text-navy-900">
+          Thanks, {form.name.split(" ")[0] || "there"}!
         </h3>
         <p className="mx-auto mt-3 max-w-md text-navy-500">
-          Your message is on its way to our team — we&rsquo;ll be in touch within
-          one working day. Prefer to reach us right now? Tap below.
+          Your message is on its way — I&rsquo;ll get back to you within one
+          working day. Prefer email? Reach me directly below.
         </p>
-        <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
-          <Button
-            href={waHref()}
-            variant="gold"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <WhatsAppIcon className="h-5 w-5" /> WhatsApp us
-          </Button>
+        <div className="mt-6">
           <Button href={mailHref()} variant="outline">
-            <MailIcon className="h-5 w-5" /> Email us
+            <MailIcon className="h-5 w-5" /> {profile.email}
           </Button>
         </div>
       </div>
@@ -147,7 +129,11 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} className="rounded-2xl border border-navy-100 bg-white p-6 sm:p-8" noValidate>
+    <form
+      onSubmit={onSubmit}
+      className="rounded-2xl border border-navy-100 bg-white p-6 sm:p-8"
+      noValidate
+    >
       <div className="grid gap-5 sm:grid-cols-2">
         <Field label="Your name" error={errors.name} required>
           <input
@@ -155,21 +141,11 @@ export function ContactForm() {
             value={form.name}
             onChange={update("name")}
             className={inputCls}
-            placeholder="e.g. Jane Wanjala"
+            placeholder="e.g. Jane Doe"
             autoComplete="name"
           />
         </Field>
-        <Field label="Phone / WhatsApp" error={errors.phone}>
-          <input
-            type="tel"
-            value={form.phone}
-            onChange={update("phone")}
-            className={inputCls}
-            placeholder="07xx xxx xxx"
-            autoComplete="tel"
-          />
-        </Field>
-        <Field label="Email" error={errors.email}>
+        <Field label="Email" error={errors.email} required>
           <input
             type="email"
             value={form.email}
@@ -179,31 +155,36 @@ export function ContactForm() {
             autoComplete="email"
           />
         </Field>
-        <Field label="Service you need" error={errors.service}>
-          <select value={form.service} onChange={update("service")} className={inputCls}>
-            <option value="">Select a service…</option>
-            {services.map((s) => (
-              <option key={s.slug} value={s.title}>
-                {s.title}
+      </div>
+      <div className="mt-5">
+        <Field label="What's it about?" error={errors.projectType}>
+          <select
+            value={form.projectType}
+            onChange={update("projectType")}
+            className={inputCls}
+          >
+            <option value="">Select one…</option>
+            {PROJECT_TYPES.map((t) => (
+              <option key={t} value={t}>
+                {t}
               </option>
             ))}
-            <option value="Other / not sure">Other / not sure</option>
           </select>
         </Field>
       </div>
       <div className="mt-5">
-        <Field label="How can we help?" error={errors.message} required>
+        <Field label="Your message" error={errors.message} required>
           <textarea
             value={form.message}
             onChange={update("message")}
             rows={5}
             className={inputCls}
-            placeholder="Tell us a little about what you need…"
+            placeholder="Tell me about your project, timeline, and what you need…"
           />
         </Field>
       </div>
 
-      {/* Honeypot (hidden from users) */}
+      {/* Honeypot */}
       <input
         type="text"
         tabIndex={-1}
@@ -222,10 +203,10 @@ export function ContactForm() {
           disabled={status === "submitting"}
           withArrow
         >
-          {status === "submitting" ? "Sending…" : "Send enquiry"}
+          {status === "submitting" ? "Sending…" : "Send message"}
         </Button>
         <p className="text-xs text-navy-400">
-          We reply within one working day. Your details are kept private.
+          I reply within one working day. Your details stay private.
         </p>
       </div>
     </form>

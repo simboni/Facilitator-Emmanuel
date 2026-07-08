@@ -115,6 +115,50 @@ export const iconMap = {
       <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18M11 12h2" />
     </Base>
   ),
+  code: (p: IconProps) => (
+    <Base {...p}>
+      <path d="m8 8-4 4 4 4M16 8l4 4-4 4M13.5 5l-3 14" />
+    </Base>
+  ),
+  layout: (p: IconProps) => (
+    <Base {...p}>
+      <rect x="3" y="4" width="18" height="16" rx="2" />
+      <path d="M3 9h18M9 9v11" />
+    </Base>
+  ),
+  server: (p: IconProps) => (
+    <Base {...p}>
+      <rect x="3" y="4" width="18" height="7" rx="2" />
+      <rect x="3" y="13" width="18" height="7" rx="2" />
+      <path d="M7 7.5h.01M7 16.5h.01" />
+    </Base>
+  ),
+  database: (p: IconProps) => (
+    <Base {...p}>
+      <ellipse cx="12" cy="6" rx="8" ry="3" />
+      <path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6" />
+    </Base>
+  ),
+  cloud: (p: IconProps) => (
+    <Base {...p}>
+      <path d="M7 18a4 4 0 0 1-.5-7.97A6 6 0 0 1 18 9.5 3.5 3.5 0 0 1 17.5 18z" />
+    </Base>
+  ),
+  tools: (p: IconProps) => (
+    <Base {...p}>
+      <path d="M14.5 5.5a3.5 3.5 0 0 0 4.6 4.6L21 12l-4 4-2-2-6.5 6.5a2.1 2.1 0 0 1-3-3L12 11 10 9l1.9-1.9a3.5 3.5 0 0 1 2.6-1.6z" />
+    </Base>
+  ),
+  rocket: (p: IconProps) => (
+    <Base {...p}>
+      <path d="M5 15c-1.5 1-2 4-2 4s3-.5 4-2M9 15l-3-3c1-5 5-9 11-9 0 6-4 10-9 11zM14 8a1.5 1.5 0 1 0 2 0 1.5 1.5 0 0 0-2 0z" />
+    </Base>
+  ),
+  sparkle: (p: IconProps) => (
+    <Base {...p}>
+      <path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z" />
+    </Base>
+  ),
 } as const;
 
 export type IconName = keyof typeof iconMap;
@@ -190,4 +234,42 @@ export const QuoteIcon = (p: IconProps) => (
   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...p}>
     <path d="M9.5 6C6.5 7.2 5 9.6 5 13.2V18h5v-5H7.6c.1-1.9.9-3.2 2.6-4L9.5 6zm9 0C15.5 7.2 14 9.6 14 13.2V18h5v-5h-2.4c.1-1.9.9-3.2 2.6-4L18.5 6z" />
   </svg>
+);
+
+/* --------------------------- Dev / social icons --------------------------- */
+
+export const GitHubIcon = (p: IconProps) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...p}>
+    <path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.09.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.49-1.11-1.49-.91-.63.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.36-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05a9.36 9.36 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.79-4.57 5.05.36.32.68.94.68 1.9 0 1.37-.01 2.48-.01 2.82 0 .27.18.59.69.49A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2z" />
+  </svg>
+);
+
+export const LinkedInIcon = (p: IconProps) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...p}>
+    <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z" />
+  </svg>
+);
+
+export const XIcon = (p: IconProps) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...p}>
+    <path d="M18.24 2h3.31l-7.23 8.26L22.79 22h-6.65l-5.2-6.8L4.98 22H1.66l7.73-8.83L1.21 2h6.82l4.7 6.22L18.24 2zm-1.16 18h1.83L7.01 3.9H5.05L17.08 20z" />
+  </svg>
+);
+
+export const ExternalLinkIcon = (p: IconProps) => (
+  <Base {...p}>
+    <path d="M14 4h6v6M20 4l-9 9M18 13v6a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h6" />
+  </Base>
+);
+
+export const ArrowUpRightIcon = (p: IconProps) => (
+  <Base {...p}>
+    <path d="M7 17 17 7M8 7h9v9" />
+  </Base>
+);
+
+export const DownloadIcon = (p: IconProps) => (
+  <Base {...p}>
+    <path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14" />
+  </Base>
 );

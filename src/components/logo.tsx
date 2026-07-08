@@ -1,12 +1,10 @@
 import Link from "next/link";
-import { firm } from "@/lib/firm";
+import { profile } from "@/lib/portfolio";
 
 /**
- * Misiati & Associates brand mark — "The Monogram Seal".
- * A serif initial "M" set in a fine double ring (navy + gold), paired with
- * the serif wordmark. Two forms:
- *   - <LogoMark>  the seal, for header/footer lockups and avatar contexts
- *   - <LogoBadge> a filled disc version, for the favicon / tiny sizes
+ * Peter Misiati wordmark + monogram.
+ *   <LogoMark>  the "PM" monogram seal (also used as an avatar)
+ *   <Logo>      the full lockup: monogram + name + role, links home
  */
 
 export function LogoMark({
@@ -17,102 +15,82 @@ export function LogoMark({
   /** "dark" = on a light surface · "light" = on a dark surface */
   tone?: "dark" | "light";
 }) {
-  const outer = tone === "dark" ? "var(--color-navy-800)" : "var(--color-gold-500)";
-  const inner = tone === "dark" ? "var(--color-gold-500)" : "rgba(255,255,255,0.35)";
-  const letter = tone === "dark" ? "var(--color-navy-800)" : "#ffffff";
+  const ring = tone === "dark" ? "var(--color-navy-800)" : "var(--color-gold-400)";
+  const accent = "var(--color-gold-500)";
+  const letter = tone === "dark" ? "var(--color-navy-900)" : "#ffffff";
   return (
     <svg
       viewBox="0 0 100 100"
       className={className}
       role="img"
-      aria-label={`${firm.name} logo`}
+      aria-label={`${profile.name} logo`}
     >
-      <circle cx="50" cy="50" r="47" fill="none" stroke={outer} strokeWidth="2.5" />
-      <circle cx="50" cy="50" r="40.5" fill="none" stroke={inner} strokeWidth="1" />
+      <rect x="4" y="4" width="92" height="92" rx="22" fill="none" stroke={ring} strokeWidth="3" />
+      <rect x="11" y="11" width="78" height="78" rx="17" fill="none" stroke={accent} strokeWidth="1.2" opacity="0.7" />
       <text
         x="50"
-        y="66.5"
+        y="64"
         textAnchor="middle"
-        fontFamily="var(--font-serif)"
-        fontSize="52"
-        fontWeight="600"
+        fontFamily="var(--font-mono, monospace)"
+        fontSize="40"
+        fontWeight="700"
+        letterSpacing="-2"
         fill={letter}
       >
-        M
+        PM
       </text>
     </svg>
   );
 }
 
+// Filled disc variant for the favicon / tiny sizes.
 export function LogoBadge({ className = "" }: { className?: string }) {
   return (
-    <svg
-      viewBox="0 0 100 100"
-      className={className}
-      role="img"
-      aria-label={`${firm.name} logo`}
-    >
-      <circle cx="50" cy="50" r="49" fill="var(--color-navy-800)" />
-      <circle cx="50" cy="50" r="41" fill="none" stroke="var(--color-gold-400)" strokeWidth="2" />
+    <svg viewBox="0 0 100 100" className={className} role="img" aria-label={`${profile.name} logo`}>
+      <rect x="2" y="2" width="96" height="96" rx="24" fill="var(--color-navy-900)" />
       <text
         x="50"
-        y="67"
+        y="64"
         textAnchor="middle"
-        fontFamily="var(--font-serif)"
-        fontSize="54"
-        fontWeight="600"
-        fill="#ffffff"
+        fontFamily="var(--font-mono, monospace)"
+        fontSize="42"
+        fontWeight="700"
+        letterSpacing="-2"
+        fill="var(--color-gold-400)"
       >
-        M
+        PM
       </text>
     </svg>
   );
-}
-
-// Back-compat alias used as an avatar-style mark on dark cards.
-export function Monogram({
-  className = "",
-  variant = "navy",
-}: {
-  className?: string;
-  variant?: "navy" | "light";
-}) {
-  return <LogoMark className={className} tone={variant === "light" ? "dark" : "light"} />;
 }
 
 export function Logo({
-  variant = "navy",
+  variant = "dark",
   className = "",
 }: {
-  variant?: "navy" | "light";
+  variant?: "dark" | "light";
   className?: string;
 }) {
-  const tone = variant === "light" ? "light" : "dark";
   const primary = variant === "light" ? "text-white" : "text-navy-900";
-  const secondary = variant === "light" ? "text-navy-100" : "text-navy-500";
+  const secondary = variant === "light" ? "text-navy-200" : "text-navy-500";
   return (
     <Link
       href="/"
       className={`group flex items-center gap-3 ${className}`}
-      aria-label={`${firm.name} — home`}
+      aria-label={`${profile.name} — home`}
     >
       <LogoMark
-        tone={tone}
-        className="h-11 w-11 shrink-0 transition-transform duration-300 group-hover:scale-105"
+        tone={variant}
+        className="h-10 w-10 shrink-0 transition-transform duration-300 group-hover:scale-105"
       />
-      {/* Wordmark: the name sets the width; the tagline is justified to fill
-          that exact same width, so the two lines stay balanced. */}
-      <span className="flex w-fit flex-col leading-none">
-        <span
-          className={`whitespace-nowrap font-serif text-[1.3rem] font-semibold tracking-tight ${primary}`}
-        >
-          Misiati <span className="text-gold-500">&amp;</span> Associates
+      <span className="flex flex-col leading-none">
+        <span className={`text-[1.15rem] font-bold tracking-tight ${primary}`}>
+          {profile.name}
         </span>
         <span
-          className={`mt-1.5 block w-full text-[0.5rem] font-semibold uppercase ${secondary}`}
-          style={{ textAlign: "justify", textAlignLast: "justify", letterSpacing: "0.01em" }}
+          className={`mt-1 text-[0.62rem] font-medium uppercase tracking-[0.18em] ${secondary}`}
         >
-          Certified Public Accountants of Kenya
+          {profile.role}
         </span>
       </span>
     </Link>

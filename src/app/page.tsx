@@ -1,304 +1,272 @@
 import {
-  firm,
-  services,
-  industries,
+  profile,
+  about,
+  skills,
+  experience,
+  featuredProjects,
   testimonials,
-  notableClients,
-} from "@/lib/firm";
+} from "@/lib/portfolio";
 import { Button, Section, SectionHeading, Eyebrow } from "@/components/ui";
-import { ServiceCard } from "@/components/service-card";
-import { CtaBand } from "@/components/cta-band";
 import { Reveal } from "@/components/reveal";
 import { CountUp } from "@/components/count-up";
-import { SpotlightCard } from "@/components/spotlight-card";
-import { ServiceIcon, CheckIcon, QuoteIcon, PhoneIcon } from "@/components/icons";
-import { Monogram } from "@/components/logo";
-
-const stats = [
-  { n: firm.yearsExperience, suffix: "+", label: "Years of experience" },
-  { n: 100, suffix: "+", label: "Clients served" },
-  { n: industries.length, suffix: "", label: "Industries served" },
-  { n: firm.offices.length, suffix: "", label: "Office locations" },
-];
+import { ProjectCard, Chip } from "@/components/project-card";
+import {
+  ServiceIcon,
+  GitHubIcon,
+  LinkedInIcon,
+  MailIcon,
+  DownloadIcon,
+  QuoteIcon,
+  CheckIcon,
+} from "@/components/icons";
 
 export default function HomePage() {
-  const featured = services.filter((s) => s.featured);
   return (
     <>
-      {/* ============================== HERO ============================== */}
-      <section className="bg-navy-gradient relative overflow-hidden">
-        {/* Ambient floating orbs */}
+      {/* ============================= HERO ============================= */}
+      <section className="relative overflow-hidden bg-navy-gradient">
+        <div className="hero-orb left-[8%] top-[12%] h-72 w-72 bg-gold-500/20" />
         <div
-          className="hero-orb"
-          style={{
-            width: "22rem",
-            height: "22rem",
-            background: "rgba(206,162,60,0.22)",
-            top: "-5rem",
-            right: "-3rem",
-          }}
-          aria-hidden="true"
+          className="hero-orb right-[6%] bottom-[8%] h-80 w-80 bg-navy-400/25"
+          style={{ animationDelay: "2s" }}
         />
-        <div
-          className="hero-orb"
-          style={{
-            width: "26rem",
-            height: "26rem",
-            background: "rgba(47,85,140,0.45)",
-            bottom: "-8rem",
-            left: "-5rem",
-            animationDelay: "-4s",
-          }}
-          aria-hidden="true"
-        />
+        <div className="container-page relative py-24 sm:py-28 lg:py-36">
+          <div className="hero-stagger mx-auto flex max-w-3xl flex-col items-center text-center">
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-medium text-navy-100">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-green-400" />
+              </span>
+              {profile.availability}
+            </span>
 
-        <div className="container-page relative z-10 grid gap-12 py-16 sm:py-20 lg:grid-cols-2 lg:items-center lg:gap-10 lg:py-28">
-          {/* Copy */}
-          <div className="hero-stagger max-w-xl">
-            <Eyebrow light>Certified Public Accountants of Kenya</Eyebrow>
-            <h1 className="mt-5 font-serif text-4xl font-semibold leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-[3.4rem] text-balance">
-              Accounting you can{" "}
-              <span className="text-gold-300">trust</span>, advice you can
-              build on.
+            <h1 className="mt-6 font-display text-4xl font-bold leading-[1.05] tracking-tight text-white text-balance sm:text-6xl">
+              {profile.name}
+              <span className="mt-3 block bg-gradient-to-r from-gold-200 via-gold-400 to-gold-300 bg-clip-text text-transparent">
+                {profile.role}
+              </span>
             </h1>
-            <p className="mt-6 text-lg leading-relaxed text-navy-100">
-              {firm.name} provides audit, tax and advisory services to
-              businesses, schools, SACCOs and organisations across Kenya —
-              backed by more than {firm.yearsExperience} years of trusted
-              experience.
-            </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Button href="/contact" variant="gold" size="lg" withArrow>
-                Request a Free Quote
-              </Button>
-              <Button
-                href={`tel:${firm.contact.phones[0]}`}
-                variant="white"
-                size="lg"
-              >
-                <PhoneIcon className="h-5 w-5" />
-                Call {firm.contact.phones[0]}
-              </Button>
-            </div>
-            {/* Trust chips */}
-            <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-navy-100">
-              {[
-                `ICPAK Member No. ${firm.credentials.icpakMemberNo}`,
-                `Practising Cert. ${firm.credentials.practicingNo}`,
-                `Firm Licence ${firm.credentials.firmLicenceNo}`,
-              ].map((c) => (
-                <span key={c} className="flex items-center gap-2">
-                  <CheckIcon className="h-4 w-4 text-gold-400" />
-                  {c}
-                </span>
-              ))}
-            </div>
-          </div>
 
-          {/* Founder / credential card */}
-          <div className="hero-fade-in relative lg:justify-self-end">
-            <div className="relative mx-auto max-w-sm rounded-3xl border border-white/10 bg-white/[0.04] p-8 backdrop-blur transition-transform duration-500 hover:-translate-y-1">
-              <div className="flex items-center gap-4">
-                <Monogram className="h-16 w-16" variant="navy" />
-                <div>
-                  <p className="font-serif text-xl font-semibold text-white">
-                    {firm.managingPartner.name}
-                  </p>
-                  <p className="text-sm text-gold-300">
-                    {firm.managingPartner.role}
-                  </p>
-                </div>
-              </div>
-              <p className="mt-6 text-sm leading-relaxed text-navy-100">
-                &ldquo;{firm.mission}&rdquo;
-              </p>
-              <dl className="mt-6 grid grid-cols-2 gap-4 border-t border-white/10 pt-6">
-                <div>
-                  <dt className="text-xs uppercase tracking-wider text-navy-300">
-                    Experience
-                  </dt>
-                  <dd className="mt-1 font-serif text-2xl font-semibold text-white">
-                    {firm.yearsExperience}+ yrs
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-xs uppercase tracking-wider text-navy-300">
-                    Clients
-                  </dt>
-                  <dd className="mt-1 font-serif text-2xl font-semibold text-white">
-                    {firm.clientsServed}
-                  </dd>
-                </div>
-              </dl>
+            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-navy-100">
+              {profile.valueProp}
+            </p>
+
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+              <Button href="/work" variant="gold" size="lg" withArrow>
+                View my work
+              </Button>
+              <Button href="/contact" variant="white" size="lg">
+                Get in touch
+              </Button>
+            </div>
+
+            <div className="mt-8 flex items-center gap-3">
+              {profile.socials.github && (
+                <HeroSocial href={profile.socials.github} label="GitHub">
+                  <GitHubIcon className="h-5 w-5" />
+                </HeroSocial>
+              )}
+              {profile.socials.linkedin && (
+                <HeroSocial href={profile.socials.linkedin} label="LinkedIn">
+                  <LinkedInIcon className="h-5 w-5" />
+                </HeroSocial>
+              )}
+              <HeroSocial href={`mailto:${profile.email}`} label="Email">
+                <MailIcon className="h-5 w-5" />
+              </HeroSocial>
+              {profile.resumeUrl && (
+                <a
+                  href={profile.resumeUrl}
+                  className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-4 py-2.5 text-sm font-medium text-navy-100 transition-colors hover:border-gold-400/50 hover:text-gold-300"
+                >
+                  <DownloadIcon className="h-4 w-4" /> Résumé
+                </a>
+              )}
             </div>
           </div>
         </div>
       </section>
 
-      {/* ============================ STATS BAR =========================== */}
-      <div className="border-b border-navy-100 bg-sand-50">
-        <div className="container-page grid grid-cols-2 divide-navy-100 py-8 sm:grid-cols-4 sm:divide-x">
-          {stats.map((s) => (
-            <div key={s.label} className="px-4 py-3 text-center">
-              <p className="font-serif text-3xl font-semibold text-navy-900 sm:text-4xl">
-                <CountUp end={s.n} suffix={s.suffix} />
-              </p>
-              <p className="mt-1 text-sm text-navy-500">{s.label}</p>
+      {/* ============================ STATS ============================ */}
+      <div className="border-b border-navy-100 bg-white">
+        <div className="container-page grid grid-cols-2 gap-6 py-10 sm:grid-cols-4">
+          {profile.stats.map((s) => (
+            <div key={s.label} className="text-center">
+              <div className="font-display text-3xl font-bold text-navy-900 sm:text-4xl">
+                <CountUp end={s.value} suffix={s.suffix} />
+              </div>
+              <div className="mt-1 text-xs font-medium uppercase tracking-wide text-navy-400 sm:text-sm">
+                {s.label}
+              </div>
             </div>
           ))}
         </div>
       </div>
 
-      {/* ============================== ABOUT ============================= */}
-      <Section>
-        <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-          <Reveal variant="right">
-            <SectionHeading
-              eyebrow="Who we are"
-              title="A licensed CPA firm built on 25 years of experience"
-              intro={firm.history}
-            />
-            <Button href="/about" variant="outline" className="mt-8" withArrow>
-              More about the firm
-            </Button>
-          </Reveal>
-          <div className="grid gap-4 sm:grid-cols-2">
-            {firm.differentiators.map((d, i) => (
-              <Reveal key={d.title} variant="up" delay={i * 90} className="h-full">
-                <div className="h-full rounded-2xl border border-navy-100 bg-sand-50 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-gold-200 hover:shadow-lg hover:shadow-navy-900/5">
-                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-gold-100 text-gold-700">
-                    <CheckIcon className="h-5 w-5" />
-                  </span>
-                  <h3 className="mt-4 font-serif text-lg font-semibold text-navy-900">
-                    {d.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-navy-500">
-                    {d.body}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </Section>
-
-      {/* ============================= SERVICES ========================== */}
-      <div className="bg-sand-50">
-        <Section>
-          <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
-            <SectionHeading
-              eyebrow="What we do"
-              title="Professional services that keep you compliant and growing"
-              intro="From audits and tax returns to eTIMS and business advisory — practical support for every stage of your business."
-            />
-            <Button
-              href="/services"
-              variant="ghost"
-              className="shrink-0"
-              withArrow
-            >
-              All services
-            </Button>
-          </div>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {featured.map((s, i) => (
-              <Reveal key={s.slug} variant="up" delay={i * 90} className="h-full">
-                <ServiceCard service={s} href={`/services#${s.slug}`} />
-              </Reveal>
-            ))}
-          </div>
-        </Section>
-      </div>
-
-      {/* ============================ INDUSTRIES ========================= */}
-      <Section>
-        <Reveal>
+      {/* ========================= FEATURED WORK ======================= */}
+      <Section id="work" className="bg-sand-50">
+        <div className="flex flex-wrap items-end justify-between gap-4">
           <SectionHeading
-            align="center"
-            eyebrow="Industries we serve"
-            title="Specialist knowledge across the sectors that power Kenya"
-            intro="Decades of hands-on work with the organisations that drive Kenya's economy."
-            className="mb-12"
+            eyebrow="Selected work"
+            title="Projects I'm proud of"
+            intro="A few builds that show how I think — from the problem to the shipped result. Every one is a full case study."
           />
-        </Reveal>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {industries.map((ind, i) => (
-            <Reveal key={ind.slug} variant="up" delay={i * 80} className="h-full">
-              <SpotlightCard className="group flex h-full gap-5 rounded-2xl border border-navy-100 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-gold-300 hover:shadow-lg hover:shadow-navy-900/5">
-                <span className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-navy-800 text-gold-300 transition-transform duration-300 group-hover:scale-110">
-                  <ServiceIcon name={ind.icon} className="h-6 w-6" />
-                </span>
-                <div>
-                  <h3 className="font-serif text-lg font-semibold text-navy-900">
-                    {ind.title}
-                  </h3>
-                  <p className="text-sm font-medium text-gold-600">
-                    {ind.clients}
-                  </p>
-                  <p className="mt-2 text-sm leading-relaxed text-navy-500">
-                    {ind.services}
-                  </p>
-                </div>
-              </SpotlightCard>
+          <Button href="/work" variant="outline" withArrow className="shrink-0">
+            All projects
+          </Button>
+        </div>
+        <div className="mt-12 grid gap-7 md:grid-cols-2 lg:grid-cols-3">
+          {featuredProjects.map((p, i) => (
+            <Reveal key={p.slug} delay={i * 80}>
+              <ProjectCard project={p} />
             </Reveal>
           ))}
         </div>
       </Section>
 
-      {/* =========================== TESTIMONIALS ======================== */}
-      <div className="bg-navy-gradient">
-        <Section>
-          <Reveal>
-            <SectionHeading
-              light
-              align="center"
-              eyebrow="Trusted by our clients"
-              title="What the people we work with say"
-              className="mb-12"
-            />
-          </Reveal>
-          <div className="grid gap-6 lg:grid-cols-2">
-            {testimonials.map((t, i) => (
-              <Reveal key={t.author} variant="up" delay={i * 120} className="h-full">
-                <figure className="flex h-full flex-col rounded-2xl border border-white/10 bg-white/[0.04] p-8 transition-colors duration-300 hover:border-gold-400/40 hover:bg-white/[0.07]">
-                  <QuoteIcon className="h-8 w-8 text-gold-400" />
-                  <blockquote className="mt-4 flex-1 text-lg leading-relaxed text-navy-50">
-                    {t.quote}
-                  </blockquote>
-                  <figcaption className="mt-6 border-t border-white/10 pt-4">
-                    <p className="font-serif text-base font-semibold text-white">
-                      {t.author}
-                    </p>
-                    <p className="text-sm text-gold-300">{t.role}</p>
-                  </figcaption>
-                </figure>
+      {/* ============================ SKILLS =========================== */}
+      <Section id="skills">
+        <SectionHeading
+          eyebrow="Toolkit"
+          title="What I build with"
+          intro="A modern, TypeScript-first stack across the whole application — with the fundamentals to back it up."
+        />
+        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {skills.map((group, i) => (
+            <Reveal key={group.title} delay={i * 60}>
+              <div className="h-full rounded-2xl border border-navy-100 bg-white p-6 transition-colors hover:border-navy-200">
+                <div className="flex items-center gap-3">
+                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-navy-50 text-navy-700">
+                    <ServiceIcon name={group.icon} className="h-5 w-5" />
+                  </span>
+                  <h3 className="font-semibold text-navy-900">{group.title}</h3>
+                </div>
+                <div className="mt-4 flex flex-wrap gap-1.5">
+                  {group.items.map((item) => (
+                    <Chip key={item}>{item}</Chip>
+                  ))}
+                </div>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </Section>
+
+      {/* ========================== EXPERIENCE ========================= */}
+      <Section className="bg-sand-50">
+        <SectionHeading eyebrow="Experience" title="Where I've been building" />
+        <div className="mt-12 space-y-5">
+          {experience.map((job, i) => (
+            <Reveal key={`${job.company}-${i}`} delay={i * 70}>
+              <div className="grid gap-4 rounded-2xl border border-navy-100 bg-white p-6 sm:grid-cols-12 sm:p-8">
+                <div className="sm:col-span-4">
+                  <div className="font-mono text-xs text-gold-600">{job.period}</div>
+                  <h3 className="mt-1 text-lg font-semibold text-navy-900">{job.role}</h3>
+                  <div className="text-sm text-navy-500">{job.company}</div>
+                  {job.location && (
+                    <div className="mt-1 text-xs text-navy-400">{job.location}</div>
+                  )}
+                </div>
+                <div className="sm:col-span-8">
+                  <p className="text-sm leading-relaxed text-navy-600">{job.summary}</p>
+                  <ul className="mt-3 space-y-2">
+                    {job.highlights.map((h) => (
+                      <li key={h} className="flex gap-2.5 text-sm text-navy-600">
+                        <CheckIcon className="mt-0.5 h-4 w-4 shrink-0 text-gold-500" />
+                        <span>{h}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </Section>
+
+      {/* =========================== ABOUT ============================= */}
+      <Section>
+        <div className="grid gap-12 lg:grid-cols-12">
+          <div className="lg:col-span-5">
+            <Eyebrow>About me</Eyebrow>
+            <h2 className="mt-4 font-display text-3xl font-semibold leading-tight tracking-tight text-navy-900 text-balance sm:text-4xl">
+              Engineer, problem-solver, and relentless finisher.
+            </h2>
+            <p className="mt-5 leading-relaxed text-navy-500">{about.paragraphs[0]}</p>
+            <Button href="/about" variant="outline" withArrow className="mt-7">
+              More about me
+            </Button>
+          </div>
+          <div className="grid gap-4 sm:grid-cols-2 lg:col-span-7">
+            {about.principles.map((p, i) => (
+              <Reveal key={p.title} delay={i * 60}>
+                <div className="h-full rounded-2xl border border-navy-100 bg-white p-6">
+                  <h3 className="font-semibold text-navy-900">{p.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-navy-500">{p.body}</p>
+                </div>
               </Reveal>
             ))}
           </div>
+        </div>
+      </Section>
 
-          {/* Notable clients */}
-          <Reveal delay={120}>
-            <div className="mt-12 text-center">
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-navy-300">
-                Organisations we have proudly worked with
-              </p>
-              <div className="mt-5 flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
-                {notableClients.map((c) => (
-                  <span
-                    key={c}
-                    className="font-serif text-base font-medium text-navy-100 transition-colors duration-300 hover:text-gold-300"
-                  >
-                    {c}
-                  </span>
-                ))}
-              </div>
+      {/* ========================= TESTIMONIAL ========================= */}
+      {testimonials.length > 0 && (
+        <Section className="bg-sand-50">
+          <div className="mx-auto max-w-3xl text-center">
+            <QuoteIcon className="mx-auto h-10 w-10 text-gold-400" />
+            <blockquote className="mt-6 font-display text-2xl font-medium leading-snug text-navy-900 text-balance sm:text-3xl">
+              &ldquo;{testimonials[0].quote}&rdquo;
+            </blockquote>
+            <div className="mt-6 text-sm">
+              <div className="font-semibold text-navy-900">{testimonials[0].author}</div>
+              <div className="text-navy-500">{testimonials[0].title}</div>
             </div>
-          </Reveal>
+          </div>
         </Section>
-      </div>
+      )}
 
-      {/* ============================= CTA BAND ========================== */}
-      <CtaBand />
+      {/* ============================= CTA ============================= */}
+      <section className="bg-navy-gradient">
+        <div className="container-page py-20 text-center">
+          <h2 className="mx-auto max-w-2xl font-display text-3xl font-semibold leading-tight tracking-tight text-white text-balance sm:text-4xl">
+            Have a project in mind? Let&rsquo;s build it.
+          </h2>
+          <p className="mx-auto mt-4 max-w-xl text-navy-100">
+            Whether it&rsquo;s a new product, a rescue mission, or a role on your team — I&rsquo;d love to hear about it.
+          </p>
+          <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+            <Button href="/contact" variant="gold" size="lg" withArrow>
+              Start a conversation
+            </Button>
+            <Button href={`mailto:${profile.email}`} variant="white" size="lg">
+              <MailIcon className="h-5 w-5" /> {profile.email}
+            </Button>
+          </div>
+        </div>
+      </section>
     </>
+  );
+}
+
+function HeroSocial({
+  href,
+  label,
+  children,
+}: {
+  href: string;
+  label: string;
+  children: React.ReactNode;
+}) {
+  const external = href.startsWith("http");
+  return (
+    <a
+      href={href}
+      aria-label={label}
+      {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+      className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/5 text-navy-100 transition-colors hover:border-gold-400/50 hover:text-gold-300"
+    >
+      {children}
+    </a>
   );
 }

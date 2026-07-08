@@ -3,15 +3,10 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { firm, nav } from "@/lib/firm";
+import { nav, profile } from "@/lib/portfolio";
 import { Logo } from "@/components/logo";
 import { Button } from "@/components/ui";
-import {
-  PhoneIcon,
-  MailIcon,
-  MenuIcon,
-  CloseIcon,
-} from "@/components/icons";
+import { MenuIcon, CloseIcon, GitHubIcon, ArrowUpRightIcon } from "@/components/icons";
 
 export function SiteHeader() {
   const pathname = usePathname();
@@ -20,46 +15,21 @@ export function SiteHeader() {
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   const closeMenu = () => setOpen(false);
-  const primaryPhone = firm.contact.phones[0];
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
     <header className="sticky top-0 z-50">
-      {/* Slim contact bar (hidden on small screens) */}
-      <div className="hidden bg-navy-900 text-navy-100 lg:block">
-        <div className="container-page flex h-10 items-center justify-between text-xs">
-          <div className="flex items-center gap-6">
-            <a
-              href={`tel:${primaryPhone}`}
-              className="flex items-center gap-2 transition-colors hover:text-white"
-            >
-              <PhoneIcon className="h-3.5 w-3.5 text-gold-400" />
-              {firm.contact.phones.slice(0, 2).join(" · ")}
-            </a>
-            <a
-              href={`mailto:${firm.contact.email}`}
-              className="flex items-center gap-2 transition-colors hover:text-white"
-            >
-              <MailIcon className="h-3.5 w-3.5 text-gold-400" />
-              {firm.contact.email}
-            </a>
-          </div>
-          <p className="text-navy-200">
-            ICPAK Member No. {firm.credentials.icpakMemberNo} · Practising Cert.{" "}
-            {firm.credentials.practicingNo}
-          </p>
-        </div>
-      </div>
-
-      {/* Main nav */}
       <div
         className={`border-b transition-all duration-200 ${
           scrolled
-            ? "border-navy-100 bg-white/95 shadow-sm backdrop-blur"
+            ? "border-navy-100 bg-white/90 shadow-sm backdrop-blur"
             : "border-transparent bg-white"
         }`}
       >
@@ -68,18 +38,13 @@ export function SiteHeader() {
 
           <nav className="hidden items-center gap-1 lg:flex">
             {nav.map((item) => {
-              const active =
-                item.href === "/"
-                  ? pathname === "/"
-                  : pathname.startsWith(item.href);
+              const active = isActive(item.href);
               return (
                 <Link
                   key={item.href}
                   href={item.href}
                   className={`relative rounded-full px-4 py-2 text-sm font-medium transition-colors ${
-                    active
-                      ? "text-navy-900"
-                      : "text-navy-600 hover:text-navy-900"
+                    active ? "text-navy-900" : "text-navy-600 hover:text-navy-900"
                   }`}
                 >
                   {item.label}
@@ -91,13 +56,23 @@ export function SiteHeader() {
             })}
           </nav>
 
-          <div className="hidden items-center gap-3 lg:flex">
+          <div className="hidden items-center gap-2 lg:flex">
+            {profile.socials.github && (
+              <a
+                href={profile.socials.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full text-navy-600 transition-colors hover:bg-navy-50 hover:text-navy-900"
+              >
+                <GitHubIcon className="h-5 w-5" />
+              </a>
+            )}
             <Button href="/contact" variant="gold" withArrow>
-              Request a Quote
+              Let&rsquo;s talk
             </Button>
           </div>
 
-          {/* Mobile toggle */}
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
@@ -105,56 +80,43 @@ export function SiteHeader() {
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
           >
-            {open ? (
-              <CloseIcon className="h-6 w-6" />
-            ) : (
-              <MenuIcon className="h-6 w-6" />
-            )}
+            {open ? <CloseIcon className="h-6 w-6" /> : <MenuIcon className="h-6 w-6" />}
           </button>
         </div>
       </div>
 
-      {/* Mobile menu */}
       {open && (
         <div className="border-b border-navy-100 bg-white lg:hidden">
           <nav className="container-page flex flex-col gap-1 py-4">
-            {nav.map((item) => {
-              const active =
-                item.href === "/"
-                  ? pathname === "/"
-                  : pathname.startsWith(item.href);
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  onClick={closeMenu}
-                  className={`rounded-lg px-4 py-3 text-base font-medium ${
-                    active
-                      ? "bg-navy-50 text-navy-900"
-                      : "text-navy-700 hover:bg-navy-50"
-                  }`}
-                >
-                  {item.label}
-                </Link>
-              );
-            })}
+            {nav.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                onClick={closeMenu}
+                className={`rounded-lg px-4 py-3 text-base font-medium ${
+                  isActive(item.href)
+                    ? "bg-navy-50 text-navy-900"
+                    : "text-navy-700 hover:bg-navy-50"
+                }`}
+              >
+                {item.label}
+              </Link>
+            ))}
             <div className="mt-3 flex flex-col gap-3 border-t border-navy-100 pt-4">
-              <a
-                href={`tel:${primaryPhone}`}
-                onClick={closeMenu}
-                className="flex items-center gap-3 px-4 py-2 text-navy-700"
-              >
-                <PhoneIcon className="h-5 w-5 text-gold-500" />
-                {primaryPhone}
-              </a>
-              <Button
-                href="/contact"
-                variant="gold"
-                size="lg"
-                className="w-full"
-                onClick={closeMenu}
-              >
-                Request a Free Quote
+              {profile.socials.github && (
+                <a
+                  href={profile.socials.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={closeMenu}
+                  className="flex items-center gap-3 px-4 py-2 text-navy-700"
+                >
+                  <GitHubIcon className="h-5 w-5" /> GitHub
+                  <ArrowUpRightIcon className="h-4 w-4 opacity-50" />
+                </a>
+              )}
+              <Button href="/contact" variant="gold" size="lg" className="w-full" onClick={closeMenu}>
+                Let&rsquo;s talk
               </Button>
             </div>
           </nav>

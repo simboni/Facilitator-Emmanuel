@@ -1,0 +1,263 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { projects, getProject } from "@/lib/portfolio";
+import { Button, Eyebrow } from "@/components/ui";
+import { Chip } from "@/components/project-card";
+import {
+  ExternalLinkIcon,
+  GitHubIcon,
+  ArrowRightIcon,
+  ArrowUpRightIcon,
+  CheckIcon,
+} from "@/components/icons";
+
+export function generateStaticParams() {
+  return projects.map((p) => ({ slug: p.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const project = getProject(slug);
+  if (!project) return { title: "Project not found" };
+  return {
+    title: project.title,
+    description: project.summary,
+    openGraph: { title: project.title, description: project.summary },
+  };
+}
+
+export default async function CaseStudyPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const project = getProject(slug);
+  if (!project) notFound();
+
+  const index = projects.findIndex((p) => p.slug === project.slug);
+  const next = projects[(index + 1) % projects.length];
+
+  return (
+    <>
+      {/* Hero */}
+      <section className="bg-navy-gradient">
+        <div className="container-page py-14 sm:py-18 lg:py-20">
+          <nav className="mb-6 text-sm text-navy-200" aria-label="Breadcrumb">
+            <Link href="/" className="transition-colors hover:text-gold-300">
+              Home
+            </Link>
+            <span className="mx-2 text-navy-400">/</span>
+            <Link href="/work" className="transition-colors hover:text-gold-300">
+              Work
+            </Link>
+            <span className="mx-2 text-navy-400">/</span>
+            <span className="text-white">{project.title}</span>
+          </nav>
+
+          <Eyebrow light>{project.type}</Eyebrow>
+          <h1 className="mt-4 max-w-3xl font-display text-4xl font-bold leading-tight tracking-tight text-white text-balance sm:text-5xl">
+            {project.title}
+          </h1>
+          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-navy-100">
+            {project.summary}
+          </p>
+
+          <div className="mt-8 flex flex-wrap gap-3">
+            {project.links.live && (
+              <Button
+                href={project.links.live}
+                variant="gold"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <ExternalLinkIcon className="h-4 w-4" /> Visit live site
+              </Button>
+            )}
+            {project.links.code && (
+              <Button
+                href={project.links.code}
+                variant="white"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <GitHubIcon className="h-4 w-4" /> View code
+              </Button>
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* Snapshot bar */}
+      <div className="border-b border-navy-100 bg-white">
+        <div className="container-page grid grid-cols-2 gap-6 py-8 sm:grid-cols-4">
+          <Meta label="Year" value={project.year} />
+          <Meta label="Role" value={project.role} />
+          <Meta label="Type" value={project.type} />
+          <Meta label="Stack" value={`${project.stack.length} technologies`} />
+        </div>
+      </div>
+
+      {/* Body */}
+      <div className="container-page grid gap-12 py-16 lg:grid-cols-12 lg:py-20">
+        {/* Main column */}
+        <article className="lg:col-span-8">
+          {/* Cover */}
+          {project.media.length > 0 ? (
+            <div className="space-y-6">
+              {project.media.map((m) => (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  key={m.src}
+                  src={m.src}
+                  alt={m.alt}
+                  className="w-full rounded-2xl border border-navy-100"
+                />
+              ))}
+            </div>
+          ) : (
+            <div
+              className={`flex aspect-[16/9] items-center justify-center rounded-2xl bg-gradient-to-br ${project.cover.from} ${project.cover.to}`}
+            >
+              <span className="font-mono text-6xl font-bold text-white/90">
+                {project.cover.initials}
+              </span>
+            </div>
+          )}
+
+          <Block title="The problem">
+            <p>{project.problem}</p>
+          </Block>
+
+          <Block title="My approach">
+            <p>{project.approach}</p>
+          </Block>
+
+          <Block title="How it's built">
+            <ul className="space-y-3">
+              {project.architecture.map((a) => (
+                <li key={a} className="flex gap-3">
+                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gold-500" />
+                  <span>{a}</span>
+                </li>
+              ))}
+            </ul>
+          </Block>
+
+          <Block title="Highlights I'm proud of">
+            <ul className="space-y-3">
+              {project.highlights.map((h) => (
+                <li key={h} className="flex gap-3">
+                  <CheckIcon className="mt-0.5 h-5 w-5 shrink-0 text-gold-500" />
+                  <span>{h}</span>
+                </li>
+              ))}
+            </ul>
+          </Block>
+        </article>
+
+        {/* Sidebar */}
+        <aside className="lg:col-span-4">
+          <div className="sticky top-28 space-y-8">
+            <div className="rounded-2xl border border-navy-100 bg-sand-50 p-6">
+              <h3 className="text-sm font-semibold uppercase tracking-wide text-navy-400">
+                Tech stack
+              </h3>
+              <div className="mt-3 flex flex-wrap gap-1.5">
+                {project.stack.map((s) => (
+                  <Chip key={s}>{s}</Chip>
+                ))}
+              </div>
+            </div>
+
+            <div className="rounded-2xl border border-navy-100 bg-sand-50 p-6">
+              <h3 className="text-sm font-semibold uppercase tracking-wide text-navy-400">
+                Impact
+              </h3>
+              <div className="mt-4 space-y-4">
+                {project.impact.map((m) => (
+                  <div key={m.label}>
+                    <div className="font-display text-2xl font-bold text-navy-900">
+                      {m.value}
+                    </div>
+                    <div className="text-sm text-navy-500">{m.label}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="rounded-2xl border border-navy-100 bg-navy-gradient p-6 text-center">
+              <p className="text-sm text-navy-100">Like what you see?</p>
+              <Button href="/contact" variant="gold" className="mt-3 w-full" withArrow>
+                Work with me
+              </Button>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      {/* Next project */}
+      <section className="border-t border-navy-100 bg-sand-50">
+        <div className="container-page py-14">
+          <Link
+            href={`/work/${next.slug}`}
+            className="group flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center"
+          >
+            <div>
+              <div className="text-sm font-medium uppercase tracking-wide text-navy-400">
+                Next project
+              </div>
+              <div className="mt-1 font-display text-2xl font-semibold text-navy-900 group-hover:text-gold-600">
+                {next.title}
+              </div>
+            </div>
+            <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-navy-800 text-white transition-transform group-hover:translate-x-1">
+              <ArrowRightIcon className="h-5 w-5" />
+            </span>
+          </Link>
+          <Link
+            href="/work"
+            className="mt-8 inline-flex items-center gap-1.5 text-sm font-medium text-navy-600 hover:text-gold-600"
+          >
+            <ArrowUpRightIcon className="h-4 w-4" /> Back to all work
+          </Link>
+        </div>
+      </section>
+    </>
+  );
+}
+
+function Meta({ label, value }: { label: string; value: string }) {
+  return (
+    <div>
+      <div className="text-xs font-medium uppercase tracking-wide text-navy-400">
+        {label}
+      </div>
+      <div className="mt-1 text-sm font-semibold text-navy-900">{value}</div>
+    </div>
+  );
+}
+
+function Block({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <section className="mt-12">
+      <h2 className="font-display text-2xl font-semibold tracking-tight text-navy-900">
+        {title}
+      </h2>
+      <div className="mt-4 text-base leading-relaxed text-navy-600">
+        {children}
+      </div>
+    </section>
+  );
+}
