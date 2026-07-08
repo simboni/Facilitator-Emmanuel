@@ -109,8 +109,8 @@ export function Logo({
           Misiati <span className="text-gold-500">&amp;</span> Associates
         </span>
         <span
-          className={`mt-1.5 block w-full text-[0.57rem] font-semibold uppercase ${secondary}`}
-          style={{ textAlign: "justify", textAlignLast: "justify", letterSpacing: "0.02em" }}
+          className={`mt-1.5 block w-full text-[0.5rem] font-semibold uppercase ${secondary}`}
+          style={{ textAlign: "justify", textAlignLast: "justify", letterSpacing: "0.01em" }}
         >
           Certified Public Accountants of Kenya
         </span>
