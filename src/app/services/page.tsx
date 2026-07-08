@@ -9,7 +9,7 @@ import { ServiceIcon } from "@/components/icons";
 export const metadata: Metadata = {
   title: "Our Services",
   description:
-    "Audit, tax returns, eTIMS, bookkeeping, payroll, KRA PIN registration, financial statements, business advisory and more — from Misiati & Associates, CPAs in Bungoma, Kenya.",
+    "Audit, tax returns, eTIMS, bookkeeping, payroll, KRA PIN registration, financial statements, business advisory and more — from Misiati & Associates, Certified Public Accountants serving clients across Kenya.",
 };
 
 const process = [
@@ -104,7 +104,7 @@ export default function ServicesPage() {
           <SectionHeading
             eyebrow="Industries we serve"
             title="Tailored to your sector"
-            intro="We understand the specific accounting and compliance needs of the sectors that drive our region."
+            intro="We understand the specific accounting and compliance needs of the sectors that drive Kenya's economy."
             className="mb-12"
           />
           <div className="overflow-hidden rounded-2xl border border-navy-100 bg-white">

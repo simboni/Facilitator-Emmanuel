@@ -18,7 +18,7 @@ const stats = [
   { n: firm.yearsExperience, suffix: "+", label: "Years of experience" },
   { n: 100, suffix: "+", label: "Clients served" },
   { n: industries.length, suffix: "", label: "Industries served" },
-  { n: firm.offices.length, suffix: "", label: "Offices in Bungoma" },
+  { n: firm.offices.length, suffix: "", label: "Office locations" },
 ];
 
 export default function HomePage() {
@@ -55,7 +55,7 @@ export default function HomePage() {
         <div className="container-page relative z-10 grid gap-12 py-16 sm:py-20 lg:grid-cols-2 lg:items-center lg:gap-10 lg:py-28">
           {/* Copy */}
           <div className="hero-stagger max-w-xl">
-            <Eyebrow light>Certified Public Accountants · Bungoma</Eyebrow>
+            <Eyebrow light>Certified Public Accountants of Kenya</Eyebrow>
             <h1 className="mt-5 font-serif text-4xl font-semibold leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-[3.4rem] text-balance">
               Accounting you can{" "}
               <span className="text-gold-300">trust</span>, advice you can
@@ -63,9 +63,9 @@ export default function HomePage() {
             </h1>
             <p className="mt-6 text-lg leading-relaxed text-navy-100">
               {firm.name} provides audit, tax and advisory services to
-              businesses, schools, SACCOs and organisations across Bungoma and
-              Western Kenya — backed by more than {firm.yearsExperience} years
-              of trusted experience.
+              businesses, schools, SACCOs and organisations across Kenya —
+              backed by more than {firm.yearsExperience} years of trusted
+              experience.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button href="/contact" variant="gold" size="lg" withArrow>
@@ -216,8 +216,8 @@ export default function HomePage() {
           <SectionHeading
             align="center"
             eyebrow="Industries we serve"
-            title="Specialist knowledge across the sectors that power our region"
-            intro="Decades of hands-on work with the organisations that build Western Kenya."
+            title="Specialist knowledge across the sectors that power Kenya"
+            intro="Decades of hands-on work with the organisations that drive Kenya's economy."
             className="mb-12"
           />
         </Reveal>

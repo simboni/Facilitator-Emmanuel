@@ -15,7 +15,7 @@ import {
 export const metadata: Metadata = {
   title: "Contact Us",
   description:
-    "Get in touch with Misiati & Associates, CPAs in Bungoma. Call, WhatsApp or email us, or request a free quote. Two offices: Chewai Plaza and Sang'alo Junction.",
+    "Get in touch with Misiati & Associates, Certified Public Accountants serving clients across Kenya. Call, WhatsApp or email us, or request a free quote. Offices in Bungoma: Chewai Plaza and Sang'alo Junction.",
 };
 
 export default function ContactPage() {

@@ -109,7 +109,7 @@ export function Logo({
         <span
           className={`mt-1 text-[0.62rem] font-medium uppercase tracking-[0.18em] ${secondary}`}
         >
-          Certified Public Accountants
+          Certified Public Accountants of Kenya
         </span>
       </span>
     </Link>

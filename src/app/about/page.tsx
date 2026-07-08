@@ -10,7 +10,7 @@ import { CheckIcon } from "@/components/icons";
 export const metadata: Metadata = {
   title: "About the Firm",
   description:
-    "Misiati & Associates is a licensed CPA firm in Bungoma, Kenya, led by CPA John Simboni Misiati with over 25 years of tax, audit and advisory experience.",
+    "Misiati & Associates is a licensed CPA firm serving clients across Kenya, led by CPA John Simboni Misiati with over 25 years of tax, audit and advisory experience.",
 };
 
 export default function AboutPage() {
@@ -34,7 +34,7 @@ export default function AboutPage() {
               <p>
                 Today the firm serves more than {firm.clientsServed} clients —
                 from contractors and schools to SACCOs, NGOs and growing
-                businesses — across Bungoma and the wider Western Kenya region.
+                businesses — across every county of Kenya.
                 We combine the reliability of a licensed CPA practice with the
                 personal attention of a local firm that genuinely knows its
                 clients.

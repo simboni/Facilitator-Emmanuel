@@ -9,7 +9,7 @@ export const firm = {
   legalName: "Misiati & Associates, Certified Public Accountants of Kenya",
   tagline: "Certified Public Accountants of Kenya",
   shortPitch:
-    "Trusted audit, tax and advisory services for businesses, schools, SACCOs and organisations across Bungoma and Western Kenya.",
+    "Trusted audit, tax and advisory services for businesses, schools, SACCOs and organisations across Kenya.",
   established: 2024,
   yearsExperience: 25, // Managing partner's practice experience
   clientsServed: "100+",
@@ -34,7 +34,7 @@ export const firm = {
       "Manager, Bungoma Teachers Savings & Cooperative Society — 16 years",
       "Tax consultancy, accounting & business advisory — 25 years",
     ],
-    bio: "CPA John Simboni Misiati leads the firm with more than 25 years of hands-on experience in tax, accounting and business advisory. Before founding the practice he served for 16 years as Manager of Bungoma Teachers Savings & Cooperative Society, giving him deep, practical insight into the finances of cooperatives, schools and growing businesses in the region.",
+    bio: "CPA John Simboni Misiati leads the firm with more than 25 years of hands-on experience in tax, accounting and business advisory. Before founding the practice he served for 16 years as Manager of Bungoma Teachers Savings & Cooperative Society, giving him deep, practical insight into the finances of cooperatives, schools and growing businesses across Kenya.",
   },
 
   mission:
