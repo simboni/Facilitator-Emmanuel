@@ -49,16 +49,12 @@ export function Logo({ className = "" }: { className?: string }) {
     <Link
       href="/"
       className={`group flex items-center gap-2.5 ${className}`}
-      aria-label={`${profile.name} — home`}
+      aria-label="SMP Developers — home"
     >
       <LogoMark className="h-9 w-9 shrink-0 rounded-[0.6rem] transition-transform duration-300 group-hover:-translate-y-0.5" />
-      <span className="flex flex-col leading-none">
-        <span className="whitespace-nowrap font-display text-[1.05rem] font-bold tracking-tight text-mist-100">
-          {profile.name}
-        </span>
-        <span className="mt-1 whitespace-nowrap font-mono text-[0.66rem] text-green-400">
-          <span className="text-mist-600">~/</span>smp-developers
-        </span>
+      <span className="whitespace-nowrap font-mono text-xl font-semibold tracking-tight">
+        <span className="text-mist-600">~/</span>
+        <span className="text-green-400">smp-developers</span>
       </span>
     </Link>
   );
