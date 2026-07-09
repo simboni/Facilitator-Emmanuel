@@ -2,22 +2,12 @@ import Link from "next/link";
 import { profile } from "@/lib/portfolio";
 
 /**
- * Peter Misiati wordmark + monogram.
- *   <LogoMark>  the "PM" monogram seal (also used as an avatar)
- *   <Logo>      the full lockup: monogram + name + role, links home
+ * SMP brand mark — a code-tag monogram in emerald green.
+ *   <LogoMark>  the "</>" glyph in a green-ringed tile (also the avatar/favicon)
+ *   <Logo>      the full lockup: mark + name + ~/smp-developers, links home
  */
 
-export function LogoMark({
-  className = "",
-  tone = "dark",
-}: {
-  className?: string;
-  /** "dark" = on a light surface · "light" = on a dark surface */
-  tone?: "dark" | "light";
-}) {
-  const ring = tone === "dark" ? "var(--color-navy-800)" : "var(--color-gold-400)";
-  const accent = "var(--color-gold-500)";
-  const letter = tone === "dark" ? "var(--color-navy-900)" : "#ffffff";
+export function LogoMark({ className = "" }: { className?: string }) {
   return (
     <svg
       viewBox="0 0 100 100"
@@ -25,81 +15,50 @@ export function LogoMark({
       role="img"
       aria-label={`${profile.name} logo`}
     >
-      <rect x="4" y="4" width="92" height="92" rx="22" fill="none" stroke={ring} strokeWidth="3" />
-      <rect x="11" y="11" width="78" height="78" rx="17" fill="none" stroke={accent} strokeWidth="1.2" opacity="0.7" />
+      <rect
+        x="3"
+        y="3"
+        width="94"
+        height="94"
+        rx="22"
+        fill="#101712"
+        stroke="#35d888"
+        strokeWidth="3"
+      />
       <text
         x="50"
-        y="61"
+        y="63"
         textAnchor="middle"
         fontFamily="var(--font-mono, monospace)"
-        fontSize="29"
+        fontSize="34"
         fontWeight="700"
-        letterSpacing="-1"
-        fill={letter}
+        letterSpacing="-2"
+        fill="#35d888"
       >
-        SMP
+        {"</>"}
       </text>
     </svg>
   );
 }
 
-// Filled disc variant for the favicon / tiny sizes.
-export function LogoBadge({ className = "" }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 100 100" className={className} role="img" aria-label={`${profile.name} logo`}>
-      <rect x="2" y="2" width="96" height="96" rx="24" fill="var(--color-navy-900)" />
-      <text
-        x="50"
-        y="61"
-        textAnchor="middle"
-        fontFamily="var(--font-mono, monospace)"
-        fontSize="30"
-        fontWeight="700"
-        letterSpacing="-1"
-        fill="var(--color-gold-400)"
-      >
-        SMP
-      </text>
-    </svg>
-  );
-}
+// Alias kept for the favicon/tiny contexts.
+export const LogoBadge = LogoMark;
 
-export function Logo({
-  variant = "dark",
-  className = "",
-  tagline,
-}: {
-  variant?: "dark" | "light";
-  className?: string;
-  /** Override the second line. Pass null to hide it. Defaults to profile.logoTagline. */
-  tagline?: string | null;
-}) {
-  const primary = variant === "light" ? "text-white" : "text-navy-900";
-  const secondary = variant === "light" ? "text-navy-200" : "text-navy-500";
-  const line = tagline === undefined ? profile.logoTagline : tagline;
+export function Logo({ className = "" }: { className?: string }) {
   return (
     <Link
       href="/"
-      className={`group flex items-center gap-3 ${className}`}
+      className={`group flex items-center gap-2.5 ${className}`}
       aria-label={`${profile.name} — home`}
     >
-      <LogoMark
-        tone={variant}
-        className="h-10 w-10 shrink-0 transition-transform duration-300 group-hover:scale-105"
-      />
+      <LogoMark className="h-9 w-9 shrink-0 rounded-[0.6rem] transition-transform duration-300 group-hover:-translate-y-0.5" />
       <span className="flex flex-col leading-none">
-        <span
-          className={`whitespace-nowrap text-[1.15rem] font-bold tracking-tight ${primary}`}
-        >
+        <span className="whitespace-nowrap font-display text-[1.05rem] font-bold tracking-tight text-mist-100">
           {profile.name}
         </span>
-        {line && (
-          <span
-            className={`mt-1.5 whitespace-nowrap text-[0.6rem] font-semibold uppercase tracking-[0.2em] ${secondary}`}
-          >
-            {line}
-          </span>
-        )}
+        <span className="mt-1 whitespace-nowrap font-mono text-[0.66rem] text-green-400">
+          <span className="text-mist-600">~/</span>smp-developers
+        </span>
       </span>
     </Link>
   );

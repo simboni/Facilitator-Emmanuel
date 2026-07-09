@@ -253,7 +253,7 @@ export const projects: Project[] = [
     stack: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
     tags: ["Web App", "Client"],
     featured: true,
-    cover: { from: "from-navy-600", to: "to-navy-900", initials: "NX" },
+    cover: { from: "from-ink-700", to: "to-ink-950", initials: "NX" },
     links: {},
     problem:
       "The client needed a fast, modern web platform built on today's stack — not a dated template — that could grow with them.",
@@ -285,7 +285,7 @@ export const projects: Project[] = [
     stack: ["Next.js", "React", "TypeScript", "PostgreSQL", "Tailwind CSS"],
     tags: ["Fintech", "Web App"],
     featured: true,
-    cover: { from: "from-gold-500", to: "to-gold-700", initials: "TP" },
+    cover: { from: "from-green-600", to: "to-ink-900", initials: "TP" },
     links: {},
     problem:
       "Individuals and small businesses need a simple way to record and reconcile payments without wrestling with spreadsheets or heavy accounting tools.",
@@ -317,7 +317,7 @@ export const projects: Project[] = [
     stack: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS v4", "Cloudflare Pages"],
     tags: ["Web", "Client"],
     featured: true,
-    cover: { from: "from-navy-700", to: "to-navy-900", initials: "M&A" },
+    cover: { from: "from-ink-600", to: "to-ink-900", initials: "M&A" },
     links: { live: "https://misiatiassociates.co.ke" },
     problem:
       "An established accounting firm had no web presence — prospective clients couldn't find them, verify credentials or get in touch, and competitors with even a basic site were winning that first impression.",
@@ -351,7 +351,7 @@ export const projects: Project[] = [
     stack: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
     tags: ["Web", "Fitness"],
     featured: true,
-    cover: { from: "from-gold-500", to: "to-navy-800", initials: "FG" },
+    cover: { from: "from-green-500", to: "to-ink-900", initials: "FG" },
     links: {},
     problem:
       "A fitness brand needed an energetic online home to showcase classes and memberships and convert visitors into members.",
@@ -383,7 +383,7 @@ export const projects: Project[] = [
     stack: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
     tags: ["Web App", "Events"],
     featured: true,
-    cover: { from: "from-navy-700", to: "to-gold-700", initials: "64" },
+    cover: { from: "from-green-700", to: "to-ink-950", initials: "64" },
     links: {},
     problem:
       "A theatre needed a modern platform to promote its productions and let audiences discover events and book online.",
@@ -415,7 +415,7 @@ export const projects: Project[] = [
     stack: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS v4", "Vercel"],
     tags: ["Web", "Portfolio"],
     featured: false,
-    cover: { from: "from-navy-600", to: "to-navy-900", initials: "SMP" },
+    cover: { from: "from-ink-600", to: "to-ink-950", initials: "SMP" },
     links: { live: "https://smp-developers.com" },
     problem:
       "I needed a portfolio that reads like a senior engineer's — a real directory of work with proper case studies, not a template.",

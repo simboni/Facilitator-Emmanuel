@@ -7,14 +7,11 @@ import { CheckIcon, MailIcon } from "@/components/icons";
 
 type Status = "idle" | "submitting" | "done" | "error";
 
-// No-backend form delivery (works on a static site). Submissions are emailed
-// to the address below. The first submission triggers a one-time activation
-// email — click the link once and delivery is on for good.
 const FORM_DELIVERY_EMAIL = profile.email;
 const FORM_ENDPOINT = `https://formsubmit.co/ajax/${FORM_DELIVERY_EMAIL}`;
 
 const inputCls =
-  "w-full rounded-xl border border-navy-200 bg-white px-4 py-3 text-sm text-navy-900 placeholder:text-navy-400 focus:border-gold-400 focus:outline-none focus:ring-2 focus:ring-gold-200 transition";
+  "w-full rounded-lg border border-ink-600 bg-ink-900 px-4 py-3 text-sm text-mist-100 placeholder:text-mist-600 focus:border-green-400 focus:outline-none focus:ring-2 focus:ring-green-400/30 transition";
 
 const PROJECT_TYPES = [
   "New website or web app",
@@ -42,9 +39,7 @@ export function ContactForm() {
   const update =
     (k: keyof typeof form) =>
     (
-      e: React.ChangeEvent<
-        HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-      >,
+      e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
     ) =>
       setForm((f) => ({ ...f, [k]: e.target.value }));
 
@@ -58,9 +53,7 @@ export function ContactForm() {
     ]
       .filter(Boolean)
       .join("\n");
-    return `mailto:${profile.email}?subject=${encodeURIComponent(
-      subject,
-    )}&body=${encodeURIComponent(body)}`;
+    return `mailto:${profile.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   };
 
   function validate() {
@@ -68,8 +61,7 @@ export function ContactForm() {
     if (form.name.trim().length < 2) e.name = "Please tell me your name.";
     if (!form.email) e.email = "I'll need an email to reply.";
     else if (!isEmail(form.email)) e.email = "That email doesn't look right.";
-    if (form.message.trim().length < 5)
-      e.message = "Tell me a little about your project.";
+    if (form.message.trim().length < 5) e.message = "Tell me a little about your project.";
     return e;
   }
 
@@ -108,16 +100,15 @@ export function ContactForm() {
 
   if (status === "done") {
     return (
-      <div className="rounded-2xl border border-navy-100 bg-sand-50 p-8 text-center">
-        <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-gold-100 text-gold-700">
+      <div className="win p-8 text-center">
+        <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-green-400/15 text-green-400">
           <CheckIcon className="h-7 w-7" />
         </span>
-        <h3 className="mt-5 font-display text-2xl font-semibold text-navy-900">
+        <h3 className="mt-5 font-display text-2xl font-bold text-mist-100">
           Thanks, {form.name.split(" ")[0] || "there"}!
         </h3>
-        <p className="mx-auto mt-3 max-w-md text-navy-500">
-          Your message is on its way — I&rsquo;ll get back to you within one
-          working day. Prefer email? Reach me directly below.
+        <p className="mx-auto mt-3 max-w-md text-mist-400">
+          Your message is on its way — I&rsquo;ll get back to you within one working day.
         </p>
         <div className="mt-6">
           <Button href={mailHref()} variant="outline">
@@ -129,23 +120,19 @@ export function ContactForm() {
   }
 
   return (
-    <form
-      onSubmit={onSubmit}
-      className="rounded-2xl border border-navy-100 bg-white p-6 sm:p-8"
-      noValidate
-    >
+    <form onSubmit={onSubmit} className="win p-6 sm:p-8" noValidate>
       <div className="grid gap-5 sm:grid-cols-2">
-        <Field label="Your name" error={errors.name} required>
+        <Field label="name" error={errors.name} required>
           <input
             type="text"
             value={form.name}
             onChange={update("name")}
             className={inputCls}
-            placeholder="e.g. Jane Doe"
+            placeholder="Jane Doe"
             autoComplete="name"
           />
         </Field>
-        <Field label="Email" error={errors.email} required>
+        <Field label="email" error={errors.email} required>
           <input
             type="email"
             value={form.email}
@@ -157,12 +144,8 @@ export function ContactForm() {
         </Field>
       </div>
       <div className="mt-5">
-        <Field label="What's it about?" error={errors.projectType}>
-          <select
-            value={form.projectType}
-            onChange={update("projectType")}
-            className={inputCls}
-          >
+        <Field label="what's it about?" error={errors.projectType}>
+          <select value={form.projectType} onChange={update("projectType")} className={inputCls}>
             <option value="">Select one…</option>
             {PROJECT_TYPES.map((t) => (
               <option key={t} value={t}>
@@ -173,7 +156,7 @@ export function ContactForm() {
         </Field>
       </div>
       <div className="mt-5">
-        <Field label="Your message" error={errors.message} required>
+        <Field label="message" error={errors.message} required>
           <textarea
             value={form.message}
             onChange={update("message")}
@@ -184,7 +167,6 @@ export function ContactForm() {
         </Field>
       </div>
 
-      {/* Honeypot */}
       <input
         type="text"
         tabIndex={-1}
@@ -196,18 +178,10 @@ export function ContactForm() {
       />
 
       <div className="mt-6 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
-        <Button
-          type="submit"
-          variant="gold"
-          size="lg"
-          disabled={status === "submitting"}
-          withArrow
-        >
-          {status === "submitting" ? "Sending…" : "Send message"}
+        <Button type="submit" variant="gold" size="lg" disabled={status === "submitting"} withArrow>
+          {status === "submitting" ? "sending…" : "send message"}
         </Button>
-        <p className="text-xs text-navy-400">
-          I reply within one working day. Your details stay private.
-        </p>
+        <p className="font-mono text-xs text-mist-600">{"// replies within one working day"}</p>
       </div>
     </form>
   );
@@ -226,12 +200,12 @@ function Field({
 }) {
   return (
     <label className="block">
-      <span className="mb-1.5 block text-sm font-medium text-navy-800">
+      <span className="mb-1.5 block font-mono text-xs text-mist-400">
         {label}
-        {required && <span className="text-gold-600"> *</span>}
+        {required && <span className="text-green-400"> *</span>}
       </span>
       {children}
-      {error && <span className="mt-1 block text-xs text-red-600">{error}</span>}
+      {error && <span className="mt-1 block text-xs text-red-400">{error}</span>}
     </label>
   );
 }
