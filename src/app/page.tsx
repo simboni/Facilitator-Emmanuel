@@ -37,7 +37,7 @@ export default function HomePage() {
                 {profile.availability}
               </span>
 
-              <h1 className="mt-5 font-display text-4xl font-bold leading-[1.05] tracking-tight text-mist-100 text-balance sm:text-6xl">
+              <h1 className="mt-5 bg-gradient-to-br from-mist-100 via-mist-100 to-green-300 bg-clip-text font-display text-4xl font-bold leading-[1.05] tracking-tight text-transparent text-balance sm:text-6xl">
                 {profile.name}
               </h1>
               <p className="mt-3 font-mono text-lg text-green-400 sm:text-xl">
