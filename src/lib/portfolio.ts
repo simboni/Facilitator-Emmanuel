@@ -344,7 +344,7 @@ export const projects: Project[] = [
       { value: "Offline", label: "Gate scanner" },
       { value: "Ledger", label: "Double-entry money" },
     ],
-    media: [],
+    media: [{ src: "/mockups/64-theatre.jpg", alt: "64 Theatre — now showing" }],
   },
   {
     slug: "fit-generations",
