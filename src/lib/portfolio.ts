@@ -417,7 +417,7 @@ export const projects: Project[] = [
       { value: "<1s", label: "First load on mobile" },
       { value: "100%", label: "Static — no hosting cost" },
     ],
-    media: [],
+    media: [{ src: "/mockups/misiati-associates.jpg", alt: "Misiati & Associates — home" }],
   },
   {
     slug: "smp-portfolio",
