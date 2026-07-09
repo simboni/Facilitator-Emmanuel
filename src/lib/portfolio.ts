@@ -1,74 +1,76 @@
 /* ==========================================================================
-   Peter Misiati — Portfolio content (single source of truth)
+   Simboni Misiati Peter (SMP) — Portfolio content (single source of truth)
    --------------------------------------------------------------------------
    Everything the site shows lives here. Add a project, edit a skill, change a
    link — it updates everywhere (home grid, /work directory, the individual
-   /work/[slug] case study, the sitemap and the SEO tags). You never need to
-   touch the page components to change content.
+   /work/[slug] case study, the sitemap and the SEO tags).
 
-   👉 Items marked  // SAMPLE — replace  are realistic placeholders. Swap them
-      for your real work when you're ready (or send me the details and I will).
+   Content sourced from the previous site (smp-developers.com). Add live URLs,
+   screenshots and richer case-study detail as you have them.
    ========================================================================== */
 
 /* ------------------------------- Profile -------------------------------- */
 
 export const profile = {
-  name: "Peter Misiati",
+  name: "Simboni Misiati Peter",
+  shortName: "SMP",
   firstName: "Peter",
-  /** Shown under the name in the hero. Keep it to one line. */
-  role: "Full-Stack Software Engineer",
-  /** The 5-second value proposition — what you build and for whom. */
+  /** Shown under the name in the hero. */
+  role: "Software Engineer · Web Developer · Tech Consultant",
+  /** The 5-second value proposition. */
   valueProp:
-    "I design and build fast, accessible web applications end-to-end — from the database to the pixel — that help businesses launch, grow and look world-class online.",
+    "I'm a software engineer, social entrepreneur and tech consultant building software that drives real impact — microfinance systems, ERP platforms, e-learning tools and modern websites — while empowering youth through technology and financial education.",
   /** A slightly longer hero support line. */
   tagline:
-    "Full-stack engineer specialising in modern TypeScript, React and Next.js. I turn ideas and rough briefs into production software that ships.",
-  location: "Nairobi, Kenya · Available worldwide (remote)",
-  availability: "Open to freelance projects & full-time roles",
-  email: "misiatipeter@gmail.com",
-  /** Put your CV PDF in /public and point here, e.g. "/peter-misiati-cv.pdf". */
-  resumeUrl: "",
+    "Software engineer and tech consultant from Kenya. I design and build custom software, websites and mobile apps — and help organisations put technology to work.",
+  location: "Nairobi & Bungoma, Kenya",
+  availability: "Available for freelance & consulting",
+  email: "info@smp-developers.com",
+  phone: "+254 706 289 514",
+  whatsapp: "254706289514",
+  /** The live résumé (opens the hosted Notion CV). */
+  resumeUrl:
+    "https://simboni.notion.site/Peter-Misiati-Simboni-RESUME-bdb4a222938a4b1dace331074dc92336?pvs=4",
   socials: {
-    github: "https://github.com/", // SAMPLE — replace with your GitHub URL
-    linkedin: "https://www.linkedin.com/", // SAMPLE — replace
-    x: "", // optional
-    email: "misiatipeter@gmail.com",
+    github: "", // add your GitHub URL to show the icon
+    linkedin: "", // add your LinkedIn URL to show the icon
+    x: "",
+    email: "info@smp-developers.com",
   },
-  /** Quick "by the numbers" stats for the hero / about. Keep them honest. */
+  /** Quick "by the numbers" stats. */
   stats: [
-    { value: 5, suffix: "+", label: "Years writing code" },
-    { value: 20, suffix: "+", label: "Projects shipped" },
-    { value: 12, suffix: "+", label: "Happy clients" },
-    { value: 100, suffix: "%", label: "On-time delivery" },
+    { value: 8, suffix: "+", label: "Years in tech" },
+    { value: 10, suffix: "+", label: "Projects delivered" },
+    { value: 10, suffix: "+", label: "Clients served" },
+    { value: 3, suffix: "", label: "Ventures led" },
   ],
 } as const;
 
 /* --------------------------------- About -------------------------------- */
 
 export const about = {
-  /** 2–3 short paragraphs. Human and direct. Who you are, what you build, what you want next. */
   paragraphs: [
-    "I'm Peter, a full-stack software engineer based in Kenya building for clients everywhere. I care about two things in equal measure: software that is genuinely pleasant to use, and software that is built well enough to maintain and grow for years.",
-    "My day-to-day is modern TypeScript across the stack — React and Next.js on the front end, Node and serverless APIs on the back, and SQL or document databases underneath. I've shipped everything from marketing sites and dashboards to full commerce platforms, and I run my own small studio, SMP Developers, for client work.",
-    "I'm currently open to freelance engagements and full-time roles where I can own features end-to-end and raise the quality bar. If you're building something, I'd love to hear about it.",
+    "Hello — SMP here. I'm a software engineer, social entrepreneur and tech consultant passionate about driving social impact through technology. I've built innovative solutions like microfinance systems, ERP platforms and online learning tools, while empowering youth through mentorship and financial education.",
+    "Through my studio, SMP Developers, I design and build custom software, websites and mobile apps end-to-end — from the first conversation to launch and handover. I work across the modern web and mobile, and I'm equally at home advising organisations on the right technology strategy.",
+    "Beyond code, I lead SMP Eventures and run financial-literacy programmes that help young people earn, save and invest. My goal is simple: inspire positive change and build a future shaped by innovation and inclusion. If you're building something, I'd love to hear about it.",
   ],
-  /** A short, human list of what you value / how you work. */
+  /** How I work — adapted from "why clients choose me". */
   principles: [
     {
-      title: "Ship, then refine",
-      body: "Working software in front of real users beats a perfect plan. I get to a live, testable version early and iterate.",
+      title: "Tailored, not templated",
+      body: "I build solutions around your actual needs and goals — not a one-size-fits-all template.",
     },
     {
-      title: "Performance is a feature",
-      body: "Sub-second loads, no layout shift, green Core Web Vitals. Speed is the first thing users feel.",
+      title: "End-to-end ownership",
+      body: "Discovery, design, development, deployment and handover — I own the whole journey and the outcome.",
     },
     {
-      title: "Accessible by default",
-      body: "Semantic HTML, keyboard support and proper contrast aren't extras — they're the baseline of good engineering.",
+      title: "Impact-driven",
+      body: "I care about results that matter: systems that work, communities empowered, businesses that grow.",
     },
     {
-      title: "Own the outcome",
-      body: "I care about the result, not just the ticket. If something is off, I'll flag it and fix it.",
+      title: "Creativity & excellence",
+      body: "A commitment to craft, clean execution and work I'm proud to put my name on.",
     },
   ],
 } as const;
@@ -77,41 +79,40 @@ export const about = {
 
 export type SkillGroup = {
   title: string;
-  /** icon key from iconMap in components/icons.tsx */
   icon: string;
   items: string[];
 };
 
 export const skills: SkillGroup[] = [
   {
-    title: "Languages",
-    icon: "code",
-    items: ["TypeScript", "JavaScript", "Python", "SQL", "HTML", "CSS"],
-  },
-  {
-    title: "Frontend",
+    title: "Web & CMS",
     icon: "layout",
-    items: ["React", "Next.js", "Tailwind CSS", "Redux", "Framer Motion", "Vite"],
+    items: ["WordPress", "Elementor", "DIVI", "Gutenberg", "HTML", "CSS"],
   },
   {
-    title: "Backend",
+    title: "Languages & Frameworks",
+    icon: "code",
+    items: ["PHP", "Python", "JavaScript", "Laravel", "Django", "MySQL"],
+  },
+  {
+    title: "Mobile & Systems",
     icon: "server",
-    items: ["Node.js", "Express", "Next.js API / RSC", "REST", "GraphQL", "FastAPI"],
+    items: ["Android", "iOS", "Mobile Apps", "ERP Systems", "Microfinance Systems"],
   },
   {
-    title: "Data",
-    icon: "database",
-    items: ["PostgreSQL", "MongoDB", "Prisma", "Redis", "Supabase"],
+    title: "Finance & Fintech",
+    icon: "chart",
+    items: ["SACCO Systems", "Payments", "Savings & Investments", "Financial Literacy"],
   },
   {
-    title: "DevOps & Cloud",
-    icon: "cloud",
-    items: ["Docker", "Vercel", "Cloudflare", "AWS", "CI/CD", "GitHub Actions"],
+    title: "Design",
+    icon: "sparkle",
+    items: ["Web Design", "Graphic Design", "Logo Design", "Canva", "Photoshop"],
   },
   {
-    title: "Tooling & Practice",
+    title: "Consulting & Practice",
     icon: "tools",
-    items: ["Git", "Jest / Vitest", "Playwright", "Figma", "Agile", "Testing"],
+    items: ["Tech Strategy", "IT Consulting", "Team Leadership", "Git", "Notion"],
   },
 ];
 
@@ -129,35 +130,89 @@ export type Job = {
 export const experience: Job[] = [
   {
     company: "SMP Developers",
-    role: "Founder & Full-Stack Engineer",
-    period: "2022 — Present",
-    location: "Remote · Kenya",
+    role: "Senior Developer",
+    period: "2023 — Present",
+    location: "Nairobi, Kenya",
     summary:
-      "Run a small software studio delivering web apps and sites for businesses across East Africa and beyond.",
+      "Lead development of systems, websites and mobile apps, and coordinate teams to raise output and product quality.",
     highlights: [
-      "Designed and shipped 20+ production websites and web apps end-to-end.",
-      "Owned everything from discovery and UX to deployment, DNS and handover.",
-      "Standardised on a modern Next.js + TypeScript stack for speed and maintainability.",
+      "Deliver custom software, websites and apps end-to-end for clients across Kenya.",
+      "Coordinate creative and development teams to ship quality products on time.",
+      "Own everything from discovery and UX through deployment and handover.",
     ],
   },
-  // SAMPLE — replace / add your real roles below
   {
-    company: "Freelance",
-    role: "Full-Stack Developer",
-    period: "2020 — 2022",
-    location: "Remote",
+    company: "eLearners Academy",
+    role: "Youth Empowerment & Financial Education",
+    period: "2022 — Present",
+    location: "Kenya",
     summary:
-      "Built custom web solutions for startups and SMEs — landing pages, dashboards and internal tools.",
+      "Train, inspire and collaborate with youth across the nation to improve livelihoods and financial independence.",
     highlights: [
-      "Delivered React front ends backed by Node/Express APIs.",
-      "Integrated payments, auth and third-party APIs.",
+      "Run financial-literacy and technology mentorship programmes for young people.",
+      "Built learning tools and community platforms supporting the work.",
+    ],
+  },
+  {
+    company: "SMP Eventures Ltd",
+    role: "Chairman & Director",
+    period: "2015 — Present",
+    location: "Kenya",
+    summary:
+      "Collaborate with creative and development teams on the execution of ideas across ventures.",
+    highlights: [
+      "Lead a multi-disciplinary team turning ideas into delivered projects.",
+      "Founded and grew the venture alongside the software practice.",
     ],
   },
 ];
 
+/* ------------------------------ Education ------------------------------- */
+
+export type Education = {
+  institution: string;
+  qualification: string;
+  period: string;
+  detail?: string;
+};
+
+export const education: Education[] = [
+  {
+    institution: "Jomo Kenyatta University of Agriculture & Technology (JKUAT)",
+    qualification: "Master's Degree in Software Engineering",
+    period: "2023 — 2025",
+    detail: "Nairobi, Kenya",
+  },
+  {
+    institution: "JKUAT — Programming Certificate",
+    qualification: "Software & App Development",
+    period: "2024 — Present",
+    detail: "Git, JavaScript, iOS, Android, PHP, Laravel, Python, Django, Notion.",
+  },
+  {
+    institution: "WordPress Development",
+    qualification: "Certification & Practice",
+    period: "2015 — 2025",
+    detail: "DIVI, Elementor, Gutenberg and full WordPress theme development.",
+  },
+];
+
+/* ------------------------------- Clients -------------------------------- */
+
+export type Client = { name: string; logo: string };
+
+export const clients: Client[] = [
+  { name: "Talitha Kum International", logo: "/clients/talithakum.webp" },
+  { name: "Golden Star", logo: "/clients/golden-star.webp" },
+  { name: "Commissioner Dennis Wamalwa", logo: "/clients/dr-wamalwa.png" },
+  { name: "eLearners Academy", logo: "/clients/elearners.webp" },
+  { name: "KEYSA", logo: "/clients/keysa.png" },
+  { name: "Canossian", logo: "/clients/canossian.webp" },
+  { name: "Zuri", logo: "/clients/zuri.png" },
+  { name: "Admin-Up", logo: "/clients/admin-up.png" },
+];
+
 /* ------------------------------- Projects ------------------------------- */
-/* The heart of the portfolio. Each project renders a card on the home page
-   and /work grid, and its own case-study page at /work/<slug>.               */
 
 export type Metric = { value: string; label: string };
 export type ProjectLink = { label: string; href: string };
@@ -165,141 +220,283 @@ export type ProjectLink = { label: string; href: string };
 export type Project = {
   slug: string;
   title: string;
-  /** One-line summary shown on cards. */
   summary: string;
-  /** e.g. "Client project", "Personal", "Open source". */
   type: string;
   year: string;
   role: string;
-  /** Tech chips. First 3–4 show on the card. */
   stack: string[];
-  /** Categories used by the /work filter. */
   tags: string[];
   featured?: boolean;
-  /** Accent gradient for the card cover (from/to are Tailwind classes). */
   cover: { from: string; to: string; initials: string };
-  links: {
-    live?: string;
-    code?: string;
-    extra?: ProjectLink;
-  };
-  /* ---- Case study body ---- */
+  links: { live?: string; code?: string; extra?: ProjectLink };
   problem: string;
   approach: string;
   architecture: string[];
   highlights: string[];
   impact: Metric[];
-  /** Optional screenshot paths in /public. Empty = show the branded cover. */
   media: { src: string; alt: string }[];
 };
 
 export const projects: Project[] = [
   {
-    slug: "misiati-associates",
-    title: "Misiati & Associates",
+    slug: "smp-microfinance-app",
+    title: "SMP Microfinance App",
     summary:
-      "A production marketing website and lead pipeline for a Certified Public Accountants firm in Kenya.",
-    type: "Client project",
-    year: "2026",
-    role: "Design & full-stack development",
-    stack: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS v4", "Cloudflare Pages"],
-    tags: ["Web", "Design", "Client"],
-    featured: true,
-    cover: { from: "from-navy-700", to: "to-navy-900", initials: "M&A" },
-    links: {
-      live: "https://misiatiassociates.co.ke",
-      extra: { label: "Case study", href: "/work/misiati-associates" },
-    },
-    problem:
-      "An established accounting firm had no web presence. Prospective clients couldn't find them, verify their credentials, or get in touch without a phone call — and competitors with even a basic site were winning that first impression.",
-    approach:
-      "I ran a short discovery to capture the firm's services, credentials and tone, then designed a trust-first brand system (navy + gold, serif display) and built a fast static site around a single editable content file so the firm can update details without a developer. Every piece of content — services, team, testimonials, contact details — is typed data, so the site can't drift out of sync.",
-    architecture: [
-      "Next.js 16 App Router with static HTML export — no server to run, deploys anywhere.",
-      "All firm data in one typed source file; pages render from it, so edits are one-line.",
-      "Contact form posts to a no-backend delivery service with a WhatsApp/email fallback.",
-      "Deployed on Cloudflare Pages via GitHub with an automatic build on every push.",
-      "SEO: metadata, Open Graph, sitemap.xml, robots.txt and JSON-LD tuned for local search.",
-    ],
-    highlights: [
-      "Sub-second first load and a perfect mobile layout on a zero-cost static host.",
-      "A motion system (scroll reveals, cursor spotlight cards) that stays smooth and respects reduced-motion.",
-      "Editable-by-the-client architecture — add a service or testimonial by appending one object.",
-    ],
-    impact: [
-      { value: "0→1", label: "Web presence launched" },
-      { value: "<1s", label: "First load on mobile" },
-      { value: "100%", label: "Static — no hosting cost" },
-    ],
-    media: [],
-  },
-
-  // SAMPLE — replace with a real project ↓
-  {
-    slug: "taskflow",
-    title: "TaskFlow",
-    summary:
-      "A real-time team task manager with boards, drag-and-drop and live collaboration.",
-    type: "Personal project",
-    year: "2025",
-    role: "Full-stack",
-    stack: ["Next.js", "TypeScript", "PostgreSQL", "Prisma", "WebSockets"],
-    tags: ["Web", "Full-stack", "SaaS"],
-    featured: true,
-    cover: { from: "from-gold-500", to: "to-gold-700", initials: "TF" },
-    links: { live: "", code: "" },
-    problem:
-      "Small teams needed a lightweight, real-time board without the complexity and price of enterprise tools.",
-    approach:
-      "Built a Kanban-style app with optimistic UI and live sync so multiple users see changes instantly. Focused on a snappy drag-and-drop experience and a clean data model.",
-    architecture: [
-      "Next.js front end with optimistic updates for instant feedback.",
-      "PostgreSQL + Prisma for a typed, relational data layer.",
-      "WebSocket channel for real-time board sync across clients.",
-      "Auth with sessions; role-based board permissions.",
-    ],
-    highlights: [
-      "Real-time multi-user sync with conflict-safe updates.",
-      "Accessible drag-and-drop with full keyboard support.",
-    ],
-    impact: [
-      { value: "Real-time", label: "Live collaboration" },
-      { value: "60fps", label: "Drag interactions" },
-    ],
-    media: [],
-  },
-
-  // SAMPLE — replace with a real project ↓
-  {
-    slug: "devmart-api",
-    title: "DevMart Commerce API",
-    summary:
-      "A headless e-commerce API with carts, payments and inventory, built to scale.",
-    type: "Open source",
+      "A mobile microfinance platform — SMP Credits — that lets youth earn, save and invest, promoting financial independence.",
+    type: "Product",
     year: "2024",
-    role: "Backend",
-    stack: ["Node.js", "Express", "MongoDB", "Stripe", "Docker"],
-    tags: ["Backend", "API", "Full-stack"],
-    featured: false,
-    cover: { from: "from-navy-500", to: "to-navy-800", initials: "DM" },
-    links: { live: "", code: "" },
+    role: "Software engineering & product",
+    stack: ["Android", "iOS", "PHP / Laravel", "MySQL", "Payments"],
+    tags: ["Mobile", "Systems", "Fintech"],
+    featured: true,
+    cover: { from: "from-gold-500", to: "to-gold-700", initials: "SMP" },
+    links: {},
     problem:
-      "Front-end teams needed a clean, well-documented commerce backend they could drop into any storefront.",
+      "Many young people lack access to simple, trustworthy tools to save, invest and build credit. Traditional finance is out of reach or intimidating, so good financial habits never start.",
     approach:
-      "Designed a RESTful API with clear resource boundaries, robust validation and Stripe-backed checkout, all containerised for easy deployment.",
+      "I designed SMP Credits as a mobile-first microfinance platform that makes earning, saving and investing approachable — paired with financial-literacy content so users learn as they go. The system handles member accounts, contributions and disbursements with clear, friendly UX.",
     architecture: [
-      "Express REST API with layered architecture (routes → services → data).",
-      "MongoDB for flexible product/catalog modelling.",
-      "Stripe integration for payments and webhooks.",
-      "Dockerised with a reproducible dev environment.",
+      "Native mobile experience for Android and iOS users.",
+      "PHP/Laravel backend with a MySQL data layer for members, savings and transactions.",
+      "Payment and mobile-money integration for contributions and payouts.",
+      "Admin tooling for the SACCO/microfinance team to manage members and reporting.",
     ],
     highlights: [
-      "Fully documented endpoints with example requests.",
-      "Idempotent, webhook-driven order fulfilment.",
+      "Made saving and investing genuinely accessible to first-time users.",
+      "Combined fintech with financial education in one product.",
+      "Built to serve real community groups, not just a demo.",
     ],
     impact: [
-      { value: "REST", label: "Clean, documented API" },
-      { value: "Docker", label: "One-command deploy" },
+      { value: "Fintech", label: "Earn · save · invest" },
+      { value: "Mobile", label: "Android & iOS" },
+      { value: "Youth", label: "Financial inclusion" },
+    ],
+    media: [],
+  },
+  {
+    slug: "junior-sports-world",
+    title: "Junior Sports World",
+    summary:
+      "An e-commerce store for sportswear — catalogue, cart and checkout for a growing retail brand.",
+    type: "Client project",
+    year: "2024",
+    role: "Design & development",
+    stack: ["WordPress", "WooCommerce", "PHP", "Payments"],
+    tags: ["Ecommerce", "Websites"],
+    featured: true,
+    cover: { from: "from-navy-600", to: "to-navy-900", initials: "JSW" },
+    links: {},
+    problem:
+      "A sportswear brand needed to sell online with a storefront that could showcase products and take payments reliably.",
+    approach:
+      "I built a WooCommerce store with a clean product catalogue, categories and a smooth checkout, set up to be easy for the team to manage day-to-day.",
+    architecture: [
+      "WordPress + WooCommerce storefront with a custom-styled theme.",
+      "Product catalogue, variants, cart and secure checkout.",
+      "Payment gateway integration and order management.",
+    ],
+    highlights: [
+      "A retail-ready online store the client can run themselves.",
+      "Mobile-friendly shopping experience.",
+    ],
+    impact: [
+      { value: "Ecommerce", label: "Online store + payments" },
+      { value: "Live", label: "Retail brand" },
+    ],
+    media: [],
+  },
+  {
+    slug: "dennis-wamalwa",
+    title: "Commissioner Dennis Wamalwa",
+    summary:
+      "A public-figure website for a commissioner — profile, initiatives and a channel to reach constituents.",
+    type: "Client project",
+    year: "2023",
+    role: "Design & development",
+    stack: ["WordPress", "Elementor", "PHP"],
+    tags: ["Websites", "Politics"],
+    featured: true,
+    cover: { from: "from-navy-700", to: "to-navy-900", initials: "DW" },
+    links: {},
+    problem:
+      "A public figure needed a credible online presence to share their work, values and initiatives with the public.",
+    approach:
+      "I designed a dignified, trustworthy website presenting the commissioner's profile, priorities and updates, with clear ways for people to get in touch.",
+    architecture: [
+      "WordPress + Elementor for easy content updates.",
+      "Profile, initiatives and news sections.",
+      "Contact and engagement channels.",
+    ],
+    highlights: [
+      "A professional, credible presence for a public leader.",
+      "Editable by the team without a developer.",
+    ],
+    impact: [
+      { value: "Public", label: "Leadership presence" },
+      { value: "Live", label: "Constituent reach" },
+    ],
+    media: [],
+  },
+  {
+    slug: "talitha-kum",
+    title: "Talitha Kum International",
+    summary:
+      "A website for an international NGO — mission, programmes and outreach across a global network.",
+    type: "Client project",
+    year: "2023",
+    role: "Design & development",
+    stack: ["WordPress", "Elementor", "PHP"],
+    tags: ["NGO", "Websites"],
+    featured: true,
+    cover: { from: "from-gold-600", to: "to-navy-800", initials: "TK" },
+    links: {},
+    problem:
+      "An international NGO needed a clear, welcoming website to communicate its mission and coordinate outreach.",
+    approach:
+      "I built an accessible, content-rich site that tells the organisation's story and supports its programmes and network.",
+    architecture: [
+      "WordPress + Elementor with a structured content model.",
+      "Programme, story and contact sections.",
+      "Mobile-first, accessible layout.",
+    ],
+    highlights: [
+      "A polished home for a global mission.",
+      "Straightforward for staff to update.",
+    ],
+    impact: [
+      { value: "NGO", label: "Global network" },
+      { value: "Live", label: "Mission outreach" },
+    ],
+    media: [],
+  },
+  {
+    slug: "ruaka-golden-star",
+    title: "Ruaka Golden Star",
+    summary: "A school website — admissions, programmes and information for parents and students.",
+    type: "Client project",
+    year: "2023",
+    role: "Design & development",
+    stack: ["WordPress", "Elementor", "PHP"],
+    tags: ["School", "Websites"],
+    cover: { from: "from-navy-600", to: "to-navy-900", initials: "GS" },
+    links: {},
+    problem:
+      "A school needed an online presence to share information and attract admissions.",
+    approach:
+      "I built a friendly, informative school website covering programmes, admissions and news.",
+    architecture: [
+      "WordPress + Elementor, easy for staff to maintain.",
+      "Programmes, admissions and contact sections.",
+    ],
+    highlights: ["A welcoming digital front door for the school."],
+    impact: [
+      { value: "School", label: "Admissions & info" },
+      { value: "Live", label: "Parent-friendly" },
+    ],
+    media: [],
+  },
+  {
+    slug: "jobe-wisdom-academy",
+    title: "Jobe Wisdom Academy",
+    summary: "A school website presenting the academy's programmes, values and admissions.",
+    type: "Client project",
+    year: "2023",
+    role: "Design & development",
+    stack: ["WordPress", "Elementor", "PHP"],
+    tags: ["School", "Websites"],
+    cover: { from: "from-navy-700", to: "to-navy-900", initials: "JW" },
+    links: {},
+    problem: "An academy needed a professional website to inform families and support enrolment.",
+    approach: "I designed and built a clear, welcoming site around the academy's programmes and values.",
+    architecture: ["WordPress + Elementor.", "Programmes, values and admissions sections."],
+    highlights: ["A credible, easy-to-update school site."],
+    impact: [
+      { value: "School", label: "Programmes & enrolment" },
+      { value: "Live", label: "Family-focused" },
+    ],
+    media: [],
+  },
+  {
+    slug: "nahusom-kenya",
+    title: "Nahusom Kenya",
+    summary: "A website for an NGO — sharing its mission, work and ways to get involved.",
+    type: "Client project",
+    year: "2023",
+    role: "Design & development",
+    stack: ["WordPress", "Elementor", "PHP"],
+    tags: ["NGO", "Websites"],
+    cover: { from: "from-gold-500", to: "to-navy-800", initials: "NK" },
+    links: {},
+    problem: "An NGO needed an online home to communicate its work and reach supporters.",
+    approach: "I built a clear, mission-first website with the content and structure the organisation needed.",
+    architecture: ["WordPress + Elementor.", "Mission, work and contact sections."],
+    highlights: ["A clean, purposeful NGO presence."],
+    impact: [
+      { value: "NGO", label: "Mission & outreach" },
+      { value: "Live", label: "Supporter reach" },
+    ],
+    media: [],
+  },
+  {
+    slug: "primex-brands-kenya",
+    title: "Primex Brands Kenya",
+    summary: "A business website for a Kenyan brand — presenting products and services online.",
+    type: "Client project",
+    year: "2023",
+    role: "Design & development",
+    stack: ["WordPress", "Elementor", "PHP"],
+    tags: ["Websites"],
+    cover: { from: "from-navy-600", to: "to-navy-900", initials: "PB" },
+    links: {},
+    problem: "A brand needed a professional website to present its products and reach customers.",
+    approach: "I designed and built a modern business site around the brand's offering.",
+    architecture: ["WordPress + Elementor.", "Products, services and contact sections."],
+    highlights: ["A polished, conversion-minded business site."],
+    impact: [
+      { value: "Brand", label: "Products & services" },
+      { value: "Live", label: "Customer reach" },
+    ],
+    media: [],
+  },
+  {
+    slug: "esambo-media",
+    title: "Esambo Media",
+    summary: "A media-house website with streaming — content, shows and live media online.",
+    type: "Client project",
+    year: "2023",
+    role: "Design & development",
+    stack: ["WordPress", "Streaming", "PHP"],
+    tags: ["Media", "Websites"],
+    cover: { from: "from-navy-700", to: "to-gold-700", initials: "EM" },
+    links: {},
+    problem: "A media house needed a home for its content and a way to stream to its audience.",
+    approach: "I built a media website with streaming so the audience can watch and engage online.",
+    architecture: ["WordPress with streaming integration.", "Shows, content and live sections."],
+    highlights: ["Brought a media brand online with live streaming."],
+    impact: [
+      { value: "Media", label: "Content + streaming" },
+      { value: "Live", label: "Audience reach" },
+    ],
+    media: [],
+  },
+  {
+    slug: "portfolio-website",
+    title: "Portfolio Website",
+    summary: "A personal portfolio site — showcasing work, profile and a way to get in touch.",
+    type: "Personal",
+    year: "2024",
+    role: "Design & development",
+    stack: ["WordPress", "Elementor", "PHP"],
+    tags: ["Portfolio", "Websites"],
+    cover: { from: "from-gold-500", to: "to-gold-700", initials: "PF" },
+    links: {},
+    problem: "I needed a professional home to showcase my work and expertise.",
+    approach: "I built a portfolio presenting my services, projects and profile — the foundation this site now upgrades.",
+    architecture: ["WordPress + Elementor portfolio.", "Works, resume and contact sections."],
+    highlights: ["A personal brand hub — now rebuilt with a modern stack."],
+    impact: [
+      { value: "Personal", label: "Brand & showcase" },
+      { value: "Live", label: "Online presence" },
     ],
     media: [],
   },
@@ -313,7 +510,6 @@ export function getProject(slug: string) {
   return projects.find((p) => p.slug === slug);
 }
 
-/** All unique tags, for the /work directory filter. */
 export const projectTags = [
   "All",
   ...Array.from(new Set(projects.flatMap((p) => p.tags))),
@@ -321,18 +517,14 @@ export const projectTags = [
 
 /* ----------------------------- Testimonials ----------------------------- */
 
-export type Testimonial = {
-  quote: string;
-  author: string;
-  title: string;
-};
+export type Testimonial = { quote: string; author: string; title: string };
 
 export const testimonials: Testimonial[] = [
   {
     quote:
-      "Peter took our firm from no website to a polished, professional presence in weeks. It's fast, it looks premium, and we can update it ourselves. Clients notice.",
-    author: "Managing Partner",
-    title: "Misiati & Associates, CPA(K)", // SAMPLE — replace with a named quote when you have permission
+      "Choose SMP for dedication to delivering innovative, tailored solutions that meet your unique needs. With expertise in software development, tech consulting and youth empowerment, he brings a proven track record of impactful results.",
+    author: "Why clients choose SMP",
+    title: "Software development · Tech consulting · Community impact",
   },
 ];
 
@@ -348,8 +540,7 @@ export const nav = [
 /* ------------------------------- Site meta ------------------------------ */
 
 export const site = {
-  /** Change to your real domain before launch. */
   domain: "smp-developers.com",
-  title: `${profile.name} — ${profile.role}`,
+  title: `${profile.name} (SMP) — ${profile.role}`,
   description: profile.valueProp,
 } as const;

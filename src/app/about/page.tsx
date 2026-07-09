@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { profile, about, skills, experience } from "@/lib/portfolio";
+import { profile, about, skills, experience, education } from "@/lib/portfolio";
 import { PageHero } from "@/components/page-hero";
 import { Button, Section, SectionHeading } from "@/components/ui";
 import { LogoMark } from "@/components/logo";
@@ -124,6 +124,21 @@ export default function AboutPage() {
                   ))}
                 </ul>
               </div>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      {/* Education */}
+      <Section>
+        <SectionHeading eyebrow="Education" title="Study & certification" />
+        <div className="mt-12 grid gap-5 sm:grid-cols-3">
+          {education.map((e) => (
+            <div key={e.institution} className="rounded-2xl border border-navy-100 bg-white p-6">
+              <div className="font-mono text-xs text-gold-600">{e.period}</div>
+              <h3 className="mt-2 font-semibold text-navy-900">{e.qualification}</h3>
+              <div className="mt-1 text-sm text-navy-600">{e.institution}</div>
+              {e.detail && <p className="mt-3 text-sm leading-relaxed text-navy-500">{e.detail}</p>}
             </div>
           ))}
         </div>

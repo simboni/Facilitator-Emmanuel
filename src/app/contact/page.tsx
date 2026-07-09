@@ -3,7 +3,14 @@ import { profile } from "@/lib/portfolio";
 import { PageHero } from "@/components/page-hero";
 import { Section } from "@/components/ui";
 import { ContactForm } from "@/components/contact-form";
-import { MailIcon, PinIcon, GitHubIcon, LinkedInIcon } from "@/components/icons";
+import {
+  MailIcon,
+  PinIcon,
+  PhoneIcon,
+  WhatsAppIcon,
+  GitHubIcon,
+  LinkedInIcon,
+} from "@/components/icons";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -33,6 +40,19 @@ export default function ContactPage() {
                 label="Email"
                 value={profile.email}
                 href={`mailto:${profile.email}`}
+              />
+              <ContactRow
+                icon={<PhoneIcon className="h-5 w-5" />}
+                label="Phone"
+                value={profile.phone}
+                href={`tel:${profile.phone.replace(/\s/g, "")}`}
+              />
+              <ContactRow
+                icon={<WhatsAppIcon className="h-5 w-5" />}
+                label="WhatsApp"
+                value="Chat with me"
+                href={`https://wa.me/${profile.whatsapp}`}
+                external
               />
               {profile.socials.github && (
                 <ContactRow

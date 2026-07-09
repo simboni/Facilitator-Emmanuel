@@ -5,6 +5,7 @@ import {
   experience,
   featuredProjects,
   testimonials,
+  clients,
 } from "@/lib/portfolio";
 import { Button, Section, SectionHeading, Eyebrow } from "@/components/ui";
 import { Reveal } from "@/components/reveal";
@@ -102,6 +103,25 @@ export default function HomePage() {
           ))}
         </div>
       </div>
+
+      {/* =========================== CLIENTS =========================== */}
+      <Section className="py-12 sm:py-14">
+        <p className="text-center text-xs font-semibold uppercase tracking-[0.16em] text-navy-400">
+          Trusted by organisations across Kenya &amp; beyond
+        </p>
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-x-10 gap-y-6">
+          {clients.map((c) => (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              key={c.name}
+              src={c.logo}
+              alt={c.name}
+              className="h-10 w-auto opacity-60 grayscale transition hover:opacity-100 hover:grayscale-0 sm:h-12"
+              loading="lazy"
+            />
+          ))}
+        </div>
+      </Section>
 
       {/* ========================= FEATURED WORK ======================= */}
       <Section id="work" className="bg-sand-50">

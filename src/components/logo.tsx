@@ -29,15 +29,15 @@ export function LogoMark({
       <rect x="11" y="11" width="78" height="78" rx="17" fill="none" stroke={accent} strokeWidth="1.2" opacity="0.7" />
       <text
         x="50"
-        y="64"
+        y="61"
         textAnchor="middle"
         fontFamily="var(--font-mono, monospace)"
-        fontSize="40"
+        fontSize="29"
         fontWeight="700"
-        letterSpacing="-2"
+        letterSpacing="-1"
         fill={letter}
       >
-        PM
+        SMP
       </text>
     </svg>
   );
@@ -50,15 +50,15 @@ export function LogoBadge({ className = "" }: { className?: string }) {
       <rect x="2" y="2" width="96" height="96" rx="24" fill="var(--color-navy-900)" />
       <text
         x="50"
-        y="64"
+        y="61"
         textAnchor="middle"
         fontFamily="var(--font-mono, monospace)"
-        fontSize="42"
+        fontSize="30"
         fontWeight="700"
-        letterSpacing="-2"
+        letterSpacing="-1"
         fill="var(--color-gold-400)"
       >
-        PM
+        SMP
       </text>
     </svg>
   );
