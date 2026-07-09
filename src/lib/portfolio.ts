@@ -349,7 +349,7 @@ export const nav = [
 
 export const site = {
   /** Change to your real domain before launch. */
-  domain: "petermisiati.dev",
+  domain: "smp-developers.com",
   title: `${profile.name} — ${profile.role}`,
   description: profile.valueProp,
 } as const;
