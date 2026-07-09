@@ -68,11 +68,15 @@ export default async function CaseStudyPage({
             {project.summary}
           </p>
 
-          <div className="mt-8 flex flex-wrap gap-3">
-            {project.links.live && (
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            {project.links.live ? (
               <Button href={project.links.live} variant="gold" target="_blank" rel="noopener noreferrer">
-                <ExternalLinkIcon className="h-4 w-4" /> visit live site
+                <ExternalLinkIcon className="h-4 w-4" /> access this platform
               </Button>
+            ) : (
+              <span className="inline-flex items-center gap-2 rounded-lg border border-ink-600 bg-ink-800 px-4 py-2.5 font-mono text-sm text-mist-400">
+                <span className="h-2 w-2 rounded-full bg-amber-400" /> platform coming soon
+              </span>
             )}
             {project.links.code && (
               <Button href={project.links.code} variant="outline" target="_blank" rel="noopener noreferrer">
