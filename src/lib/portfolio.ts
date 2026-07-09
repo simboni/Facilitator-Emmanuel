@@ -450,7 +450,7 @@ export const projects: Project[] = [
       { value: "Directory", label: "Full case studies" },
       { value: "<1s", label: "Static & fast" },
     ],
-    media: [],
+    media: [{ src: "/mockups/smp-portfolio.jpg", alt: "SMP Portfolio — home" }],
   },
 ];
 
