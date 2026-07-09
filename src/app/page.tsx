@@ -28,7 +28,7 @@ export default function HomePage() {
         <div className="container-page relative py-16 sm:py-20 lg:py-28">
           <div className="grid items-center gap-12 lg:grid-cols-12">
             {/* Intro */}
-            <div className="hero-stagger lg:col-span-7">
+            <div className="hero-stagger min-w-0 lg:col-span-7">
               <span className="inline-flex items-center gap-2 font-mono text-sm text-green-400">
                 <span className="relative flex h-2 w-2">
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
@@ -85,7 +85,7 @@ export default function HomePage() {
             </div>
 
             {/* Code window */}
-            <div className="hero-fade-in lg:col-span-5">
+            <div className="hero-fade-in min-w-0 lg:col-span-5">
               <CodeWindow />
             </div>
           </div>
@@ -259,7 +259,7 @@ export default function HomePage() {
 
 function CodeWindow() {
   return (
-    <div className="win overflow-hidden">
+    <div className="win min-w-0 max-w-full overflow-hidden">
       <div className="flex items-center gap-2 border-b border-ink-600 px-4 py-2.5">
         <span className="h-3 w-3 rounded-full bg-[#ff5f56]" />
         <span className="h-3 w-3 rounded-full bg-[#ffbd2e]" />
