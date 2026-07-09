@@ -30,9 +30,8 @@ export const profile = {
   email: "info@smp-developers.com",
   phone: "+254 706 289 514",
   whatsapp: "254706289514",
-  /** The live résumé (opens the hosted Notion CV). */
-  resumeUrl:
-    "https://simboni.notion.site/Peter-Misiati-Simboni-RESUME-bdb4a222938a4b1dace331074dc92336?pvs=4",
+  /** Résumé link — add a URL here later to show the download button. */
+  resumeUrl: "",
   socials: {
     github: "", // add your GitHub URL to show the icon
     linkedin: "", // add your LinkedIn URL to show the icon
@@ -240,69 +239,142 @@ export type Project = {
 };
 
 export const projects: Project[] = [
-  // NOTE: Naveedex, TallyPay and Fit Generations summaries are best-effort —
-  // send me a one-liner + live/repo URLs (or let me add the repos) to refine.
   {
     slug: "naveedex",
     title: "Naveedex",
     summary:
-      "A modern web platform built end-to-end with Next.js, React and TypeScript.",
-    type: "Client project",
-    year: "2025",
+      "A trading-journal SaaS where traders log trades, build strategies, track performance and export polished reports.",
+    type: "Product",
+    year: "2026",
     role: "Full-stack development",
-    stack: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
-    tags: ["Web App", "Client"],
+    stack: ["Next.js", "TypeScript", "React", "Supabase", "PostgreSQL", "Tailwind CSS"],
+    tags: ["Web App", "SaaS", "Fintech"],
     featured: true,
     cover: { from: "from-ink-700", to: "to-ink-950", initials: "NX" },
     links: {},
     problem:
-      "The client needed a fast, modern web platform built on today's stack — not a dated template — that could grow with them.",
+      "Serious traders need more than a spreadsheet — a place to log every trade, review setups against a defined strategy, and see what's actually working. Most tools are clunky, generic or expensive.",
     approach:
-      "I designed and built the product end-to-end with a component-driven Next.js architecture, a typed data layer and a clean, responsive UI.",
+      "I built Naveedex as a full trading-journal SaaS: fast trade logging, a strategy and setup library, performance analytics, a built-in knowledge base and an assistant — with subscriptions and shareable trade cards.",
     architecture: [
-      "Next.js (App Router) + React with TypeScript throughout.",
-      "Tailwind CSS design system for a consistent, responsive UI.",
-      "Server-rendered pages with fast loads and strong SEO.",
+      "Next.js App Router + React + TypeScript on Supabase (auth + PostgreSQL).",
+      "Strategy & setup library, trade logging and performance analytics.",
+      "PDF & Excel report export (jsPDF, xlsx) and image trade-cards (html-to-image).",
+      "Subscriptions via Kopo Kopo payments, an admin panel and scheduled cron jobs.",
+      "Deployed on Vercel.",
     ],
     highlights: [
-      "Built on a modern, maintainable stack.",
-      "Fast, responsive and accessible by default.",
+      "A complete SaaS — auth, payments, admin and a knowledge base.",
+      "Shareable trade cards and one-click PDF / Excel exports.",
+      "Strategy-driven journaling, not just a trade log.",
     ],
     impact: [
-      { value: "Next.js", label: "Modern stack" },
-      { value: "Fast", label: "Optimised performance" },
+      { value: "SaaS", label: "Auth · payments · admin" },
+      { value: "Export", label: "PDF · Excel · cards" },
+      { value: "Supabase", label: "Realtime data" },
     ],
     media: [],
   },
   {
+    // Details from you (no public repo yet) — add a live URL when ready.
     slug: "tallypay",
     title: "TallyPay",
     summary:
-      "A fintech app for tracking, tallying and managing payments in one clean dashboard.",
+      "A multivendor billing platform — invoicing, payment collection and payouts across many vendors from one dashboard.",
     type: "Product",
     year: "2025",
     role: "Full-stack development",
-    stack: ["Next.js", "React", "TypeScript", "PostgreSQL", "Tailwind CSS"],
-    tags: ["Fintech", "Web App"],
+    stack: ["Next.js", "React", "TypeScript", "PostgreSQL", "Payments", "Tailwind CSS"],
+    tags: ["Fintech", "SaaS", "Web App"],
     featured: true,
     cover: { from: "from-green-600", to: "to-ink-900", initials: "TP" },
     links: {},
     problem:
-      "Individuals and small businesses need a simple way to record and reconcile payments without wrestling with spreadsheets or heavy accounting tools.",
+      "Businesses managing many vendors need one place to bill, collect payments and settle payouts — instead of juggling spreadsheets and a separate tool for every vendor.",
     approach:
-      "I built a focused dashboard that makes recording, tallying and reviewing payments effortless, with a clean UX and a reliable data model.",
+      "I built a multivendor billing platform: each vendor gets invoicing and billing, customers pay in one clean flow, and the platform tracks balances and payouts across every vendor from a single dashboard.",
     architecture: [
-      "Next.js + React front end with a typed API layer.",
-      "PostgreSQL for reliable, relational transaction data.",
-      "Clear dashboards, filtering and summaries.",
+      "Multi-tenant data model — vendors, customers, invoices and payouts.",
+      "Payment collection and reconciliation with per-vendor balances.",
+      "Dashboards for billing, settlements and reporting.",
     ],
     highlights: [
-      "Turns payment tracking into a few taps.",
-      "Clean, trustworthy fintech UX.",
+      "One dashboard across many vendors — billing, payments and payouts.",
+      "Multi-tenant, reconciliation-ready architecture.",
     ],
     impact: [
-      { value: "Fintech", label: "Payments made simple" },
-      { value: "Real-time", label: "Live tallies" },
+      { value: "Multivendor", label: "Billing & payouts" },
+      { value: "Fintech", label: "Payments platform" },
+    ],
+    media: [],
+  },
+  {
+    slug: "64-theatre",
+    title: "64 Theatre",
+    summary:
+      "A production-grade ticketing platform for a Kenyan theatre — M-Pesa checkout, signed-QR tickets and an offline gate scanner.",
+    type: "Client project",
+    year: "2026",
+    role: "Full-stack architecture & development",
+    stack: ["Laravel 12", "PHP 8.4", "PostgreSQL", "Redis", "Livewire", "M-Pesa"],
+    tags: ["Web App", "Fintech", "Client"],
+    featured: true,
+    cover: { from: "from-green-700", to: "to-ink-950", initials: "64" },
+    links: {},
+    problem:
+      "64 Theatre Limited (Eldoret) needed to sell tickets online, take mobile-money payments, and check guests in reliably at the gate — even when the venue's internet drops.",
+    approach:
+      "I designed and built a modular Laravel platform: public event pages with M-Pesa STK checkout, signed-QR ticket delivery, a Filament admin and an offline-capable gate scanner — architected “in-house first, marketplace-ready”.",
+    architecture: [
+      "Laravel 12 / PHP 8.4 modular monolith on PostgreSQL 16 + Redis 7.",
+      "M-Pesa Daraja STK Push checkout; Africa's Talking SMS; email delivery.",
+      "HMAC-signed QR tickets, verifiable offline; double-entry ledger for every sale.",
+      "Filament admin + Livewire/Tailwind PWA for buyers and the gate scanner.",
+    ],
+    highlights: [
+      "Offline-first gate scanner — tickets verify without internet.",
+      "Double-entry money ledger; every ticket redeems exactly once (DB-enforced).",
+      "End-to-end M-Pesa mobile-money checkout.",
+    ],
+    impact: [
+      { value: "M-Pesa", label: "Mobile-money checkout" },
+      { value: "Offline", label: "Gate scanner" },
+      { value: "Ledger", label: "Double-entry money" },
+    ],
+    media: [],
+  },
+  {
+    slug: "fit-generations",
+    title: "Fit Generations",
+    summary:
+      "A fast, modern platform for a Kenyan gym — a dark athletic site with class timetables, pricing, a live BMI calculator and a member-portal.",
+    type: "Client project",
+    year: "2026",
+    role: "Design & full-stack development",
+    stack: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS v4"],
+    tags: ["Web", "Fitness", "Client"],
+    featured: true,
+    cover: { from: "from-green-500", to: "to-ink-900", initials: "FG" },
+    links: {},
+    problem:
+      "Fit Generations Gym (Bungoma) was stuck on a slow, dated WordPress site. They needed a fast, modern platform to show their classes, coaches and pricing — one that could grow into a member portal.",
+    approach:
+      "I rebuilt it from scratch with a dark athletic theme (ink black · lime green · ember red): 16 programs, an interactive weekly timetable, coaches, pricing, a live BMI calculator and WhatsApp quick-chat — all editable from one content file.",
+    architecture: [
+      "Next.js 16 App Router, React 19, TypeScript, Tailwind v4.",
+      "All content in one typed file — edits update everywhere.",
+      "Interactive timetable tabs, animated counters, BMI calculator, newsletter capture.",
+      "Member-portal teaser wired for the Phase 2 admin dashboard.",
+    ],
+    highlights: [
+      "Replaced a slow WordPress site with a fast, modern build.",
+      "16 programs plus a live weekly timetable and BMI calculator.",
+      "Editable-by-the-owner content model.",
+    ],
+    impact: [
+      { value: "WordPress→", label: "Modern rebuild" },
+      { value: "16", label: "Programs & timetable" },
+      { value: "Live", label: "BMI · WhatsApp" },
     ],
     media: [],
   },
@@ -316,7 +388,7 @@ export const projects: Project[] = [
     role: "Design & full-stack development",
     stack: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS v4", "Cloudflare Pages"],
     tags: ["Web", "Client"],
-    featured: true,
+    featured: false,
     cover: { from: "from-ink-600", to: "to-ink-900", initials: "M&A" },
     links: { live: "https://misiatiassociates.co.ke" },
     problem:
@@ -337,70 +409,6 @@ export const projects: Project[] = [
       { value: "0→1", label: "Web presence launched" },
       { value: "<1s", label: "First load on mobile" },
       { value: "100%", label: "Static — no hosting cost" },
-    ],
-    media: [],
-  },
-  {
-    slug: "fit-generations",
-    title: "Fit Generations",
-    summary:
-      "A bold, modern website and membership experience for a fitness brand and gym.",
-    type: "Client project",
-    year: "2025",
-    role: "Design & full-stack development",
-    stack: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
-    tags: ["Web", "Fitness"],
-    featured: true,
-    cover: { from: "from-green-500", to: "to-ink-900", initials: "FG" },
-    links: {},
-    problem:
-      "A fitness brand needed an energetic online home to showcase classes and memberships and convert visitors into members.",
-    approach:
-      "I designed and built a bold, high-energy site with clear membership and class information and a smooth, mobile-first experience.",
-    architecture: [
-      "Next.js + React with TypeScript.",
-      "Tailwind CSS for a punchy, responsive design system.",
-      "Fast, SEO-friendly pages.",
-    ],
-    highlights: [
-      "A brand-forward, high-energy design.",
-      "Mobile-first and conversion-focused.",
-    ],
-    impact: [
-      { value: "Brand", label: "Memberships & classes" },
-      { value: "Fast", label: "Mobile-first" },
-    ],
-    media: [],
-  },
-  {
-    slug: "64-theatre",
-    title: "64 Theatre",
-    summary:
-      "A platform for a theatre — productions, events and online ticketing in one place.",
-    type: "Client project",
-    year: "2025",
-    role: "Full-stack development",
-    stack: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
-    tags: ["Web App", "Events"],
-    featured: true,
-    cover: { from: "from-green-700", to: "to-ink-950", initials: "64" },
-    links: {},
-    problem:
-      "A theatre needed a modern platform to promote its productions and let audiences discover events and book online.",
-    approach:
-      "I built a platform that showcases shows and events with a smooth browsing and booking experience, on a fast, modern stack.",
-    architecture: [
-      "Next.js + React with TypeScript.",
-      "Production and event listings with a clean booking flow.",
-      "Responsive, fast and SEO-friendly pages.",
-    ],
-    highlights: [
-      "A polished home for a theatre's productions.",
-      "Smooth discovery and booking experience.",
-    ],
-    impact: [
-      { value: "Events", label: "Shows & ticketing" },
-      { value: "Web app", label: "Modern platform" },
     ],
     media: [],
   },
