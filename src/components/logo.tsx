@@ -67,12 +67,16 @@ export function LogoBadge({ className = "" }: { className?: string }) {
 export function Logo({
   variant = "dark",
   className = "",
+  tagline,
 }: {
   variant?: "dark" | "light";
   className?: string;
+  /** Override the second line. Pass null to hide it. Defaults to profile.logoTagline. */
+  tagline?: string | null;
 }) {
   const primary = variant === "light" ? "text-white" : "text-navy-900";
   const secondary = variant === "light" ? "text-navy-200" : "text-navy-500";
+  const line = tagline === undefined ? profile.logoTagline : tagline;
   return (
     <Link
       href="/"
@@ -83,28 +87,19 @@ export function Logo({
         tone={variant}
         className="h-10 w-10 shrink-0 transition-transform duration-300 group-hover:scale-105"
       />
-      {/* The name (unbreakable) sets the width via `min-content`; the role
-          line wraps and justifies to fill that exact same width, so the two
-          lines stay balanced. */}
-      <span
-        className="flex flex-col leading-none"
-        style={{ width: "min-content" }}
-      >
+      <span className="flex flex-col leading-none">
         <span
           className={`whitespace-nowrap text-[1.15rem] font-bold tracking-tight ${primary}`}
         >
           {profile.name}
         </span>
-        <span
-          className={`mt-1.5 block w-full text-[0.58rem] font-semibold uppercase ${secondary}`}
-          style={{
-            textAlign: "justify",
-            textAlignLast: "justify",
-            letterSpacing: "0.04em",
-          }}
-        >
-          {profile.role}
-        </span>
+        {line && (
+          <span
+            className={`mt-1.5 whitespace-nowrap text-[0.6rem] font-semibold uppercase tracking-[0.2em] ${secondary}`}
+          >
+            {line}
+          </span>
+        )}
       </span>
     </Link>
   );

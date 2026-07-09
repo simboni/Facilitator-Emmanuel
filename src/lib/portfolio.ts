@@ -17,6 +17,8 @@ export const profile = {
   firstName: "Peter",
   /** Shown under the name in the hero. */
   role: "Software Engineer · Web Developer · Tech Consultant",
+  /** Short second line used in the header/footer logo lockup. */
+  logoTagline: "SMP Developers",
   /** The 5-second value proposition. */
   valueProp:
     "I'm a software engineer, social entrepreneur and tech consultant building software that drives real impact — microfinance systems, ERP platforms, e-learning tools and modern websites — while empowering youth through technology and financial education.",
