@@ -273,7 +273,7 @@ export const projects: Project[] = [
       { value: "Export", label: "PDF · Excel · cards" },
       { value: "Supabase", label: "Realtime data" },
     ],
-    media: [],
+    media: [{ src: "/mockups/naveedex.jpg", alt: "Naveedex trading journal — sign in" }],
   },
   {
     slug: "tallypay",
@@ -309,7 +309,7 @@ export const projects: Project[] = [
       { value: "M-Pesa", label: "STK collection" },
       { value: "Quote→Receipt", label: "Full money cycle" },
     ],
-    media: [],
+    media: [{ src: "/mockups/tallypay.jpg", alt: "TallyPay — get paid without the paperwork" }],
   },
   {
     slug: "64-theatre",
@@ -379,7 +379,11 @@ export const projects: Project[] = [
       { value: "16", label: "Programs & timetable" },
       { value: "Live", label: "BMI · WhatsApp" },
     ],
-    media: [{ src: "/mockups/fit-generations.jpg", alt: "Inside Fit Generations Gym" }],
+    media: [
+      { src: "/mockups/fit-generations.jpg", alt: "Fit Generations Gym — home page" },
+      { src: "/mockups/fit-generations-classes.jpg", alt: "Fit Generations — classes & timetable" },
+      { src: "/mockups/fit-generations-gym.jpg", alt: "Inside Fit Generations Gym" },
+    ],
   },
   {
     slug: "misiati-associates",
