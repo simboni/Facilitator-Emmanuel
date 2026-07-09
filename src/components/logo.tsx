@@ -83,12 +83,25 @@ export function Logo({
         tone={variant}
         className="h-10 w-10 shrink-0 transition-transform duration-300 group-hover:scale-105"
       />
-      <span className="flex flex-col leading-none">
-        <span className={`text-[1.15rem] font-bold tracking-tight ${primary}`}>
+      {/* The name (unbreakable) sets the width via `min-content`; the role
+          line wraps and justifies to fill that exact same width, so the two
+          lines stay balanced. */}
+      <span
+        className="flex flex-col leading-none"
+        style={{ width: "min-content" }}
+      >
+        <span
+          className={`whitespace-nowrap text-[1.15rem] font-bold tracking-tight ${primary}`}
+        >
           {profile.name}
         </span>
         <span
-          className={`mt-1 text-[0.62rem] font-medium uppercase tracking-[0.18em] ${secondary}`}
+          className={`mt-1.5 block w-full text-[0.58rem] font-semibold uppercase ${secondary}`}
+          style={{
+            textAlign: "justify",
+            textAlignLast: "justify",
+            letterSpacing: "0.04em",
+          }}
         >
           {profile.role}
         </span>

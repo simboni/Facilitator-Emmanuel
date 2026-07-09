@@ -149,7 +149,7 @@ export default function HomePage() {
         <SectionHeading
           eyebrow="Toolkit"
           title="What I build with"
-          intro="A modern, TypeScript-first stack across the whole application — with the fundamentals to back it up."
+          intro="From modern TypeScript, React and Next.js to WordPress, mobile and fintech systems — the tools I use to design, build and ship."
         />
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {skills.map((group, i) => (

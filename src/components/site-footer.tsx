@@ -94,7 +94,7 @@ export function SiteFooter() {
           <p>
             © {year} {profile.name}. All rights reserved.
           </p>
-          <p>Designed &amp; built by {profile.name} · Next.js &amp; TypeScript</p>
+          <p>Designed &amp; built by SMP Developers</p>
         </div>
       </div>
     </footer>

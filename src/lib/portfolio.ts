@@ -85,34 +85,34 @@ export type SkillGroup = {
 
 export const skills: SkillGroup[] = [
   {
-    title: "Web & CMS",
+    title: "Frontend",
     icon: "layout",
-    items: ["WordPress", "Elementor", "DIVI", "Gutenberg", "HTML", "CSS"],
+    items: ["TypeScript", "React", "Next.js", "Tailwind CSS", "JavaScript", "HTML / CSS"],
   },
   {
-    title: "Languages & Frameworks",
-    icon: "code",
-    items: ["PHP", "Python", "JavaScript", "Laravel", "Django", "MySQL"],
-  },
-  {
-    title: "Mobile & Systems",
+    title: "Backend",
     icon: "server",
-    items: ["Android", "iOS", "Mobile Apps", "ERP Systems", "Microfinance Systems"],
+    items: ["Node.js", "PHP", "Laravel", "Python", "Django", "REST APIs"],
   },
   {
-    title: "Finance & Fintech",
+    title: "WordPress & CMS",
+    icon: "code",
+    items: ["WordPress", "Elementor", "DIVI", "Gutenberg", "Theme Development"],
+  },
+  {
+    title: "Databases & Systems",
+    icon: "database",
+    items: ["MySQL", "PostgreSQL", "ERP Systems", "Microfinance Systems"],
+  },
+  {
+    title: "Mobile & Fintech",
     icon: "chart",
-    items: ["SACCO Systems", "Payments", "Savings & Investments", "Financial Literacy"],
+    items: ["Android", "iOS", "SACCO Systems", "Payments", "Savings & Investments"],
   },
   {
-    title: "Design",
+    title: "Design & Consulting",
     icon: "sparkle",
-    items: ["Web Design", "Graphic Design", "Logo Design", "Canva", "Photoshop"],
-  },
-  {
-    title: "Consulting & Practice",
-    icon: "tools",
-    items: ["Tech Strategy", "IT Consulting", "Team Leadership", "Git", "Notion"],
+    items: ["Web Design", "Graphic Design", "Canva", "Photoshop", "Tech Strategy", "Git", "Notion"],
   },
 ];
 
