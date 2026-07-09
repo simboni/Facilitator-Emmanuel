@@ -251,7 +251,7 @@ export const projects: Project[] = [
     tags: ["Web App", "SaaS", "Fintech"],
     featured: true,
     cover: { from: "from-ink-700", to: "to-ink-950", initials: "NX" },
-    links: {},
+    links: { live: "https://naveedex.com" },
     problem:
       "Serious traders need more than a spreadsheet — a place to log every trade, review setups against a defined strategy, and see what's actually working. Most tools are clunky, generic or expensive.",
     approach:
@@ -287,7 +287,7 @@ export const projects: Project[] = [
     tags: ["Fintech", "SaaS", "Web App"],
     featured: true,
     cover: { from: "from-green-600", to: "to-ink-900", initials: "TP" },
-    links: {},
+    links: { live: "https://tallypay.co.ke" },
     problem:
       "Freelancers and small businesses in Kenya juggle quotes, invoices, VAT, deposits and receipts across spreadsheets and WhatsApp — with no clean way to get paid or see what's outstanding.",
     approach:
@@ -427,7 +427,7 @@ export const projects: Project[] = [
     tags: ["Web", "Portfolio"],
     featured: false,
     cover: { from: "from-ink-600", to: "to-ink-950", initials: "SMP" },
-    links: { live: "https://smp-developers.com" },
+    links: { live: "https://peter-misiati.vercel.app" },
     problem:
       "I needed a portfolio that reads like a senior engineer's — a real directory of work with proper case studies, not a template.",
     approach:
