@@ -273,7 +273,7 @@ export const projects: Project[] = [
       { value: "Export", label: "PDF · Excel · cards" },
       { value: "Supabase", label: "Realtime data" },
     ],
-    media: [{ src: "/mockups/naveedex.jpg", alt: "Naveedex trading journal — sign in" }],
+    media: [{ src: "/mockups/naveedex.webp", alt: "Naveedex — trading journal for serious traders" }],
   },
   {
     slug: "tallypay",

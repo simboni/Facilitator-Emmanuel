@@ -27,7 +27,7 @@ export function ProjectCard({ project }: { project: Project }) {
               <img
                 src={project.media[0].src}
                 alt={project.media[0].alt}
-                className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                 loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-ink-950/80 via-ink-950/10 to-transparent" />
