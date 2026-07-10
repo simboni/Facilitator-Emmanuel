@@ -431,7 +431,7 @@ export const projects: Project[] = [
     tags: ["Web", "Portfolio"],
     featured: false,
     cover: { from: "from-ink-600", to: "to-ink-950", initials: "SMP" },
-    links: { live: "https://peter-misiati.vercel.app" },
+    links: { live: "https://smp-developers.com" },
     problem:
       "I needed a portfolio that reads like a senior engineer's — a real directory of work with proper case studies, not a template.",
     approach:
