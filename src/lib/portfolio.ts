@@ -358,7 +358,7 @@ export const projects: Project[] = [
     tags: ["Web", "Fitness", "Client"],
     featured: true,
     cover: { from: "from-green-500", to: "to-ink-900", initials: "FG" },
-    links: {},
+    links: { live: "https://fitgenerationsgym.com" },
     problem:
       "Fit Generations Gym (Bungoma) was stuck on a slow, dated WordPress site. They needed a fast, modern platform to show their classes, coaches and pricing — one that could grow into a member portal.",
     approach:
