@@ -17,7 +17,7 @@ export function SiteFooter() {
         <div className="grid gap-12 lg:grid-cols-12">
           {/* Brand */}
           <div className="lg:col-span-5">
-            <Logo />
+            <Logo uid="ftr" />
             <p className="mt-6 max-w-sm text-sm leading-relaxed text-mist-400">
               {profile.valueProp}
             </p>

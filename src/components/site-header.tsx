@@ -34,7 +34,7 @@ export function SiteHeader() {
         }`}
       >
         <div className="container-page flex h-16 items-center justify-between">
-          <Logo />
+          <Logo uid="hdr" />
 
           <nav className="hidden items-center gap-1 font-mono text-sm lg:flex">
             {nav.map((item, i) => {

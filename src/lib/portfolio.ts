@@ -474,6 +474,10 @@ export type Testimonial = {
   author: string;
   title: string;
   rating?: number;
+  /** Optional link to the original review (Google, LinkedIn, Upwork, …). */
+  link?: string;
+  /** Label for the link source, e.g. "Google", "LinkedIn". */
+  source?: string;
 };
 
 export const testimonials: Testimonial[] = [
@@ -483,6 +487,8 @@ export const testimonials: Testimonial[] = [
     author: "Why clients choose SMP",
     title: "Software development · Tech consulting · Community impact",
     rating: 5,
+    // link: "https://…",  // add a Google/LinkedIn review URL to make the card clickable
+    // source: "Google",
   },
 ];
 

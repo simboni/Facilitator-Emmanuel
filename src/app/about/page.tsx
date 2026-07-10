@@ -37,7 +37,7 @@ export default function AboutPage() {
 
           <div className="lg:col-span-5">
             <div className="win p-8">
-              <LogoMark className="h-16 w-16" />
+              <LogoMark uid="about" className="h-16 w-16" />
               <div className="mt-6">
                 <div className="font-display text-lg font-semibold text-mist-100">{profile.name}</div>
                 <div className="font-mono text-sm text-green-400">{profile.role}</div>
