@@ -469,7 +469,12 @@ export const projectTags = [
 
 /* ----------------------------- Testimonials ----------------------------- */
 
-export type Testimonial = { quote: string; author: string; title: string };
+export type Testimonial = {
+  quote: string;
+  author: string;
+  title: string;
+  rating?: number;
+};
 
 export const testimonials: Testimonial[] = [
   {
@@ -477,6 +482,7 @@ export const testimonials: Testimonial[] = [
       "Choose SMP for dedication to delivering innovative, tailored solutions that meet your unique needs. With expertise in software development, tech consulting and youth empowerment, he brings a proven track record of impactful results.",
     author: "Why clients choose SMP",
     title: "Software development · Tech consulting · Community impact",
+    rating: 5,
   },
 ];
 

@@ -10,6 +10,7 @@ import { Button, Section, SectionHeading, Eyebrow } from "@/components/ui";
 import { Reveal } from "@/components/reveal";
 import { CountUp } from "@/components/count-up";
 import { ProjectCard, Chip } from "@/components/project-card";
+import { ReviewCard } from "@/components/review-card";
 import {
   ServiceIcon,
   GitHubIcon,
@@ -215,18 +216,27 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* ========================= TESTIMONIAL ========================= */}
+      {/* ========================= TESTIMONIALS ======================== */}
       {testimonials.length > 0 && (
         <Section>
-          <div className="mx-auto max-w-3xl text-center">
-            <span className="font-mono text-4xl text-green-400">&ldquo;</span>
-            <blockquote className="mt-2 font-display text-2xl font-medium leading-snug text-mist-100 text-balance sm:text-3xl">
-              {testimonials[0].quote}
-            </blockquote>
-            <div className="mt-6 font-mono text-sm">
-              <div className="text-green-400">{testimonials[0].author}</div>
-              <div className="text-mist-500">{testimonials[0].title}</div>
-            </div>
+          <SectionHeading
+            eyebrow="reviews"
+            title="What clients say"
+            align="center"
+            className="mx-auto"
+          />
+          <div
+            className={`mx-auto mt-12 grid gap-6 ${
+              testimonials.length === 1
+                ? "max-w-2xl"
+                : "sm:grid-cols-2 lg:grid-cols-3"
+            }`}
+          >
+            {testimonials.map((review, i) => (
+              <Reveal key={review.author + i} delay={i * 80} className="h-full">
+                <ReviewCard review={review} />
+              </Reveal>
+            ))}
           </div>
         </Section>
       )}
