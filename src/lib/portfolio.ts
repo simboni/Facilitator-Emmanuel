@@ -229,6 +229,8 @@ export type Project = {
   tags: string[];
   featured?: boolean;
   cover: { from: string; to: string; initials: string };
+  /** Brand logo for the "worked with" strip (transparent PNG/SVG on any bg). */
+  logo?: string;
   links: { live?: string; code?: string; extra?: ProjectLink };
   problem: string;
   approach: string;
