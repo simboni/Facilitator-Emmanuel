@@ -200,17 +200,17 @@ export const education: Education[] = [
 
 /* ------------------------------- Clients -------------------------------- */
 
-export type Client = { name: string; logo: string };
+export type Client = { name: string; logo: string; link?: string };
 
 export const clients: Client[] = [
-  { name: "Talitha Kum International", logo: "/clients/talithakum.webp" },
-  { name: "Golden Star", logo: "/clients/golden-star.webp" },
-  { name: "Commissioner Dennis Wamalwa", logo: "/clients/dr-wamalwa.png" },
-  { name: "eLearners Academy", logo: "/clients/elearners.webp" },
-  { name: "KEYSA", logo: "/clients/keysa.png" },
-  { name: "Canossian", logo: "/clients/canossian.webp" },
-  { name: "Zuri", logo: "/clients/zuri.png" },
-  { name: "Admin-Up", logo: "/clients/admin-up.png" },
+  { name: "Talitha Kum International Kenya", logo: "/clients/talithakum.webp" },
+  { name: "Golden Star Academy", logo: "/clients/golden-star.webp" },
+  { name: "Dr. Wamalwa — Intersex Foundation", logo: "/clients/dr-wamalwa.png" },
+  { name: "e-Learners Academy", logo: "/clients/elearners.webp" },
+  { name: "KeYSA — Kenya Youths Support Association", logo: "/clients/keysa.png" },
+  { name: "Canossian Daughters of Charity", logo: "/clients/canossian.webp" },
+  { name: "Zuri Hotels", logo: "/clients/zuri.png" },
+  { name: "Holy Cross Junior School", logo: "/clients/admin-up.png" },
 ];
 
 /* ------------------------------- Projects ------------------------------- */

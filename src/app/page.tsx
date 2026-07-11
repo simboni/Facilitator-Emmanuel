@@ -11,6 +11,7 @@ import { Reveal } from "@/components/reveal";
 import { CountUp } from "@/components/count-up";
 import { ProjectCard, Chip } from "@/components/project-card";
 import { ReviewCard } from "@/components/review-card";
+import { ClientLogos } from "@/components/client-logos";
 import {
   ServiceIcon,
   GitHubIcon,
@@ -106,6 +107,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* ===================== WORKED-WITH LOGO WALL ==================== */}
+      <ClientLogos />
 
       {/* ========================= FEATURED WORK ======================= */}
       <Section id="work">
