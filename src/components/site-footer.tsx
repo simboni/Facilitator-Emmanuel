@@ -11,7 +11,7 @@ export function SiteFooter() {
       <Link href="/contact/" aria-label="Go to the contact page" className="block border-b border-paper/15">
         <Marquee duration={26} className="py-6">
           {Array.from({ length: 4 }).map((_, i) => (
-            <span key={i} className="display mx-6 flex items-center gap-6 text-5xl text-paper sm:text-6xl">
+            <span key={i} className="display mx-6 flex items-center gap-6 text-4xl text-paper sm:text-6xl">
               Let&rsquo;s work <ArrowIcon className="h-9 w-9 text-red-bright" />
               <span className="text-outline-paper">Let&rsquo;s work</span>
               <ArrowIcon className="h-9 w-9 text-red-bright" />

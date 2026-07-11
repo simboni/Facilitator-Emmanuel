@@ -47,7 +47,7 @@ export default function ContactPage() {
         </p>
         <div className="container-page relative py-16 lg:py-20">
           <p className="index-label">CONTACT / BOOKING</p>
-          <h1 className="display mt-4 text-6xl sm:text-8xl">
+          <h1 className="display mt-4 text-[12vw] sm:text-8xl">
             Lock the <span className="text-red">date</span>
           </h1>
           <p className="serif-note mt-6 max-w-xl text-2xl text-ink-soft">

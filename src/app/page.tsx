@@ -244,11 +244,11 @@ function Manifesto() {
 
 function Framework() {
   return (
-    <section className="border-b-2 border-ink bg-ink text-paper">
+    <section className="overflow-x-clip border-b-2 border-ink bg-ink text-paper">
       <div className="container-page grid gap-10 py-20 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
         <div className="lg:sticky lg:top-24 lg:self-start">
           <p className="meta text-red-bright">03 / METHOD</p>
-          <h2 className="display mt-4 text-6xl sm:text-7xl">
+          <h2 className="display mt-4 text-[11vw] sm:text-6xl lg:text-7xl">
             The
             <br />
             signature
@@ -339,7 +339,7 @@ function FeaturedWork() {
                   <p className="meta text-red">
                     {cs.client} · {cs.year}
                   </p>
-                  <h3 className="display mt-3 text-4xl sm:text-5xl">{cs.title}</h3>
+                  <h3 className="display mt-3 break-words text-3xl sm:text-5xl">{cs.title}</h3>
                   <p className={`mt-4 max-w-md text-ink-soft ${i % 2 === 1 ? "lg:ml-auto" : ""}`}>
                     {cs.impact.length > 190 ? `${cs.impact.slice(0, 187).trimEnd()}…` : cs.impact}
                   </p>
@@ -369,7 +369,7 @@ function Testimonials() {
       </p>
       <div className="container-page relative py-20">
         <p className="index-label">05 / RECEIPTS</p>
-        <h2 className="display mt-4 max-w-3xl text-5xl sm:text-7xl">
+        <h2 className="display mt-4 max-w-3xl text-[10.5vw] sm:text-7xl">
           What organisers say<span className="text-red">*</span>
         </h2>
         <p className="meta mt-3 text-ink-faint">*the people who booked the room, not just sat in it</p>
@@ -405,12 +405,12 @@ function Testimonials() {
 
 function PricingTeaser() {
   return (
-    <section className="torn-bottom bg-red pb-24 pt-20 text-paper">
+    <section className="torn-bottom overflow-x-clip bg-red pb-24 pt-20 text-paper">
       <div className="container-page">
         <div className="flex flex-wrap items-end justify-between gap-6">
           <div>
             <p className="meta text-paper/70">06 / BOOKING</p>
-            <h2 className="display mt-4 text-6xl sm:text-8xl">
+            <h2 className="display mt-4 text-[12vw] sm:text-8xl">
               Straight
               <br />
               pricing<span className="text-ink">.</span>

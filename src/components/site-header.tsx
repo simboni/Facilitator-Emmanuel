@@ -69,7 +69,7 @@ export function SiteHeader() {
                 key={item.href}
                 href={item.href}
                 onClick={close}
-                className="display border-b border-paper/25 py-5 text-5xl text-paper"
+                className="display border-b border-paper/25 py-5 text-3xl text-paper sm:text-4xl"
               >
                 <span className="meta mr-3 align-middle text-paper/60">0{i + 1}</span>
                 {item.label}

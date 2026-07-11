@@ -45,7 +45,7 @@ export default function WorkPage() {
         <section
           key={cs.slug}
           id={cs.slug}
-          className={`border-b-2 border-ink scroll-mt-20 ${i % 2 === 1 ? "bg-paper-dim" : ""}`}
+          className={`overflow-x-clip border-b-2 border-ink scroll-mt-20 ${i % 2 === 1 ? "bg-paper-dim" : ""}`}
         >
           <div className="container-page py-16 lg:py-20">
             <Reveal>
@@ -53,7 +53,7 @@ export default function WorkPage() {
                 <p className="meta text-red">
                   0{i + 1} / {cs.category.toUpperCase()} · {cs.year}
                 </p>
-                <h2 className="display mt-3 text-4xl sm:text-6xl">{cs.title}</h2>
+                <h2 className="display mt-3 break-words text-3xl sm:text-6xl">{cs.title}</h2>
                 <p className="serif-note mt-3 text-xl text-ink-soft">for {cs.client}</p>
               </header>
             </Reveal>
@@ -134,7 +134,7 @@ export default function WorkPage() {
       ))}
 
       {/* CTA */}
-      <section className="bg-red py-16 text-paper">
+      <section className="overflow-x-clip bg-red py-16 text-paper">
         <div className="container-page flex flex-wrap items-center justify-between gap-8">
           <div>
             <h2 className="display text-5xl sm:text-6xl">Your event next?</h2>

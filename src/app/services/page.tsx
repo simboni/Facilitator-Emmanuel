@@ -20,7 +20,7 @@ export default function ServicesPage() {
         </p>
         <div className="container-page relative py-16 lg:py-20">
           <p className="index-label">SERVICES / PRICING</p>
-          <h1 className="display mt-4 max-w-4xl text-6xl sm:text-8xl">
+          <h1 className="display mt-4 max-w-4xl text-[12vw] sm:text-8xl">
             Pick your
             <br />
             <span className="text-red">peace</span> of mind

@@ -24,7 +24,7 @@ export default function AboutPage() {
         <div className="container-page relative grid gap-10 py-16 lg:grid-cols-12 lg:py-20">
           <div className="lg:col-span-7">
             <p className="index-label">ABOUT / THE FACILITATOR</p>
-            <h1 className="display mt-4 text-6xl sm:text-7xl">
+            <h1 className="display mt-4 text-[11.5vw] sm:text-6xl lg:text-7xl">
               This is
               <br />
               <span className="text-red">Emmanuel</span>
@@ -88,7 +88,7 @@ export default function AboutPage() {
       <section className="border-b-2 border-ink">
         <div className="container-page py-16">
           <p className="index-label">WHERE I SIT TODAY</p>
-          <h2 className="display mt-4 text-5xl sm:text-6xl">
+          <h2 className="display mt-4 text-[10.5vw] sm:text-6xl">
             Current <span className="text-red">roles</span>
           </h2>
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -119,7 +119,7 @@ export default function AboutPage() {
       <section className="border-b-2 border-ink bg-paper-dim">
         <div className="container-page py-16">
           <p className="index-label">TRUSTED BY</p>
-          <h2 className="display mt-4 text-5xl sm:text-6xl">
+          <h2 className="display mt-4 text-[10.5vw] sm:text-6xl">
             The client <span className="text-red">wall</span>
           </h2>
           <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
