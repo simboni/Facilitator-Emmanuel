@@ -482,7 +482,7 @@ export const projects: Project[] = [
     slug: "canossian-sisters-ne-africa",
     title: "Canossian Sisters NE Africa",
     summary:
-      "A website for the Canossian Sisters' North East Africa mission — presenting their charism, ministries and the communities they serve, with clear ways for supporters to learn more and get involved.",
+      "A warm, mission-first website for the Canossian Daughters of Charity — Servants of the Poor — serving across Tanzania, Kenya, Uganda and Sudan through education, evangelization, healthcare and prayer.",
     type: "Client project",
     year: "2026",
     role: "Design & full-stack development",
@@ -495,24 +495,24 @@ export const projects: Project[] = [
     category: "NGOs",
     links: { live: "https://canossiansistersneafrica.org" },
     problem:
-      "The Canossian Sisters do wide-ranging mission work across North East Africa, but had no strong online home to tell their story — who they are, the ministries they run and how supporters and communities can connect with them.",
+      "The Canossian Sisters touch over 100,000 lives across four countries, but their story — the ministries, the causes, the communities they serve — had no strong online home where supporters could learn about the work, get involved and give.",
     approach:
-      "I designed a warm, mission-first website that leads with their charism and ministries, with clear paths to learn more, get involved and give — built on a fast Next.js stack the team can keep current without a developer.",
+      "I designed and built a warm, mission-first website led by a 'Loving without measure' hero and the sisters' ministries and causes, with Donate and get-involved paths throughout — plus a gallery and a feature marking the 250th anniversary of St Magdalene of Canossa. It runs on a fast Next.js stack the team can keep current.",
     architecture: [
       "Next.js 16 App Router with static export — fast, secure, cheap to host.",
-      "Ministries, community and get-involved sections driven by a typed content model.",
-      "Prominent get-involved and contact calls-to-action throughout the journey.",
+      "About, Ministries, Causes and Gallery sections driven by a typed content model.",
+      "Prominent Donate and get-involved calls-to-action throughout the journey.",
       "SEO, Open Graph, sitemap and JSON-LD so the mission is discoverable.",
     ],
     highlights: [
-      "A mission-first layout that puts the sisters' work and communities front and centre.",
-      "Fast, mobile-first experience for a largely mobile audience.",
-      "Clear get-involved and contact paths to turn visitors into supporters.",
+      "A mission-first hero and stats that lead with real reach — 100,000+ lives, four countries.",
+      "Clear Donate and get-involved paths to turn visitors into supporters.",
+      "Fast, mobile-first experience for a largely mobile audience across East Africa.",
     ],
     impact: [
-      { value: "0→1", label: "Credible online home" },
-      { value: "Mission", label: "Story told clearly" },
-      { value: "Mobile", label: "First, for reach" },
+      { value: "100k+", label: "Lives touched" },
+      { value: "4", label: "Countries served" },
+      { value: "5", label: "Ministries" },
     ],
     media: [],
   },
