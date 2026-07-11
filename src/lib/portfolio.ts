@@ -229,8 +229,12 @@ export type Project = {
   tags: string[];
   featured?: boolean;
   cover: { from: string; to: string; initials: string };
-  /** Brand logo for the "worked with" strip (transparent PNG/SVG on any bg). */
+  /** Brand logo for the "worked with" strip and partners page. */
   logo?: string;
+  /** Background colour the logo was designed for (its site's header). */
+  logoBg?: string;
+  /** Grouping for the partners page tabs, e.g. "Web Apps", "Business", "NGOs". */
+  category?: string;
   links: { live?: string; code?: string; extra?: ProjectLink };
   problem: string;
   approach: string;
@@ -253,6 +257,9 @@ export const projects: Project[] = [
     tags: ["Web App", "SaaS", "Fintech"],
     featured: true,
     cover: { from: "from-ink-700", to: "to-ink-950", initials: "NX" },
+    logo: "/logos/naveedex.png",
+    logoBg: "#0c1013",
+    category: "Web Apps",
     links: { live: "https://naveedex.com" },
     problem:
       "Serious traders need more than a spreadsheet — a place to log every trade, review setups against a defined strategy, and see what's actually working. Most tools are clunky, generic or expensive.",
@@ -289,6 +296,9 @@ export const projects: Project[] = [
     tags: ["Fintech", "SaaS", "Web App"],
     featured: true,
     cover: { from: "from-green-600", to: "to-ink-900", initials: "TP" },
+    logo: "/logos/tallypay.png",
+    logoBg: "#ffffff",
+    category: "Web Apps",
     links: { live: "https://tallypay.co.ke" },
     problem:
       "Freelancers and small businesses in Kenya juggle quotes, invoices, VAT, deposits and receipts across spreadsheets and WhatsApp — with no clean way to get paid or see what's outstanding.",
@@ -325,6 +335,9 @@ export const projects: Project[] = [
     tags: ["Web App", "Fintech", "Client"],
     featured: true,
     cover: { from: "from-green-700", to: "to-ink-950", initials: "64" },
+    logo: "/logos/64-theatre.png",
+    logoBg: "#130d0f",
+    category: "Web Apps",
     links: {},
     problem:
       "64 Theatre Limited (Eldoret) needed to sell tickets online, take mobile-money payments, and check guests in reliably at the gate — even when the venue's internet drops.",
@@ -360,6 +373,9 @@ export const projects: Project[] = [
     tags: ["Web", "Fitness", "Client"],
     featured: true,
     cover: { from: "from-green-500", to: "to-ink-900", initials: "FG" },
+    logo: "/logos/fit-generations.png",
+    logoBg: "#0a0a0a",
+    category: "Business",
     links: { live: "https://fitgenerationsgym.com" },
     problem:
       "Fit Generations Gym (Bungoma) was stuck on a slow, dated WordPress site. They needed a fast, modern platform to show their classes, coaches and pricing — one that could grow into a member portal.",
@@ -399,6 +415,9 @@ export const projects: Project[] = [
     tags: ["Web", "Client"],
     featured: false,
     cover: { from: "from-ink-600", to: "to-ink-900", initials: "M&A" },
+    logo: "/logos/misiati-associates.png",
+    logoBg: "#ffffff",
+    category: "Business",
     links: { live: "https://misiatiassociates.co.ke" },
     problem:
       "An established accounting firm had no web presence — prospective clients couldn't find them, verify credentials or get in touch, and competitors with even a basic site were winning that first impression.",
@@ -433,6 +452,9 @@ export const projects: Project[] = [
     tags: ["Web", "Non-profit", "Client"],
     featured: true,
     cover: { from: "from-green-500", to: "to-ink-900", initials: "CK" },
+    logo: "/logos/cosdep-kenya.png",
+    logoBg: "#f6f3ea",
+    category: "NGOs",
     links: { live: "https://cosdepkenya.org" },
     problem:
       "COSDEP does the kind of grassroots work — sustainable agriculture, value addition, kitchen gardening — that donors and partners fund when they can see it. But without a strong, credible web presence, that story wasn't reaching the people who could support it or the communities who could benefit.",
