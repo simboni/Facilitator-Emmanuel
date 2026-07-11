@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 180" role="img" aria-label="Figlie della Carità Canossiane">
+  <defs>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f7e08a"/>
+      <stop offset="0.5" stop-color="#d9ad3c"/>
+      <stop offset="1" stop-color="#a6781a"/>
+    </linearGradient>
+    <linearGradient id="goldEdge" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff2c0"/>
+      <stop offset="1" stop-color="#b98a1e"/>
+    </linearGradient>
+    <radialGradient id="field" cx="0.5" cy="0.4" r="0.75">
+      <stop offset="0" stop-color="#fbf5e2"/>
+      <stop offset="1" stop-color="#efe2bd"/>
+    </radialGradient>
+    <radialGradient id="rays" cx="0.5" cy="0.5" r="0.6">
+      <stop offset="0" stop-color="#f4d778"/>
+      <stop offset="1" stop-color="#f4d778" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Crest -->
+  <g transform="translate(0,4)">
+    <!-- Crown -->
+    <g>
+      <rect x="68" y="30" width="54" height="9" rx="2" fill="url(#gold)" stroke="#8a6413" stroke-width="0.8"/>
+      <path d="M68 31 L78 16 L95 27 L112 16 L122 31 Z" fill="url(#gold)" stroke="#8a6413" stroke-width="0.8"/>
+      <circle cx="78" cy="15" r="2.6" fill="url(#goldEdge)" stroke="#8a6413" stroke-width="0.6"/>
+      <circle cx="112" cy="15" r="2.6" fill="url(#goldEdge)" stroke="#8a6413" stroke-width="0.6"/>
+      <path d="M95 25 v-8 M91 21 h8" stroke="#8a6413" stroke-width="1.6" stroke-linecap="round"/>
+    </g>
+
+    <!-- Shield / cartouche -->
+    <path d="M95 40
+             C 62 40, 44 51, 44 66
+             C 40 84, 47 104, 54 122
+             C 61 140, 78 152, 95 156
+             C 112 152, 129 140, 136 122
+             C 143 104, 150 84, 146 66
+             C 146 51, 128 40, 95 40 Z"
+          fill="url(#gold)" stroke="#8a6413" stroke-width="2"/>
+
+    <!-- Inner fields -->
+    <path d="M95 47
+             C 67 47, 52 56, 52 68
+             C 49 84, 55 101, 61 117
+             C 67 133, 81 143, 95 147
+             C 109 143, 123 133, 129 117
+             C 135 101, 141 84, 138 68
+             C 138 56, 123 47, 95 47 Z"
+          fill="url(#field)" stroke="#c8a54a" stroke-width="1"/>
+    <!-- Lower field (Marian blue) -->
+    <path d="M63 104 C 68 124, 81 140, 95 144 C 109 140, 122 124, 127 104 Z"
+          fill="#274a72"/>
+
+    <!-- Radiant Sacred Heart -->
+    <circle cx="95" cy="80" r="26" fill="url(#rays)"/>
+    <g>
+      <path d="M95 96 C 84 87, 76 80, 76 72 C 76 65, 83 62, 88 66 C 91 68, 94 71, 95 73
+               C 96 71, 99 68, 102 66 C 107 62, 114 65, 114 72 C 114 80, 106 87, 95 96 Z"
+            fill="#b0212c" stroke="#7d1620" stroke-width="1"/>
+      <!-- Flame -->
+      <path d="M95 63 C 92 58, 96 55, 94 50 C 99 53, 101 59, 98 63 C 97 61, 96 61, 95 63 Z"
+            fill="#e8703a"/>
+      <!-- Cross above heart -->
+      <path d="M95 55 v-9 M91 50 h8" stroke="#e6c760" stroke-width="2.2" stroke-linecap="round"/>
+    </g>
+
+    <!-- Marian monogram on the blue field -->
+    <text x="95" y="130" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif"
+          font-size="20" font-style="italic" font-weight="700" fill="#e6c760">M</text>
+
+    <!-- Motto banner -->
+    <path d="M46 150 L144 150 L138 164 L52 164 Z" fill="url(#goldEdge)" stroke="#8a6413" stroke-width="0.8"/>
+    <text x="95" y="161" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif"
+          font-size="8" letter-spacing="1.5" fill="#6f2a1a">CARITAS</text>
+  </g>
+
+  <!-- Wordmark -->
+  <g fill="#1c1c1c" font-family="Georgia, 'Times New Roman', serif" font-weight="700" letter-spacing="1">
+    <text x="188" y="66" font-size="34">FIGLIE DELLA</text>
+    <text x="188" y="108" font-size="34">CARITÀ</text>
+    <text x="188" y="150" font-size="34">CANOSSIANE</text>
+  </g>
+</svg>

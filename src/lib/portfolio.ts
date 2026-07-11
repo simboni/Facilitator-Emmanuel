@@ -490,6 +490,7 @@ export const projects: Project[] = [
     tags: ["Web", "Non-profit", "Client"],
     featured: false,
     cover: { from: "from-green-500", to: "to-ink-900", initials: "CS" },
+    logo: "/logos/canossian-sisters-ne-africa.svg",
     logoBg: "#ffffff",
     category: "NGOs",
     links: { live: "https://canossiansistersneafrica.org" },
