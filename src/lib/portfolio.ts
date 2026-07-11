@@ -490,7 +490,7 @@ export const projects: Project[] = [
     tags: ["Web", "Non-profit", "Client"],
     featured: false,
     cover: { from: "from-green-500", to: "to-ink-900", initials: "CS" },
-    logo: "/logos/canossian-sisters-ne-africa.svg",
+    logo: "/logos/canossian-sisters-ne-africa.webp",
     logoBg: "#ffffff",
     category: "NGOs",
     links: { live: "https://canossiansistersneafrica.org" },
@@ -514,7 +514,12 @@ export const projects: Project[] = [
       { value: "4", label: "Countries served" },
       { value: "5", label: "Ministries" },
     ],
-    media: [],
+    media: [
+      {
+        src: "/mockups/canossian-sisters-ne-africa.webp",
+        alt: "Canossian Sisters NE Africa — 'Loving without measure' mission homepage",
+      },
+    ],
   },
   {
     slug: "smp-portfolio",
