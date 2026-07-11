@@ -1,106 +1,105 @@
 import type { Metadata } from "next";
-import { profile } from "@/lib/portfolio";
-import { PageHero } from "@/components/page-hero";
-import { Section } from "@/components/ui";
+import { profile } from "@/lib/content";
 import { ContactForm } from "@/components/contact-form";
-import {
-  MailIcon,
-  PinIcon,
-  PhoneIcon,
-  WhatsAppIcon,
-  GitHubIcon,
-  LinkedInIcon,
-} from "@/components/icons";
+import { MailIcon, PhoneIcon, WhatsAppIcon, LinkedInIcon } from "@/components/icons";
 
 export const metadata: Metadata = {
-  title: "Contact",
-  description: `Get in touch with ${profile.name} — available for freelance projects and full-time roles.`,
+  title: "Check Availability",
+  description:
+    "Book Emmanuel Misiati as MC, facilitator or moderator for your event — WhatsApp, email or the enquiry form. Replies within one business day.",
 };
+
+const channels = [
+  {
+    label: "WhatsApp",
+    value: "Fastest — usually same-day",
+    href: profile.whatsapp,
+    external: true,
+    icon: WhatsAppIcon,
+  },
+  {
+    label: "Email",
+    value: profile.email,
+    href: `mailto:${profile.email}`,
+    icon: MailIcon,
+  },
+  {
+    label: "Phone",
+    value: profile.phoneDisplay,
+    href: `tel:${profile.phone}`,
+    icon: PhoneIcon,
+  },
+  {
+    label: "LinkedIn",
+    value: "Emmanuel Misiati",
+    href: profile.linkedin,
+    external: true,
+    icon: LinkedInIcon,
+  },
+];
 
 export default function ContactPage() {
   return (
     <>
-      <PageHero
-        eyebrow="contact"
-        title="Let's build something"
-        intro="Tell me about your project or role. I read every message and reply within one working day."
-      />
-      <Section>
-        <div className="grid gap-10 lg:grid-cols-12">
-          <div className="lg:col-span-5">
-            <h2 className="font-display text-2xl font-bold text-mist-100">Reach me directly</h2>
-            <p className="mt-3 leading-relaxed text-mist-400">
-              Prefer to skip the form? Any of these work — I&rsquo;m quick to respond.
-            </p>
-            <ul className="mt-8 space-y-5">
-              <ContactRow icon={<MailIcon className="h-5 w-5" />} label="email" value={profile.email} href={`mailto:${profile.email}`} />
-              <ContactRow icon={<PhoneIcon className="h-5 w-5" />} label="phone" value={profile.phone} href={`tel:${profile.phone.replace(/\s/g, "")}`} />
-              <ContactRow icon={<WhatsAppIcon className="h-5 w-5" />} label="whatsapp" value="Chat with me" href={`https://wa.me/${profile.whatsapp}`} external />
-              {profile.socials.github && (
-                <ContactRow icon={<GitHubIcon className="h-5 w-5" />} label="github" value="View my code" href={profile.socials.github} external />
-              )}
-              {profile.socials.linkedin && (
-                <ContactRow icon={<LinkedInIcon className="h-5 w-5" />} label="linkedin" value="Connect with me" href={profile.socials.linkedin} external />
-              )}
-              <ContactRow icon={<PinIcon className="h-5 w-5" />} label="based in" value={profile.location} />
+      <section className="relative overflow-hidden border-b-2 border-ink">
+        <p aria-hidden="true" className="display text-outline-red pointer-events-none absolute -right-[6vw] bottom-0 select-none whitespace-nowrap text-[17vw] leading-none opacity-70">
+          LET&rsquo;S WORK
+        </p>
+        <div className="container-page relative py-16 lg:py-20">
+          <p className="index-label">CONTACT / BOOKING</p>
+          <h1 className="display mt-4 text-6xl sm:text-8xl">
+            Lock the <span className="text-red">date</span>
+          </h1>
+          <p className="serif-note mt-6 max-w-xl text-2xl text-ink-soft">
+            Tell me the date, the room and what winning looks like — you&rsquo;ll have
+            an answer within one business day.
+          </p>
+        </div>
+      </section>
+
+      <section className="bg-paper-dim">
+        <div className="container-page grid gap-12 py-16 lg:grid-cols-12">
+          {/* Channels */}
+          <div className="lg:col-span-4">
+            <p className="meta text-ink-soft">DIRECT LINES</p>
+            <ul className="mt-6 space-y-4">
+              {channels.map((c) => (
+                <li key={c.label}>
+                  <a
+                    href={c.href}
+                    {...(c.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                    className="group flex items-center gap-4 border-2 border-ink bg-paper p-4 shadow-hard-sm transition-transform hover:-translate-y-0.5"
+                  >
+                    <span className="grid h-11 w-11 shrink-0 place-items-center border-2 border-ink bg-red text-paper">
+                      <c.icon className="h-5 w-5" />
+                    </span>
+                    <span>
+                      <span className="display block text-lg leading-tight">{c.label}</span>
+                      <span className="meta text-ink-faint">{c.value}</span>
+                    </span>
+                  </a>
+                </li>
+              ))}
             </ul>
 
-            <div className="mt-8 rounded-xl border border-ink-600 bg-ink-800 p-6">
-              <div className="flex items-center gap-2 font-mono text-sm text-green-400">
-                <span className="relative flex h-2.5 w-2.5">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
-                  <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-green-400" />
-                </span>
-                {profile.availability}
-              </div>
+            <div className="mt-8 border-2 border-ink bg-ink p-6 text-paper">
+              <p className="meta text-red-bright">GOOD TO KNOW</p>
+              <ul className="mt-4 space-y-3 text-sm text-paper/80">
+                <li>· Based in {profile.location} — working across East Africa &amp; virtually</li>
+                <li>· A deposit (M-Pesa or bank transfer) locks your date</li>
+                <li>· Travel &amp; accommodation on the client for events outside Nairobi</li>
+                <li>· Multi-day &amp; recurring engagements quoted per brief</li>
+              </ul>
             </div>
           </div>
 
-          <div className="lg:col-span-7">
+          {/* Form */}
+          <div className="lg:col-span-8">
+            <p className="meta mb-6 text-ink-soft">OR SEND THE BRIEF</p>
             <ContactForm />
           </div>
         </div>
-      </Section>
+      </section>
     </>
   );
-}
-
-function ContactRow({
-  icon,
-  label,
-  value,
-  href,
-  external,
-}: {
-  icon: React.ReactNode;
-  label: string;
-  value: string;
-  href?: string;
-  external?: boolean;
-}) {
-  const body = (
-    <>
-      <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-ink-600 bg-ink-800 text-green-400">
-        {icon}
-      </span>
-      <span>
-        <span className="block font-mono text-xs text-mist-600">{label}</span>
-        <span className="block text-mist-100">{value}</span>
-      </span>
-    </>
-  );
-  if (href) {
-    return (
-      <li>
-        <a
-          href={href}
-          {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-          className="flex items-center gap-4 transition-opacity hover:opacity-80"
-        >
-          {body}
-        </a>
-      </li>
-    );
-  }
-  return <li className="flex items-center gap-4">{body}</li>;
 }

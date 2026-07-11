@@ -1,48 +1,43 @@
-# Peter Misiati — Portfolio
+# Facilitator Misiati — Official Website
 
-A tier-1 software-engineer portfolio and **directory of work** for Peter Misiati,
-Full-Stack Software Engineer. Built with **Next.js 16 (App Router)**, **React 19**,
-**TypeScript** and **Tailwind CSS v4**, and exported as a fast static site.
+The personal-brand and booking site for **Emmanuel Misiati**, professional Master of
+Ceremonies, experiential facilitator & moderator (Nairobi, Kenya). Built with
+**Next.js 16 (App Router)**, **React 19**, **TypeScript** and **Tailwind CSS v4**,
+exported as a fast static site.
+
+The design is *structured postmodernism* — huge deconstructed type, one loud red
+(#A61C1C), collage photography with hard paper-cut shadows, print grain, marquee
+tickers — with a deliberately boring, conversion-first booking path (sticky
+"Check availability" CTA + floating WhatsApp chat).
 
 ## Pages
 
-| Route            | Purpose                                                                   |
-| ---------------- | ------------------------------------------------------------------------- |
-| `/`              | Home — hero, stats, featured work, skills, experience, about, testimonial |
-| `/work`          | The directory — filterable grid of every project                          |
-| `/work/[slug]`   | Case study — problem, approach, architecture, highlights, impact          |
-| `/about`         | Long-form bio, principles, full skills, experience                        |
-| `/contact`       | Contact form + direct email / GitHub / LinkedIn                           |
+| Route        | Purpose                                                                  |
+| ------------ | ------------------------------------------------------------------------ |
+| `/`          | Hero, client ticker, stats, Signature Framework, featured work, testimonials, pricing |
+| `/services`  | Three packages with open KES pricing, add-ons, booking process, FAQ       |
+| `/work`      | Case studies: WEConnect Africa, AccelerateHER 2.0, Founders Exchange, youth work |
+| `/about`     | Bio, credentials, current roles, client wall, philosophy                  |
+| `/contact`   | Enquiry form (FormSubmit → email), WhatsApp / phone / LinkedIn lines      |
 
-Plus `sitemap.xml`, `robots.txt`, JSON-LD `Person` schema and per-project OG metadata.
+Plus `sitemap.xml`, `robots.txt`, JSON-LD `Person` + `Service` schema.
 
 ## Editing content — one file
 
-**All content lives in [`src/lib/portfolio.ts`](src/lib/portfolio.ts).** Change your
-bio, add a skill, add a job — or add a whole project (which auto-creates its card on
-the home grid, an entry in the `/work` directory, its own `/work/<slug>` case-study
-page, and a sitemap entry) — by editing that one typed file. You never touch the page
-components.
+**Every word lives in [`src/lib/content.ts`](src/lib/content.ts).** Prices,
+packages, testimonials, case studies, FAQ, contact details — edit that one typed
+file and the pages re-render around it. Photos live in `public/images/`.
 
-Items marked `// SAMPLE — replace` are realistic placeholders. Swap them for your real
-work. To feature a project on the home page, set `featured: true`.
+Before launch, update in `content.ts`:
 
-### Adding screenshots
-
-Each project has a `media: []` array. Drop images into `public/` and add
-`{ src: "/my-shot.png", alt: "…" }` entries — they replace the branded gradient cover
-on the case-study page.
-
-### Your résumé / CV
-
-Put a PDF in `public/` and set `profile.resumeUrl` (e.g. `"/peter-misiati-cv.pdf"`) —
-a Résumé button then appears in the hero.
+- `site.domain` — the real domain (drives canonical URLs, sitemap, JSON-LD)
+- `profile.linkedin` — the exact LinkedIn profile URL
 
 ## Contact form delivery
 
-The form at `/contact` posts to a no-backend service ([FormSubmit](https://formsubmit.co))
-that emails each enquiry to `profile.email`. The first submission triggers a one-time
-activation email — click the link once and delivery is on for good.
+The form posts to [FormSubmit](https://formsubmit.co), which emails each enquiry to
+`profile.email`. The first submission triggers a one-time activation email — click
+the link once and delivery is on permanently.
 
 ## Local development
 
@@ -54,11 +49,9 @@ npm run build    # static export → ./out
 
 ## Deployment
 
-Static export (`output: 'export'`), so it deploys to any static host — Vercel,
-Cloudflare Pages, Netlify, GitHub Pages. Set the build command to `npm run build` and
-the output directory to `out`. Update `site.domain` in `src/lib/portfolio.ts` to your
-real domain before launch (it drives canonical URLs, the sitemap and JSON-LD).
+Static export (`output: 'export'`) — deploys to any static host (Vercel, Cloudflare
+Pages, Netlify, GitHub Pages). Build command `npm run build`, output directory `out`.
 
 ---
 
-© 2026 Peter Misiati.
+© 2026 Emmanuel Misiati.

@@ -1,109 +1,85 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { nav, profile } from "@/lib/portfolio";
-import { Logo } from "@/components/logo";
-import { Button } from "@/components/ui";
-import { MenuIcon, CloseIcon, GitHubIcon } from "@/components/icons";
+import { usePathname } from "next/navigation";
+import { nav } from "@/lib/content";
 
 export function SiteHeader() {
-  const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
+  const close = () => setOpen(false);
 
+  // Lock scroll while the mobile sheet is open
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  const closeMenu = () => setOpen(false);
-  const isActive = (href: string) =>
-    href === "/" ? pathname === "/" : pathname.startsWith(href);
+    document.documentElement.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.documentElement.style.overflow = "";
+    };
+  }, [open]);
 
   return (
-    <header className="sticky top-0 z-50">
-      <div
-        className={`border-b transition-all duration-200 ${
-          scrolled
-            ? "border-ink-700 bg-ink-900/80 backdrop-blur"
-            : "border-transparent bg-transparent"
-        }`}
-      >
-        <div className="container-page flex h-16 items-center justify-between">
-          <Logo uid="hdr" />
+    <header className="sticky top-0 z-50 border-b-2 border-ink bg-paper/95 backdrop-blur-sm">
+      <div className="container-page flex h-16 items-center justify-between gap-4">
+        <Link href="/" onClick={close} className="group flex items-baseline gap-1.5" aria-label="Facilitator Misiati — home">
+          <span className="display text-xl leading-none">Misiati</span>
+          <span className="inline-block h-2.5 w-2.5 rounded-full bg-red transition-transform group-hover:scale-125" />
+          <span className="meta hidden text-ink-faint sm:inline">MC · Facilitator · Moderator</span>
+        </Link>
 
-          <nav className="hidden items-center gap-1 font-mono text-sm lg:flex">
-            {nav.map((item, i) => {
-              const active = isActive(item.href);
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={`rounded-md px-3 py-2 transition-colors ${
-                    active ? "text-green-400" : "text-mist-400 hover:text-mist-100"
-                  }`}
-                >
-                  <span className="text-mist-600">0{i + 1}.</span> {item.label.toLowerCase()}
-                </Link>
-              );
-            })}
-          </nav>
-
-          <div className="hidden items-center gap-2 lg:flex">
-            {profile.socials.github && (
-              <a
-                href={profile.socials.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub"
-                className="inline-flex h-9 w-9 items-center justify-center rounded-md text-mist-400 transition-colors hover:bg-ink-700 hover:text-green-400"
+        <nav className="hidden items-center gap-7 md:flex" aria-label="Primary">
+          {nav.map((item) => {
+            const active = pathname?.startsWith(item.href.replace(/\/$/, "")) && item.href !== "/";
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`meta transition-colors hover:text-red ${active ? "text-red" : "text-ink"}`}
               >
-                <GitHubIcon className="h-5 w-5" />
-              </a>
-            )}
-            <Button href="/contact" variant="gold">
-              let&rsquo;s talk
-            </Button>
-          </div>
+                {item.label}
+              </Link>
+            );
+          })}
+          <Link href="/contact/" className="btn btn-red !py-2.5 !px-4 text-xs">
+            Check availability
+          </Link>
+        </nav>
 
-          <button
-            type="button"
-            onClick={() => setOpen((v) => !v)}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-md text-mist-200 hover:bg-ink-700 lg:hidden"
-            aria-label={open ? "Close menu" : "Open menu"}
-            aria-expanded={open}
-          >
-            {open ? <CloseIcon className="h-6 w-6" /> : <MenuIcon className="h-6 w-6" />}
-          </button>
-        </div>
+        <button
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          aria-expanded={open}
+          aria-controls="mobile-nav"
+          className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 border-2 border-ink md:hidden"
+        >
+          <span className="sr-only">{open ? "Close menu" : "Open menu"}</span>
+          <span className={`block h-0.5 w-5 bg-ink transition-transform ${open ? "translate-y-1 rotate-45" : ""}`} />
+          <span className={`block h-0.5 w-5 bg-ink transition-transform ${open ? "-translate-y-1 -rotate-45" : ""}`} />
+        </button>
       </div>
 
+      {/* Mobile sheet — full-bleed red poster menu */}
       {open && (
-        <div className="border-b border-ink-700 bg-ink-900 lg:hidden">
-          <nav className="container-page flex flex-col gap-1 py-4 font-mono">
+        <div id="mobile-nav" className="fixed inset-x-0 top-16 bottom-0 z-50 overflow-auto bg-red text-paper md:hidden">
+          <nav className="container-page flex flex-col py-8" aria-label="Mobile">
             {nav.map((item, i) => (
               <Link
                 key={item.href}
                 href={item.href}
-                onClick={closeMenu}
-                className={`rounded-md px-4 py-3 text-base ${
-                  isActive(item.href)
-                    ? "bg-ink-700 text-green-400"
-                    : "text-mist-300 hover:bg-ink-700"
-                }`}
+                onClick={close}
+                className="display border-b border-paper/25 py-5 text-5xl text-paper"
               >
-                <span className="text-mist-600">0{i + 1}.</span> {item.label.toLowerCase()}
+                <span className="meta mr-3 align-middle text-paper/60">0{i + 1}</span>
+                {item.label}
               </Link>
             ))}
-            <div className="mt-3 border-t border-ink-700 pt-4">
-              <Button href="/contact" variant="gold" size="lg" className="w-full" onClick={closeMenu}>
-                let&rsquo;s talk
-              </Button>
-            </div>
+            <Link
+              href="/contact/"
+              onClick={close}
+              className="btn mt-8 self-start border-paper bg-paper !text-ink shadow-none"
+            >
+              Check availability
+            </Link>
           </nav>
         </div>
       )}

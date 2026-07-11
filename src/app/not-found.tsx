@@ -1,26 +1,26 @@
-import { Button } from "@/components/ui";
-import { ArrowUpRightIcon } from "@/components/icons";
+import Link from "next/link";
+import { ArrowIcon } from "@/components/icons";
 
 export default function NotFound() {
   return (
-    <section className="relative overflow-hidden bg-grid glow-bg">
-      <div className="container-page flex min-h-[70vh] flex-col items-center justify-center py-24 text-center">
-        <div className="font-mono text-7xl font-bold text-green-400 sm:text-8xl">404</div>
-        <p className="mt-4 font-mono text-sm text-mist-500">{"// this route doesn't exist"}</p>
-        <h1 className="mt-6 font-display text-3xl font-bold text-mist-100 text-balance sm:text-4xl">
-          This page took a wrong turn.
+    <section className="relative overflow-hidden">
+      <p aria-hidden="true" className="display text-outline pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 select-none text-[38vw] leading-none">
+        404
+      </p>
+      <div className="container-page relative flex min-h-[70svh] flex-col items-start justify-center py-20">
+        <span className="chip chip-red -rotate-2">OFF SCRIPT</span>
+        <h1 className="display mt-6 text-6xl sm:text-8xl">
+          This page left
+          <br />
+          the <span className="text-red">agenda</span>.
         </h1>
-        <p className="mt-4 max-w-md text-mist-400">
-          The link is broken or the page has moved. Let&rsquo;s get you back to the good stuff.
+        <p className="serif-note mt-5 max-w-md text-xl text-ink-soft">
+          Even the best run-of-show has a missing slide. Let&rsquo;s get you back to
+          the main stage.
         </p>
-        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-          <Button href="/" variant="gold" size="lg" withArrow>
-            back home
-          </Button>
-          <Button href="/work" variant="outline" size="lg">
-            <ArrowUpRightIcon className="h-4 w-4" /> view my work
-          </Button>
-        </div>
+        <Link href="/" className="btn btn-red mt-8">
+          Back to the top <ArrowIcon className="h-4 w-4" />
+        </Link>
       </div>
     </section>
   );

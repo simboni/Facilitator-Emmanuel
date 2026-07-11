@@ -1,122 +1,84 @@
 import Link from "next/link";
-import { nav, profile, projects } from "@/lib/portfolio";
-import { Logo } from "@/components/logo";
-import {
-  MailIcon,
-  GitHubIcon,
-  LinkedInIcon,
-  XIcon,
-  ArrowUpRightIcon,
-} from "@/components/icons";
+import { profile, nav } from "@/lib/content";
+import { Marquee } from "@/components/marquee";
+import { ArrowIcon, MailIcon, PhoneIcon, WhatsAppIcon, LinkedInIcon } from "@/components/icons";
 
 export function SiteFooter() {
-  const year = 2026;
+  const year = new Date().getFullYear();
   return (
-    <footer className="border-t border-ink-700 bg-ink-950">
-      <div className="container-page py-16">
-        <div className="grid gap-12 lg:grid-cols-12">
-          {/* Brand */}
-          <div className="lg:col-span-5">
-            <Logo uid="ftr" />
-            <p className="mt-6 max-w-sm text-sm leading-relaxed text-mist-400">
-              {profile.valueProp}
-            </p>
-            <div className="mt-6 flex gap-2.5">
-              {profile.socials.github && (
-                <SocialLink href={profile.socials.github} label="GitHub">
-                  <GitHubIcon className="h-5 w-5" />
-                </SocialLink>
-              )}
-              {profile.socials.linkedin && (
-                <SocialLink href={profile.socials.linkedin} label="LinkedIn">
-                  <LinkedInIcon className="h-5 w-5" />
-                </SocialLink>
-              )}
-              {profile.socials.x && (
-                <SocialLink href={profile.socials.x} label="X">
-                  <XIcon className="h-4 w-4" />
-                </SocialLink>
-              )}
-              <SocialLink href={`mailto:${profile.email}`} label="Email">
-                <MailIcon className="h-5 w-5" />
-              </SocialLink>
-            </div>
-          </div>
+    <footer className="border-t-2 border-ink bg-ink text-paper">
+      {/* Let's-work ticker doubles as the site-wide CTA */}
+      <Link href="/contact/" aria-label="Go to the contact page" className="block border-b border-paper/15">
+        <Marquee duration={26} className="py-6">
+          {Array.from({ length: 4 }).map((_, i) => (
+            <span key={i} className="display mx-6 flex items-center gap-6 text-5xl text-paper sm:text-6xl">
+              Let&rsquo;s work <ArrowIcon className="h-9 w-9 text-red-bright" />
+              <span className="text-outline-paper">Let&rsquo;s work</span>
+              <ArrowIcon className="h-9 w-9 text-red-bright" />
+            </span>
+          ))}
+        </Marquee>
+      </Link>
 
-          {/* Explore */}
-          <div className="lg:col-span-3">
-            <h3 className="font-mono text-xs uppercase tracking-wider text-green-400">
-              {"// explore"}
-            </h3>
-            <ul className="mt-4 space-y-3 text-sm">
-              {nav.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className="text-mist-400 transition-colors hover:text-green-300"
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+      <div className="container-page grid gap-10 py-14 md:grid-cols-3">
+        <div>
+          <p className="display text-2xl">
+            Misiati<span className="text-red-bright">.</span>
+          </p>
+          <p className="meta mt-3 text-paper/60">{profile.role}</p>
+          <p className="serif-note mt-6 max-w-xs text-lg text-paper/80">
+            The invisible thread that keeps the agenda moving, the speakers comfortable and the audience locked in.
+          </p>
+        </div>
 
-          {/* Work */}
-          <div className="lg:col-span-4">
-            <h3 className="font-mono text-xs uppercase tracking-wider text-green-400">
-              {"// selected work"}
-            </h3>
-            <ul className="mt-4 space-y-3 text-sm">
-              {projects.slice(0, 4).map((p) => (
-                <li key={p.slug}>
-                  <Link
-                    href={`/work/${p.slug}`}
-                    className="text-mist-400 transition-colors hover:text-green-300"
-                  >
-                    {p.title}
-                  </Link>
-                </li>
-              ))}
-              <li>
-                <Link
-                  href="/work"
-                  className="inline-flex items-center gap-1 font-medium text-green-400 transition-colors hover:text-green-300"
-                >
-                  view all <ArrowUpRightIcon className="h-3.5 w-3.5" />
+        <nav aria-label="Footer" className="md:justify-self-center">
+          <p className="meta mb-4 text-paper/50">Index</p>
+          <ul className="space-y-2.5">
+            <li>
+              <Link href="/" className="meta text-paper transition-colors hover:text-red-bright">Home</Link>
+            </li>
+            {nav.map((item) => (
+              <li key={item.href}>
+                <Link href={item.href} className="meta text-paper transition-colors hover:text-red-bright">
+                  {item.label}
                 </Link>
               </li>
-            </ul>
-          </div>
-        </div>
+            ))}
+          </ul>
+        </nav>
 
-        <div className="mt-14 flex flex-col gap-3 border-t border-ink-700 pt-6 font-mono text-xs text-mist-600 sm:flex-row sm:items-center sm:justify-between">
-          <p>© {year} {profile.name}</p>
-          <p>designed &amp; built by SMP Developers</p>
+        <div className="md:justify-self-end">
+          <p className="meta mb-4 text-paper/50">Contact</p>
+          <ul className="space-y-2.5">
+            <li>
+              <a href={profile.whatsapp} target="_blank" rel="noopener noreferrer" className="meta flex items-center gap-2 text-paper transition-colors hover:text-red-bright">
+                <WhatsAppIcon className="h-4 w-4" /> WhatsApp
+              </a>
+            </li>
+            <li>
+              <a href={`mailto:${profile.email}`} className="meta flex items-center gap-2 text-paper transition-colors hover:text-red-bright">
+                <MailIcon className="h-4 w-4" /> {profile.email}
+              </a>
+            </li>
+            <li>
+              <a href={`tel:${profile.phone}`} className="meta flex items-center gap-2 text-paper transition-colors hover:text-red-bright">
+                <PhoneIcon className="h-4 w-4" /> {profile.phoneDisplay}
+              </a>
+            </li>
+            <li>
+              <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="meta flex items-center gap-2 text-paper transition-colors hover:text-red-bright">
+                <LinkedInIcon className="h-4 w-4" /> LinkedIn
+              </a>
+            </li>
+          </ul>
+          <p className="meta mt-6 text-paper/40">{profile.location} · {profile.reach}</p>
         </div>
       </div>
-    </footer>
-  );
-}
 
-function SocialLink({
-  href,
-  label,
-  children,
-}: {
-  href: string;
-  label: string;
-  children: React.ReactNode;
-}) {
-  const external = href.startsWith("http");
-  return (
-    <a
-      href={href}
-      aria-label={label}
-      {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-      className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-ink-600 bg-ink-800 text-mist-300 transition-colors hover:border-green-400/50 hover:text-green-400"
-    >
-      {children}
-    </a>
+      <div className="container-page flex flex-wrap items-center justify-between gap-3 border-t border-paper/15 py-5">
+        <p className="meta text-paper/40">© {year} Emmanuel Misiati. All rights reserved.</p>
+        <p className="meta text-paper/40">[ {profile.responsePromise} ]</p>
+      </div>
+    </footer>
   );
 }
