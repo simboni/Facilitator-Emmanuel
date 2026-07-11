@@ -33,13 +33,13 @@ export function SiteFooter() {
 
         <nav aria-label="Footer" className="md:justify-self-center">
           <p className="meta mb-4 text-paper/50">Index</p>
-          <ul className="space-y-2.5">
+          <ul className="space-y-1">
             <li>
-              <Link href="/" className="meta text-paper transition-colors hover:text-red-bright">Home</Link>
+              <Link href="/" className="meta inline-block py-2 text-paper transition-colors hover:text-red-bright">Home</Link>
             </li>
             {nav.map((item) => (
               <li key={item.href}>
-                <Link href={item.href} className="meta text-paper transition-colors hover:text-red-bright">
+                <Link href={item.href} className="meta inline-block py-2 text-paper transition-colors hover:text-red-bright">
                   {item.label}
                 </Link>
               </li>
@@ -49,25 +49,26 @@ export function SiteFooter() {
 
         <div className="md:justify-self-end">
           <p className="meta mb-4 text-paper/50">Contact</p>
-          <ul className="space-y-2.5">
+          <ul className="space-y-1">
             <li>
-              <a href={profile.whatsapp} target="_blank" rel="noopener noreferrer" className="meta flex items-center gap-2 text-paper transition-colors hover:text-red-bright">
-                <WhatsAppIcon className="h-4 w-4" /> WhatsApp
+              <a href={profile.whatsapp} target="_blank" rel="noopener noreferrer" className="meta flex items-center gap-2 py-2 text-paper transition-colors hover:text-red-bright">
+                <WhatsAppIcon className="h-4 w-4 shrink-0" /> WhatsApp
               </a>
             </li>
             <li>
-              <a href={`mailto:${profile.email}`} className="meta flex items-center gap-2 text-paper transition-colors hover:text-red-bright">
-                <MailIcon className="h-4 w-4" /> {profile.email}
+              <a href={`mailto:${profile.email}`} className="meta flex items-center gap-2 py-2 text-paper transition-colors hover:text-red-bright">
+                <MailIcon className="h-4 w-4 shrink-0" />
+                <span className="min-w-0 [overflow-wrap:anywhere]">{profile.email}</span>
               </a>
             </li>
             <li>
-              <a href={`tel:${profile.phone}`} className="meta flex items-center gap-2 text-paper transition-colors hover:text-red-bright">
-                <PhoneIcon className="h-4 w-4" /> {profile.phoneDisplay}
+              <a href={`tel:${profile.phone}`} className="meta flex items-center gap-2 py-2 text-paper transition-colors hover:text-red-bright">
+                <PhoneIcon className="h-4 w-4 shrink-0" /> {profile.phoneDisplay}
               </a>
             </li>
             <li>
-              <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="meta flex items-center gap-2 text-paper transition-colors hover:text-red-bright">
-                <LinkedInIcon className="h-4 w-4" /> LinkedIn
+              <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" className="meta flex items-center gap-2 py-2 text-paper transition-colors hover:text-red-bright">
+                <LinkedInIcon className="h-4 w-4 shrink-0" /> LinkedIn
               </a>
             </li>
           </ul>
@@ -77,7 +78,7 @@ export function SiteFooter() {
 
       <div className="container-page flex flex-wrap items-center justify-between gap-3 border-t border-paper/15 py-5">
         <p className="meta text-paper/40">© {year} Emmanuel Misiati. All rights reserved.</p>
-        <p className="meta text-paper/40">[ {profile.responsePromise} ]</p>
+        <p className="meta text-paper/40">Developed by SMP Developers Ltd</p>
       </div>
     </footer>
   );

@@ -73,9 +73,9 @@ export default function ContactPage() {
                     <span className="grid h-11 w-11 shrink-0 place-items-center border-2 border-ink bg-red text-paper">
                       <c.icon className="h-5 w-5" />
                     </span>
-                    <span>
+                    <span className="min-w-0">
                       <span className="display block text-lg leading-tight">{c.label}</span>
-                      <span className="meta text-ink-faint">{c.value}</span>
+                      <span className="meta block [overflow-wrap:anywhere] text-ink-faint">{c.value}</span>
                     </span>
                   </a>
                 </li>

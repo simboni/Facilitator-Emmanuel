@@ -29,7 +29,11 @@ export default function WorkPage() {
           </p>
           <nav aria-label="Case studies on this page" className="mt-8 flex flex-wrap gap-2">
             {caseStudies.map((cs, i) => (
-              <a key={cs.slug} href={`#${cs.slug}`} className="chip transition-colors hover:border-red hover:text-red">
+              <a
+                key={cs.slug}
+                href={`#${cs.slug}`}
+                className="chip max-w-full !whitespace-normal py-2 text-left transition-colors hover:border-red hover:text-red"
+              >
                 0{i + 1} · {cs.title.length > 34 ? `${cs.title.slice(0, 32)}…` : cs.title}
               </a>
             ))}

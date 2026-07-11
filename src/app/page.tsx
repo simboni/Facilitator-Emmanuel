@@ -345,7 +345,7 @@ function FeaturedWork() {
                   </p>
                   <Link
                     href={`/work/#${cs.slug}`}
-                    className="meta mt-5 inline-flex items-center gap-2 border-b-2 border-red pb-1 text-ink transition-colors hover:text-red"
+                    className="meta mt-4 inline-flex items-center gap-2 border-b-2 border-red py-2 text-ink transition-colors hover:text-red"
                   >
                     Read the case study <ArrowIcon className="h-3.5 w-3.5" />
                   </Link>

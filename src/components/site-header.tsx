@@ -19,9 +19,11 @@ export function SiteHeader() {
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-50 border-b-2 border-ink bg-paper/95 backdrop-blur-sm">
+    // NOTE: no backdrop-filter/transform here — they would become the containing
+    // block for the fixed-position mobile sheet and collapse it to a sliver.
+    <header className="sticky top-0 z-50 border-b-2 border-ink bg-paper">
       <div className="container-page flex h-16 items-center justify-between gap-4">
-        <Link href="/" onClick={close} className="group flex items-baseline gap-1.5" aria-label="Facilitator Misiati — home">
+        <Link href="/" onClick={close} className="group flex items-baseline gap-1.5 py-4" aria-label="Facilitator Misiati — home">
           <span className="display text-xl leading-none">Misiati</span>
           <span className="inline-block h-2.5 w-2.5 rounded-full bg-red transition-transform group-hover:scale-125" />
           <span className="meta hidden text-ink-faint sm:inline">MC · Facilitator · Moderator</span>
@@ -34,7 +36,7 @@ export function SiteHeader() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`meta transition-colors hover:text-red ${active ? "text-red" : "text-ink"}`}
+                className={`meta py-4 transition-colors hover:text-red ${active ? "text-red" : "text-ink"}`}
               >
                 {item.label}
               </Link>
