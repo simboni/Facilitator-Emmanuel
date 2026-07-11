@@ -479,6 +479,43 @@ export const projects: Project[] = [
     media: [{ src: "/mockups/cosdep-kenya.webp", alt: "COSDEP Kenya — turning harvests into income" }],
   },
   {
+    slug: "canossian-sisters-ne-africa",
+    title: "Canossian Sisters NE Africa",
+    summary:
+      "A website for the Canossian Sisters' North East Africa mission — presenting their charism, ministries and the communities they serve, with clear ways for supporters to learn more and get involved.",
+    type: "Client project",
+    year: "2026",
+    role: "Design & full-stack development",
+    stack: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS v4"],
+    tags: ["Web", "Non-profit", "Client"],
+    featured: false,
+    cover: { from: "from-green-500", to: "to-ink-900", initials: "CS" },
+    logoBg: "#ffffff",
+    category: "NGOs",
+    links: { live: "https://canossiansistersneafrica.org" },
+    problem:
+      "The Canossian Sisters do wide-ranging mission work across North East Africa, but had no strong online home to tell their story — who they are, the ministries they run and how supporters and communities can connect with them.",
+    approach:
+      "I designed a warm, mission-first website that leads with their charism and ministries, with clear paths to learn more, get involved and give — built on a fast Next.js stack the team can keep current without a developer.",
+    architecture: [
+      "Next.js 16 App Router with static export — fast, secure, cheap to host.",
+      "Ministries, community and get-involved sections driven by a typed content model.",
+      "Prominent get-involved and contact calls-to-action throughout the journey.",
+      "SEO, Open Graph, sitemap and JSON-LD so the mission is discoverable.",
+    ],
+    highlights: [
+      "A mission-first layout that puts the sisters' work and communities front and centre.",
+      "Fast, mobile-first experience for a largely mobile audience.",
+      "Clear get-involved and contact paths to turn visitors into supporters.",
+    ],
+    impact: [
+      { value: "0→1", label: "Credible online home" },
+      { value: "Mission", label: "Story told clearly" },
+      { value: "Mobile", label: "First, for reach" },
+    ],
+    media: [],
+  },
+  {
     slug: "smp-portfolio",
     title: "SMP Portfolio",
     summary:
