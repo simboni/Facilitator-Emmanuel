@@ -8,6 +8,9 @@ services:
     buildCommand: npm ci && npm run build
     staticPublishPath: out
     pullRequestPreviewsEnabled: true
+    envVars:
+      - key: NODE_VERSION
+        value: 22.16.0
     headers:
       - path: /images/*
         name: Cache-Control
