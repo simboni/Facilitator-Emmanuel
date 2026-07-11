@@ -423,7 +423,7 @@ export const projects: Project[] = [
     slug: "cosdep-kenya",
     title: "COSDEP Kenya",
     summary:
-      "A modern website for a Kenyan community-development NGO — telling their story, programs and impact to donors, partners and the communities they serve.",
+      "A modern website for a Kenyan sustainable-development NGO working with smallholder farmers — telling their story, programmes and impact to donors, partners and the communities they serve.",
     type: "Client project",
     year: "2026",
     role: "Design & full-stack development",
@@ -433,26 +433,26 @@ export const projects: Project[] = [
     cover: { from: "from-green-500", to: "to-ink-900", initials: "CK" },
     links: { live: "https://cosdepkenya.org" },
     problem:
-      "The organisation needed a credible online home — a place to share its mission, programs and impact, reach donors and partners, and be found by the communities it serves. Without a strong web presence, that story wasn't reaching the people who could support it.",
+      "COSDEP does the kind of grassroots work — sustainable agriculture, value addition, kitchen gardening — that donors and partners fund when they can see it. But without a strong, credible web presence, that story wasn't reaching the people who could support it or the communities who could benefit.",
     approach:
-      "I designed a clean, mission-first site that leads with the work: programs, impact and clear ways to get involved. It's built on a fast Next.js stack with all content in one editable source, so the team can keep it current without a developer.",
+      "I designed a clean, mission-first site that leads with the work: programmes, projects and clear ways to get involved, anchored by a strong 'Turning harvests into income' hero and prominent donate paths. It's built on a fast Next.js stack with all content in one editable source, so the team can keep it current without a developer.",
     architecture: [
       "Next.js 16 App Router with static export — fast, secure, cheap to host.",
-      "Program, impact and get-involved sections driven by a typed content model.",
-      "Contact and partnership enquiries with a WhatsApp fallback.",
+      "Programmes, projects and get-involved sections driven by a typed content model.",
+      "Prominent donate and partnership calls-to-action throughout the journey.",
       "SEO, Open Graph, sitemap and JSON-LD so the mission is discoverable.",
     ],
     highlights: [
-      "A mission-first layout that puts programs and impact front and centre.",
+      "A mission-first layout that puts programmes and impact front and centre.",
       "Fast, mobile-first experience for a largely mobile Kenyan audience.",
-      "Editable-by-the-team content model — no developer needed for updates.",
+      "Clear donate and get-involved paths to convert visitors into supporters.",
     ],
     impact: [
       { value: "0→1", label: "Credible online home" },
+      { value: "Donate", label: "Paths front & centre" },
       { value: "Mobile", label: "First, for reach" },
-      { value: "Programs", label: "& impact online" },
     ],
-    media: [],
+    media: [{ src: "/mockups/cosdep-kenya.webp", alt: "COSDEP Kenya — turning harvests into income" }],
   },
   {
     slug: "smp-portfolio",
