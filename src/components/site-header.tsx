@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { nav } from "@/lib/content";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
@@ -29,35 +30,40 @@ export function SiteHeader() {
           <span className="meta hidden text-ink-faint sm:inline">MC · Facilitator · Moderator</span>
         </Link>
 
-        <nav className="hidden items-center gap-7 md:flex" aria-label="Primary">
-          {nav.map((item) => {
-            const active = pathname?.startsWith(item.href.replace(/\/$/, "")) && item.href !== "/";
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`meta py-4 transition-colors hover:text-red ${active ? "text-red" : "text-ink"}`}
-              >
-                {item.label}
-              </Link>
-            );
-          })}
-          <Link href="/contact/" className="btn btn-red !py-2.5 !px-4 text-xs">
-            Check availability
-          </Link>
-        </nav>
+        <div className="flex items-center gap-3">
+          <nav className="hidden items-center gap-7 md:flex" aria-label="Primary">
+            {nav.map((item) => {
+              const active = pathname?.startsWith(item.href.replace(/\/$/, "")) && item.href !== "/";
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`meta py-4 transition-colors hover:text-red ${active ? "text-red" : "text-ink"}`}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
+            <Link href="/contact/" className="btn btn-red !py-2.5 !px-4 text-xs">
+              Check availability
+            </Link>
+          </nav>
 
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          aria-expanded={open}
-          aria-controls="mobile-nav"
-          className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 border-2 border-ink md:hidden"
-        >
-          <span className="sr-only">{open ? "Close menu" : "Open menu"}</span>
-          <span className={`block h-0.5 w-5 bg-ink transition-transform ${open ? "translate-y-1 rotate-45" : ""}`} />
-          <span className={`block h-0.5 w-5 bg-ink transition-transform ${open ? "-translate-y-1 -rotate-45" : ""}`} />
-        </button>
+          {/* Theme switch — sits beside the menu on every breakpoint */}
+          <ThemeToggle />
+
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            aria-expanded={open}
+            aria-controls="mobile-nav"
+            className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 border-2 border-ink md:hidden"
+          >
+            <span className="sr-only">{open ? "Close menu" : "Open menu"}</span>
+            <span className={`block h-0.5 w-5 bg-ink transition-transform ${open ? "translate-y-1 rotate-45" : ""}`} />
+            <span className={`block h-0.5 w-5 bg-ink transition-transform ${open ? "-translate-y-1 -rotate-45" : ""}`} />
+          </button>
+        </div>
       </div>
 
       {/* Mobile sheet — full-bleed red poster menu */}

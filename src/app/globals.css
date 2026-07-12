@@ -30,6 +30,54 @@
   --font-mono: var(--font-space-mono), ui-monospace, "SFMono-Regular", monospace;
 }
 
+/* --------------------------------------------------------------------------
+   Dark theme — semantic inversion. Every surface is expressed through the
+   paper/ink/red tokens, so flipping their values re-skins the whole site;
+   ink↔paper swap turns the deep-ink accent panels (framework, footer,
+   process) into light panels, keeping the postmodern high-contrast feel.
+   `data-theme` is stamped on <html> before paint by the loader in layout.
+--------------------------------------------------------------------------- */
+:root {
+  color-scheme: light;
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --color-paper: #17130f; /* warm near-black ground */
+  --color-paper-dim: #211a14; /* raised surface */
+
+  --color-ink: #f4efe6; /* warm off-white text/lines */
+  --color-ink-soft: #b7ac9d;
+  --color-ink-faint: #857a6c;
+  --color-line: #38302610;
+
+  /* brightened so red keeps AA contrast on the dark ground */
+  --color-red: #e04b3d;
+  --color-red-deep: #b83023;
+  --color-red-bright: #f4685a;
+  --color-red-tint: #2a1a17;
+}
+/* border-token uses ink; give it a real hairline value in dark mode */
+:root[data-theme="dark"] {
+  --color-line: #38302a;
+}
+/* multiply blends disappear on a dark ground — switch the rubber stamp to a
+   plain overlay and lift the grain a touch so texture stays visible */
+:root[data-theme="dark"] .stamp {
+  mix-blend-mode: normal;
+  opacity: 0.9;
+}
+:root[data-theme="dark"] body::after {
+  opacity: 0.08;
+}
+
+/* Theme-toggle icon swap: moon in light mode (offers dark), sun in dark mode.
+   Driven entirely by the attribute so it's correct before JS hydrates. */
+.theme-toggle .icon-sun { display: none; }
+.theme-toggle .icon-moon { display: block; }
+:root[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+:root[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 5.5rem;

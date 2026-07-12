@@ -66,6 +66,17 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
+export const viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#faf7f2" },
+    { media: "(prefers-color-scheme: dark)", color: "#17130f" },
+  ],
+};
+
+// Runs before first paint: applies the saved theme (or the OS preference) to
+// <html data-theme> so there's no flash of the wrong theme on load.
+const themeLoader = `(function(){try{var t=localStorage.getItem('theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.dataset.theme=t;}catch(e){}})();`;
+
 const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
@@ -105,9 +116,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${archivo.variable} ${fraunces.variable} ${spaceMono.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-paper">
+        <script dangerouslySetInnerHTML={{ __html: themeLoader }} />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
