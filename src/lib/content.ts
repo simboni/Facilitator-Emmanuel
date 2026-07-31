@@ -5,8 +5,10 @@
 
 export const site = {
   name: "Facilitator Misiati",
-  // Swap for the real domain at launch — drives canonical URLs, sitemap, JSON-LD.
-  domain: "facilitatormisiati.com",
+  // The live base URL — drives canonical links, sitemap, JSON-LD and the social
+  // share-card (Open Graph) image URL. Currently the Render host; change to the
+  // custom domain (e.g. facilitatormisiati.com) once it's pointed at the site.
+  domain: "facilitator-misiati.onrender.com",
   title: "Emmanuel Misiati — Facilitator, Program Strategist & Community Development Practitioner",
   description:
     "Emmanuel Misiati partners with organizations, networks and groups to design high-impact learning experiences, facilitate complex conversations and build community-driven systems that deliver lasting results. Nairobi, Kenya.",
