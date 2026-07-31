@@ -2,10 +2,9 @@ import type { Metadata } from "next";
 import { Archivo, Fraunces, Space_Mono } from "next/font/google";
 import "./globals.css";
 import { profile, site, tiers } from "@/lib/content";
-import { SiteHeader } from "@/components/site-header";
-import { SiteFooter } from "@/components/site-footer";
-import { WhatsAppFab } from "@/components/whatsapp-fab";
-import { MobileActionBar } from "@/components/mobile-action-bar";
+import { TopBar } from "@/components/top-bar";
+import { AppFooter } from "@/components/app-footer";
+import { BottomTabs } from "@/components/bottom-tabs";
 
 const archivo = Archivo({
   variable: "--font-archivo",
@@ -121,7 +120,7 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${archivo.variable} ${fraunces.variable} ${spaceMono.variable} h-full antialiased`}
     >
-      <body className="flex min-h-full flex-col bg-paper pb-[4.75rem] lg:pb-0">
+      <body className="flex min-h-full flex-col bg-paper pb-[4.75rem]">
         <script dangerouslySetInnerHTML={{ __html: themeLoader }} />
         <script
           type="application/ld+json"
@@ -131,11 +130,10 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
         />
-        <SiteHeader />
+        <TopBar />
         <main className="flex-1">{children}</main>
-        <SiteFooter />
-        <WhatsAppFab />
-        <MobileActionBar />
+        <AppFooter />
+        <BottomTabs />
       </body>
     </html>
   );

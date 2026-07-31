@@ -20,7 +20,7 @@ const EVENT_TYPES = [
 ];
 
 const inputCls =
-  "w-full border-2 border-ink bg-paper px-4 py-3 text-sm text-ink placeholder:text-ink-faint focus:border-red focus:outline-none focus:ring-2 focus:ring-red/25 transition";
+  "w-full rounded-xl border border-ink/15 bg-paper px-4 py-3 text-sm text-ink placeholder:text-ink-faint focus:border-red focus:outline-none focus:ring-2 focus:ring-red/25 transition";
 
 function isEmail(v: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
@@ -95,8 +95,8 @@ export function ContactForm() {
 
   if (status === "done") {
     return (
-      <div className="border-2 border-ink bg-paper p-8 text-center shadow-hard">
-        <span className="mx-auto flex h-14 w-14 items-center justify-center border-2 border-ink bg-red text-paper">
+      <div className="card p-8 text-center">
+        <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-red text-paper">
           <CheckIcon className="h-7 w-7" />
         </span>
         <h3 className="display mt-5 text-3xl">
@@ -107,7 +107,7 @@ export function ContactForm() {
           it&rsquo;s urgent, WhatsApp is fastest.
         </p>
         <div className="mt-6">
-          <a href={`mailto:${profile.email}`} className="btn btn-ghost">
+          <a href={`mailto:${profile.email}`} className="act act-ghost">
             <MailIcon className="h-5 w-5" /> {profile.email}
           </a>
         </div>
@@ -116,7 +116,7 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} className="border-2 border-ink bg-paper p-6 shadow-hard sm:p-8" noValidate>
+    <form onSubmit={onSubmit} className="card p-6 sm:p-7" noValidate>
       <div className="grid gap-5 sm:grid-cols-2">
         <Field label="Your name" error={errors.name} required>
           <input type="text" value={form.name} onChange={update("name")} className={inputCls} placeholder="Jane Wanjiku" autoComplete="name" />
@@ -168,7 +168,7 @@ export function ContactForm() {
       />
 
       <div className="mt-7 flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <button type="submit" className="btn btn-red" disabled={status === "submitting"}>
+        <button type="submit" className="act act-red" disabled={status === "submitting"}>
           {status === "submitting" ? "Sending…" : "Send enquiry"} <ArrowIcon className="h-4 w-4" />
         </button>
         <p className="meta text-ink-faint">[ {profile.responsePromise} ]</p>

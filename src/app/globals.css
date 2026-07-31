@@ -396,3 +396,127 @@ body::after {
     navigation: none;
   }
 }
+
+/* ==========================================================================
+   APP SHELL — mobile-first "profile app" layer
+   Rounded, soft-elevation cards, swipe carousels and a bottom tab bar.
+   Layered on top of the editorial system; used by the redesigned pages.
+   ========================================================================== */
+@theme {
+  --radius-card: 1.5rem;
+  --radius-pill: 999px;
+}
+
+@layer components {
+  /* App content column — comfortable on phones, centered on desktop */
+  .app {
+    width: 100%;
+    max-width: 34rem;
+    margin-inline: auto;
+    padding-inline: 1rem;
+  }
+  @media (min-width: 1024px) {
+    .app-wide {
+      max-width: 64rem;
+    }
+  }
+
+  /* Elevated rounded card — the elegant, non-brutalist surface */
+  .card {
+    border-radius: var(--radius-card);
+    background: var(--color-paper);
+    border: 1px solid color-mix(in srgb, var(--color-ink) 10%, transparent);
+    box-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.04),
+      0 12px 30px -18px rgba(0, 0, 0, 0.28);
+  }
+  :root[data-theme="dark"] .card {
+    border-color: color-mix(in srgb, var(--color-ink) 14%, transparent);
+    box-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.3),
+      0 16px 34px -18px rgba(0, 0, 0, 0.7);
+  }
+  .card-red {
+    background: var(--color-red);
+    color: var(--color-paper);
+    border-color: transparent;
+  }
+  .card-ink {
+    background: var(--color-ink);
+    color: var(--color-paper);
+    border-color: transparent;
+  }
+
+  /* Soft pill */
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 0.4em 0.85em;
+    border-radius: var(--radius-pill);
+    background: color-mix(in srgb, var(--color-ink) 7%, transparent);
+    color: var(--color-ink-soft);
+  }
+  .pill-red {
+    background: color-mix(in srgb, var(--color-red) 14%, transparent);
+    color: var(--color-red);
+  }
+
+  /* Rounded action button */
+  .act {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    padding: 0.95em 1.5em;
+    border-radius: var(--radius-pill);
+    background: var(--color-ink);
+    color: var(--color-paper);
+    transition: transform 0.15s ease, opacity 0.15s ease;
+  }
+  .act:active { transform: scale(0.97); }
+  .act-red { background: var(--color-red); color: var(--color-paper); }
+  .act-green { background: #25d366; color: #08331b; }
+  .act-ghost {
+    background: transparent;
+    color: var(--color-ink);
+    border: 1.5px solid color-mix(in srgb, var(--color-ink) 22%, transparent);
+  }
+
+  /* Horizontal swipe carousel with peek + snap */
+  .swipe {
+    display: flex;
+    gap: 0.85rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 0.25rem;
+    scroll-padding-left: 1rem;
+  }
+  .swipe::-webkit-scrollbar { display: none; }
+  .swipe > * {
+    scroll-snap-align: start;
+    flex: 0 0 auto;
+  }
+}
+
+/* Bottom tab bar — app-native navigation */
+.tabbar {
+  position: fixed;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: 50;
+  padding-bottom: env(safe-area-inset-bottom);
+  background: color-mix(in srgb, var(--color-paper) 88%, transparent);
+  backdrop-filter: blur(14px);
+  border-top: 1px solid color-mix(in srgb, var(--color-ink) 10%, transparent);
+}

@@ -57,6 +57,44 @@ export function CheckIcon({ className = "h-5 w-5" }: IconProps) {
   );
 }
 
+export function HomeIcon({ className = "h-5 w-5" }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" className={className} aria-hidden="true">
+      <path d="M4 11.5 12 4l8 7.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M6 10v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-9" strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+export function GridIcon({ className = "h-5 w-5" }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" className={className} aria-hidden="true">
+      <rect x="4" y="4" width="7" height="7" rx="1.5" />
+      <rect x="13" y="4" width="7" height="7" rx="1.5" />
+      <rect x="4" y="13" width="7" height="7" rx="1.5" />
+      <rect x="13" y="13" width="7" height="7" rx="1.5" />
+    </svg>
+  );
+}
+
+export function UserIcon({ className = "h-5 w-5" }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" className={className} aria-hidden="true">
+      <circle cx="12" cy="8" r="4" />
+      <path d="M4 20c0-4 3.6-6 8-6s8 2 8 6" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+export function CalendarIcon({ className = "h-5 w-5" }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" className={className} aria-hidden="true">
+      <rect x="4" y="5" width="16" height="16" rx="2.5" />
+      <path d="M4 9h16M8 3v4M16 3v4" strokeLinecap="round" />
+    </svg>
+  );
+}
+
 export function SunIcon({ className = "h-5 w-5" }: IconProps) {
   return (
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className={className} aria-hidden="true">
