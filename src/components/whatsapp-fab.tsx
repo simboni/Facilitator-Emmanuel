@@ -9,7 +9,7 @@ export function WhatsAppFab() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat with Emmanuel on WhatsApp"
-      className="group fixed bottom-5 right-5 z-40 flex items-center gap-0 border-2 border-ink bg-[#25D366] text-ink shadow-hard-sm transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5"
+      className="group fixed bottom-5 right-5 z-40 hidden items-center gap-0 border-2 border-ink bg-[#25D366] text-ink shadow-hard-sm transition-transform hover:-translate-x-0.5 hover:-translate-y-0.5 lg:flex"
     >
       <span className="grid h-12 w-12 place-items-center">
         <WhatsAppIcon className="h-6 w-6" />

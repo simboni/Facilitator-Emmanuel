@@ -4,62 +4,39 @@ import { ContactForm } from "@/components/contact-form";
 import { MailIcon, PhoneIcon, WhatsAppIcon, LinkedInIcon } from "@/components/icons";
 
 export const metadata: Metadata = {
-  title: "Check Availability",
+  title: "Get in Touch",
   description:
-    "Book Emmanuel Misiati as MC, facilitator or moderator for your event — WhatsApp, email or the enquiry form. Replies within one business day.",
+    "Work with Emmanuel Misiati on programme facilitation, training of trainers, event moderation or community-development consulting. WhatsApp, email or the enquiry form.",
 };
 
 const channels = [
-  {
-    label: "WhatsApp",
-    value: "Fastest — usually same-day",
-    href: profile.whatsapp,
-    external: true,
-    icon: WhatsAppIcon,
-  },
-  {
-    label: "Email",
-    value: profile.email,
-    href: `mailto:${profile.email}`,
-    icon: MailIcon,
-  },
-  {
-    label: "Phone",
-    value: profile.phoneDisplay,
-    href: `tel:${profile.phone}`,
-    icon: PhoneIcon,
-  },
-  {
-    label: "LinkedIn",
-    value: "Emmanuel Misiati",
-    href: profile.linkedin,
-    external: true,
-    icon: LinkedInIcon,
-  },
+  { label: "WhatsApp", value: "Fastest — usually same-day", href: profile.whatsapp, external: true, icon: WhatsAppIcon },
+  { label: "Email", value: profile.email, href: `mailto:${profile.email}`, icon: MailIcon },
+  { label: "Phone", value: profile.phoneDisplay, href: `tel:${profile.phone}`, icon: PhoneIcon },
+  { label: "LinkedIn", value: "Emmanuel Misiati", href: profile.linkedin, external: true, icon: LinkedInIcon },
 ];
 
 export default function ContactPage() {
   return (
     <>
       <section className="relative overflow-hidden border-b-2 border-ink">
-        <p aria-hidden="true" className="display text-outline-red pointer-events-none absolute -right-[6vw] bottom-0 select-none whitespace-nowrap text-[17vw] leading-none opacity-70">
-          LET&rsquo;S WORK
+        <p aria-hidden="true" className="display text-outline-red pointer-events-none absolute -right-[6vw] bottom-0 select-none whitespace-nowrap text-[16vw] leading-none opacity-70">
+          WORK WITH ME
         </p>
-        <div className="container-page relative py-16 lg:py-20">
-          <p className="index-label">CONTACT / BOOKING</p>
-          <h1 className="display mt-4 text-[12vw] sm:text-8xl">
-            Lock the <span className="text-red">date</span>
+        <div className="container-page relative py-14 lg:py-20">
+          <p className="index-label">CONTACT</p>
+          <h1 className="display mt-4 text-[13vw] leading-[0.95] sm:text-7xl lg:text-8xl">
+            Let&rsquo;s <span className="text-red">talk</span>
           </h1>
-          <p className="serif-note mt-6 max-w-xl text-2xl text-ink-soft">
-            Tell me the date, the room and what winning looks like — you&rsquo;ll have
-            an answer within one business day.
+          <p className="serif-note mt-6 max-w-xl text-xl text-ink-soft sm:text-2xl">
+            A programme to design, a room to curate, or a community to strengthen? Tell me what you
+            have in mind — you&rsquo;ll hear back within one business day.
           </p>
         </div>
       </section>
 
       <section className="bg-paper-dim">
-        <div className="container-page grid gap-12 py-16 lg:grid-cols-12">
-          {/* Channels */}
+        <div className="container-page grid gap-12 py-14 lg:grid-cols-12 lg:py-16">
           <div className="lg:col-span-4">
             <p className="meta text-ink-soft">DIRECT LINES</p>
             <ul className="mt-6 space-y-4">
@@ -86,16 +63,15 @@ export default function ContactPage() {
               <p className="meta text-red-bright">GOOD TO KNOW</p>
               <ul className="mt-4 space-y-3 text-sm text-paper/80">
                 <li>· Based in {profile.location} — working across East Africa &amp; virtually</li>
-                <li>· A deposit (M-Pesa or bank transfer) locks your date</li>
+                <li>· Programme &amp; consulting work is scoped per engagement</li>
+                <li>· Fixed day-rates for MC &amp; moderation</li>
                 <li>· Travel &amp; accommodation on the client for events outside Nairobi</li>
-                <li>· Multi-day &amp; recurring engagements quoted per brief</li>
               </ul>
             </div>
           </div>
 
-          {/* Form */}
           <div className="lg:col-span-8">
-            <p className="meta mb-6 text-ink-soft">OR SEND THE BRIEF</p>
+            <p className="meta mb-6 text-ink-soft">OR SEND A MESSAGE</p>
             <ContactForm />
           </div>
         </div>

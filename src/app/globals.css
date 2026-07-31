@@ -81,6 +81,10 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 5.5rem;
+  /* Clip at the root too — decorative vw-sized ghost headings must never widen
+     the page (clipping body alone leaves html scrollable on some engines). */
+  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 body {

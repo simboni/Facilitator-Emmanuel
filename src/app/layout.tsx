@@ -5,6 +5,7 @@ import { profile, site, tiers } from "@/lib/content";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { WhatsAppFab } from "@/components/whatsapp-fab";
+import { MobileActionBar } from "@/components/mobile-action-bar";
 
 const archivo = Archivo({
   variable: "--font-archivo",
@@ -80,9 +81,9 @@ const themeLoader = `(function(){try{var t=localStorage.getItem('theme');if(t!==
 const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
-  name: profile.name,
+  name: profile.fullName,
   alternateName: profile.brand,
-  jobTitle: "Master of Ceremonies, Facilitator & Moderator",
+  jobTitle: "Facilitator, Program Strategist & Community Development Practitioner",
   email: `mailto:${profile.email}`,
   telephone: profile.phone,
   url: siteUrl,
@@ -98,9 +99,10 @@ const personSchema = {
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
-  serviceType: "Event MC, facilitation and moderation services",
-  provider: { "@type": "Person", name: profile.name },
-  areaServed: "East Africa",
+  serviceType:
+    "Facilitation, training-of-trainers, programme design, event moderation and community-development consulting",
+  provider: { "@type": "Person", name: profile.fullName },
+  areaServed: "Kenya, East Africa",
   offers: tiers.map((t) => ({
     "@type": "Offer",
     name: t.name,
@@ -119,7 +121,7 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${archivo.variable} ${fraunces.variable} ${spaceMono.variable} h-full antialiased`}
     >
-      <body className="flex min-h-full flex-col bg-paper">
+      <body className="flex min-h-full flex-col bg-paper pb-[4.75rem] lg:pb-0">
         <script dangerouslySetInnerHTML={{ __html: themeLoader }} />
         <script
           type="application/ld+json"
@@ -133,6 +135,7 @@ export default function RootLayout({
         <main className="flex-1">{children}</main>
         <SiteFooter />
         <WhatsAppFab />
+        <MobileActionBar />
       </body>
     </html>
   );

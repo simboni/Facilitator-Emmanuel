@@ -27,11 +27,11 @@ export function SiteHeader() {
         <Link href="/" onClick={close} className="group flex items-baseline gap-1.5 py-4" aria-label="Facilitator Misiati — home">
           <span className="display text-xl leading-none">Misiati</span>
           <span className="inline-block h-2.5 w-2.5 rounded-full bg-red transition-transform group-hover:scale-125" />
-          <span className="meta hidden text-ink-faint sm:inline">MC · Facilitator · Moderator</span>
+          <span className="meta hidden text-ink-faint sm:inline">Facilitator · Program Strategist</span>
         </Link>
 
         <div className="flex items-center gap-3">
-          <nav className="hidden items-center gap-7 md:flex" aria-label="Primary">
+          <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary">
             {nav.map((item) => {
               const active = pathname?.startsWith(item.href.replace(/\/$/, "")) && item.href !== "/";
               return (
@@ -57,7 +57,7 @@ export function SiteHeader() {
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-controls="mobile-nav"
-            className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 border-2 border-ink md:hidden"
+            className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 border-2 border-ink lg:hidden"
           >
             <span className="sr-only">{open ? "Close menu" : "Open menu"}</span>
             <span className={`block h-0.5 w-5 bg-ink transition-transform ${open ? "translate-y-1 rotate-45" : ""}`} />
@@ -68,7 +68,7 @@ export function SiteHeader() {
 
       {/* Mobile sheet — full-bleed red poster menu */}
       {open && (
-        <div id="mobile-nav" className="fixed inset-x-0 top-16 bottom-0 z-50 overflow-auto bg-red text-paper md:hidden">
+        <div id="mobile-nav" className="fixed inset-x-0 top-16 bottom-0 z-50 overflow-auto bg-red text-paper lg:hidden">
           <nav className="container-page flex flex-col py-8" aria-label="Mobile">
             {nav.map((item, i) => (
               <Link

@@ -5,11 +5,13 @@ import { useEffect, useRef, useState } from "react";
 /** Counts from 0 to `end` once, when scrolled into view. */
 export function CountUp({
   end,
+  prefix = "",
   suffix = "",
   duration = 1400,
   className = "",
 }: {
   end: number;
+  prefix?: string;
   suffix?: string;
   duration?: number;
   className?: string;
@@ -56,6 +58,7 @@ export function CountUp({
 
   return (
     <span ref={ref} className={className}>
+      {prefix}
       {value}
       {suffix}
     </span>
