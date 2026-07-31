@@ -28,7 +28,7 @@ export const profile = {
     encodeURIComponent(
       "Hi Emmanuel, I'd like to talk about facilitation for an upcoming programme or event.",
     ),
-  linkedin: "https://www.linkedin.com/in/emmanuel-misiati",
+  linkedin: "https://www.linkedin.com/in/emmanuel-misiati-262571143",
   responsePromise: "Replies within one business day",
 
   // The line the whole brand rests on

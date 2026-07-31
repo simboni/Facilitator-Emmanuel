@@ -41,14 +41,16 @@ function ProfileCard() {
           sizes="(min-width: 1024px) 64rem, 100vw"
           className="bg-red object-cover object-top"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
-        <div className="absolute inset-x-0 bottom-0 p-5 text-paper">
+        {/* Text sits over the photo, whose dark gradient never flips with theme —
+            so it must always be light, not the theme-reactive paper token. */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-black/5" />
+        <div className="absolute inset-x-0 bottom-0 p-5 text-white">
           <div className="flex flex-wrap gap-1.5">
-            <span className="pill !bg-paper/20 !text-paper">Facilitator</span>
-            <span className="pill !bg-paper/20 !text-paper">Program Strategist</span>
-            <span className="pill !bg-paper/20 !text-paper">Community Dev</span>
+            <span className="pill !bg-white/20 !text-white">Facilitator</span>
+            <span className="pill !bg-white/20 !text-white">Program Strategist</span>
+            <span className="pill !bg-white/20 !text-white">Community Dev</span>
           </div>
-          <h1 className="display mt-3 text-4xl leading-none sm:text-5xl">
+          <h1 className="display mt-3 text-4xl leading-none text-white sm:text-5xl">
             Emmanuel<br />Misiati<span className="text-red-bright">.</span>
           </h1>
         </div>
@@ -164,7 +166,7 @@ function WorkCarousel() {
                 sizes="17rem"
                 className="object-cover"
               />
-              <span className="pill pill-red absolute left-2.5 top-2.5 !bg-paper/90">{cs.category}</span>
+              <span className="pill absolute left-2.5 top-2.5 !bg-white/90 !text-red">{cs.category}</span>
             </div>
             <div className="p-4">
               <p className="font-mono text-[0.62rem] uppercase tracking-wide text-red">{cs.year}</p>

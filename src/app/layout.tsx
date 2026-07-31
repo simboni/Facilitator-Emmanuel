@@ -73,9 +73,10 @@ export const viewport = {
   ],
 };
 
-// Runs before first paint: applies the saved theme (or the OS preference) to
-// <html data-theme> so there's no flash of the wrong theme on load.
-const themeLoader = `(function(){try{var t=localStorage.getItem('theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.dataset.theme=t;}catch(e){}})();`;
+// Runs before first paint: applies the saved theme to <html data-theme> so there
+// is no flash. Default is LIGHT (not the OS preference) — only an explicit toggle
+// switches to dark.
+const themeLoader = `(function(){try{var t=localStorage.getItem('theme');document.documentElement.dataset.theme=(t==='dark')?'dark':'light';}catch(e){document.documentElement.dataset.theme='light';}})();`;
 
 const personSchema = {
   "@context": "https://schema.org",
